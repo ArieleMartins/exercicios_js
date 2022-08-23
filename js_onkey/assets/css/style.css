@@ -1,0 +1,17 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(43, 43, 83);
+}
+.caixa{
+    width: 30px;
+    height: 30px;
+    background-color: crimson;
+    position: absolute;
+    bottom:0px;
+    left:0px;
+    border-radius: 30px;
+}
