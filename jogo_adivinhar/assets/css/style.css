@@ -1,0 +1,58 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: rgb(43, 43, 75);
+    color: white;
+    text-align: center;
+    height: 100vh;
+}
+.container-principal{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+}
+.container-dados{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.container-dados input{
+    border-radius: 10px;
+    padding: 8px;
+    width: 100px;
+    margin: auto;
+}
+.container-dados button{
+    border-radius: 10px;
+    padding: 8px;
+    width: 90px;
+    background-color: cornflowerblue;
+    border-color: rgb(93, 133, 207);
+    margin:auto;
+}
+h1{
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container-pontos{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    height: 280px;
+}
+.tentativas{
+    width: 100%;
+    height: 100px;
+    overflow: scroll;
+}
