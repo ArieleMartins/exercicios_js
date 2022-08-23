@@ -1,0 +1,15 @@
+Javascirpt:
+- Linguagem Interpretada -não é necessario compilar.
+- Baseada em protótipos
+- Mdor;ultiparadigma - você pode escolher POO ou direto.
+- Comumente utilizada em aplicações web client-side - disponivel para qualquer navegador.
+- Segue o padrao ECMAScript - atualuzações.
+
+O que se pode fazer com javascript:
+- web
+- mobile
+- Smartwatches
+- Internet of things
+- APIs
+
+
