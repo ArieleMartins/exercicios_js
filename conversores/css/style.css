@@ -33,6 +33,7 @@ body{
     -webkit-backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
+    border: solid 2px rgb(37, 29, 51);
 }
 
 .cabecalho .menu ul{
