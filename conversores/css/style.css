@@ -57,7 +57,7 @@ a{
     grid-template-columns:  50% 50%;
     align-items: center;
     justify-content: center;
-    height: 810px;
+    height: 780px;
 }
 
 .container-apresentacao{
@@ -104,12 +104,7 @@ a{
     display: flex;
     justify-content: center;
 }
-.servico{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+
 
 @media(max-width:1000px){
     .principal{

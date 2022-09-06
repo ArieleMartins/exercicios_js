@@ -1,0 +1,53 @@
+.container-desc{
+    background-color: white;
+    width: 200px;
+    height: 250px;
+    border-radius: 20px;
+    padding: 12px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+.container-grid{
+    display: grid;
+    grid-template-columns: 33.33% 33.33% 33.33%;
+    row-gap: 30px;
+    width: 100%;
+}
+
+.container-servico{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.container-icon{
+    background-color: rgb(100, 41, 53);
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    position: relative;
+    bottom: -50px;
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo-servicos{
+    font-size: 30px;
+}
+
+.servico{
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    padding-top: 120px;
+    text-align: center;
+}
