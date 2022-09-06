@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@200&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    background: rgb(23,27,46);
+    background: linear-gradient(180deg, rgba(23,27,46,1) 0%, rgba(41,11,42,1) 100%); 
+    color:white;
+    font-family: 'Antonio', sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+.container-cabecalho{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.cabecalho{
+    background: rgba(255,255,255,  0.01);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+}
+
+.cabecalho .menu ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    column-gap: 60px;
+    text-transform: uppercase;
+}
+
+a{
+    color: white;
+    transition: 0.6s ease-out;
+}
+
+.cabecalho .menu ul li a:hover{
+    color: rgb(92, 67, 116);
+}
+
+.principal{
+    display: grid;
+    grid-template-columns:  50% 50%;
+    align-items: center;
+    justify-content: center;
+    height: 810px;
+}
+
+.container-apresentacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 50px;
+    padding: 10px;
+}
+.titulo-apresentacao{
+    font-size: 70px;
+}
+.sub-apresentacao{
+    font-size:20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.principal .container-img-apre img{
+    width: 550px;
+}
+.principal .container-img-apre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnIniciar{
+    padding: 20px;
+    width: 200px;
+    background-color: rgb(51, 31, 73);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: auto;
+    font-size: 15px;
+    text-transform: uppercase;
+    color: white;
+}
+.btnIniciar:hover{
+    background-color: rgb(56, 32, 82);
+    color:rgb(213, 174, 255);
+}
+.container-btn{
+    display: flex;
+    justify-content: center;
+}
+.servico{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width:1000px){
+    .principal{
+        padding-top: 45px;
+        text-align: center;
+        grid-template-columns: 1fr;
+        height: 600px !important;
+    }
+    .titulo-apresentacao{
+        font-size: 10vw;
+    }
+    .sub-apresentacao{
+        font-size: 4vw;
+    }
+    .container{
+        width: 100%;
+        margin: 0;
+    }
+    .principal .container-img-apre img{
+        width: 300px;
+    }
+    .btnIniciar{
+        width: 150px;
+        padding: 15px;
+        font-size: 15px;
+    }
+}
