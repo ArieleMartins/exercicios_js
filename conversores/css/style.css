@@ -34,6 +34,7 @@ body{
     position: fixed;
     width: 100%;
     border: solid 2px rgb(37, 29, 51);
+    z-index: 1;
 }
 
 .cabecalho .menu ul{
@@ -132,4 +133,8 @@ a{
         padding: 15px;
         font-size: 15px;
     }
+    .container-cabecalho{
+        font-size: 15px;
+    }
+    
 }

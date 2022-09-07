@@ -31,9 +31,8 @@
         <main class="principal" id="home">
             <div class="container-apresentacao">
                 <h1 class="titulo-apresentacao">Conversor Web</h1>
-                <p class="sub-apresentacao">Bem-vindo ao conversor web temos diversos conversores e sempre que
-                    possivel manteremos nosso site
-                    atualizado.
+                <p class="sub-apresentacao">Bem-vindo ao conversor web temos diversos conversores, como: Conversor de
+                    Temperatura, Conversor de Moeda e Conversor de Quiometro para ano luz
                 </p>
                 <div class="container-btn">
                     <button class="btnIniciar" id="btnIniciar">Iniciar</button>
@@ -51,35 +50,49 @@
                     <div class="container-icon">
                         <i class="fa-solid fa-temperature-quarter"></i>
                     </div>
-                    <div class="container-desc">
-                        <p>Conversor de Temperatura</p>
-                        <p>Converta de Celsius para Fahrenheit.</p>
+                    <div class="container-desc ativar" id="temperatura">
+                        <p class="titulo-desc">Conversor de Temperatura</p>
+                        <p>Conversor de temperatura que converte de Celsius para Fahrenheit </p>
                     </div>
                 </div>
                 <div class="container-servico">
                     <div class="container-icon">
                         <i class="fa-solid fa-coins"></i>
                     </div>
-                    <div class="container-desc">
-                        <p>Conversor de Moeda</p>
-                        <p>Converta de Real para qualquer moeda</p>
+                    <div class="container-desc ativar" id="moeda">
+                        <p class="titulo-desc">Conversor de Moeda</p>
+                        <p>Converta de Real para qualquer outra moeda</p>
                     </div>
                 </div>
                 <div class="container-servico">
                     <div class="container-icon">
                         <i class="fa-solid fa-ruler-horizontal"></i>
                     </div>
-                    <div class="container-desc">
-                        <p>Conversor de Quilometro para anos luz</p>
-                        <p>Converta de dolar para real</p>
+                    <div class="container-desc ativar" id="luz">
+                        <p class="titulo-desc">Conversor de Quilometro para anos luz</p>
+                        <p>Verifique o tempo que demora para ir de uma estrela para outra.</p>
                     </div>
                 </div>
             </div>
         </section>
-        <footer>
-            <a href="https://storyset.com/technology">Technology illustrations by Storyset</a>
-        </footer>
+
+    </div>
+    <footer>
+        <div class="container ">
+            <p>Copyright &copy 2022 - Desenvolvido por Ariele Martins</p>
+            <a href="https://storyset.com/technology" target="_blank">Technology illustrations by Storyset</a>
+        </div>
+    </footer>
+    <div class="modal" id="modal">
+        <div class="container-margin-auto">
+            <span class="close" id="close">&times;</span>
+            <div class="container-modal">
+                <div class="painel" id="painel">
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
 </html>
+<script src="js/script.js"></script>
