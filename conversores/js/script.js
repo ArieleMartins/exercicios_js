@@ -14,7 +14,8 @@ containerLuz.addEventListener('click', function luz(){
     modal.style.display = 'flex';
     painel.innerHTML = `<div>
                             <h1>Conversor de Ano Luz</h1>
-                            <div>
+                            <div class="container-icon-painel">
+                                <i class="fa-solid fa-ruler-horizontal"></i>
                             </div>
                             <div class="container-inputs">
                                 <div class="container-valor">
@@ -41,16 +42,20 @@ containerLuz.addEventListener('click', function luz(){
     });
 });
 
-containerMoeda.addEventListener('click', function moeda(){
+containerMoeda.addEventListener('click', async function moeda(){
+    var moedaName = [];
+    var moedaValor = [];
+    var test = [];
     modal.style.display = "flex";
-    
+    const moedas = await fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL").then((response) => response.json()).then((name) => test.push(name) 
+    ).catch(console.log("Ops.. Ocorreu um erro"));
 });
 
 containerTemp.addEventListener('click', function temperatura(){
     modal.style.display = 'flex';
     painel.innerHTML = `<div> 
                             <h1>Conversor de Temperatura</h1>
-                            <div style="height:100px; font-size:60px; display:flex; justify-content:center ;margin-top:30px;">
+                            <div class="container-icon-painel">
                                 <i class="fa-solid fa-temperature-quarter" class="temp" id="temp"></i>
                             </div>
                             <div class="container-inputs">
