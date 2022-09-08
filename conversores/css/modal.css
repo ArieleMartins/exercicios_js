@@ -1,0 +1,96 @@
+.modal{
+    position: fixed;
+    left: 0;
+    top:0;
+    background-color: rgba(0,0,0,0.4);
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.close{
+    color: white;
+    font-size: 60px;
+    cursor: pointer;
+    float: right;
+}
+
+.container-margin-auto{
+    width: 80%;
+    height: 80%;
+    margin: auto;
+}
+
+.container-modal{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container-modal .painel{
+    width: 60%;
+    height: 60%;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+
+}
+.container-modal .painel div{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    color: black;
+    width: 90%;
+}
+
+.painel div .container-btn button{
+    padding:20px;
+    background-color:rgb(51, 31, 73);
+    border:none;
+    border-radius:30px;
+    color:white;
+}
+
+.painel div .container-btn{
+    display:flex; 
+    justify-content:center; 
+    width:100%; 
+    margin-top:20px;
+}
+.painel div .container-inputs input{
+    width:200px; 
+    padding:5px; 
+    border-radius:20px; 
+    font-size:15px
+}
+.painel div .container-inputs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.painel div .container-inputs label{
+    font-size:20px
+}
+@media(max-width:1000px){
+    .container-modal .painel{
+        width: 500px;
+        height:500px
+    }
+    .container-margin-auto{
+        width: 100%;
+        height: 100%;
+    }
+    .modal{
+        z-index: 1;
+    }
+    .painel div .container-inputs{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 20px;
+    }
+}

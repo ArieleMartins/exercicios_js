@@ -12,6 +12,33 @@ close.addEventListener('click', function fechar(){
 
 containerLuz.addEventListener('click', function luz(){
     modal.style.display = 'flex';
+    painel.innerHTML = `<div>
+                            <h1>Conversor de Ano Luz</h1>
+                            <div>
+                            </div>
+                            <div class="container-inputs">
+                                <div class="container-valor">
+                                    <label for='metro'>Quilometros</label>
+                                    <input type="number" name='metro' id="valor">
+                                </div>
+                                <div class="container-valor-convertido">
+                                    <label for="anoluz">Ano Luz</label>
+                                    <input type="number" name="anoluz" id="valorano" disabled>
+                                </div>
+                            </div>
+                            <div class="container-btn">
+                                <button id="convert">Converter</button>
+                            </div>
+                        </div>`;
+    
+    const anoluz = document.getElementById('valorano');
+    const convert = document.getElementById('convert');
+
+    convert.addEventListener('click', function converteMetroAno(){
+        const valor = parseFloat(document.getElementById('valor').value);
+        var convertido = valor / 9.461;
+        anoluz.value = convertido.toFixed(4);
+    });
 });
 
 containerMoeda.addEventListener('click', function moeda(){
@@ -26,18 +53,18 @@ containerTemp.addEventListener('click', function temperatura(){
                             <div style="height:100px; font-size:60px; display:flex; justify-content:center ;margin-top:30px;">
                                 <i class="fa-solid fa-temperature-quarter" class="temp" id="temp"></i>
                             </div>
-                            <div>
-                                <div>
-                                    <label for="celsius" style="font-size:20px">Celsius</label>
-                                    <input type="number" id="celsius" style="width:200px; padding:5px; border-radius:20px; font-size:15px">
+                            <div class="container-inputs">
+                                <div class="container-valor">
+                                    <label for="celsius">Celsius</label>
+                                    <input type="number" id="celsius" >
                                 </div>
-                                <div>
-                                    <label for="fahrenheits" style="font-size:20px">Fagrenheits</label>
-                                    <input type="number" id="fah" style="width:200px; padding:5px; border-radius:20px; font-size:15px" disabled>
+                                <div class="container-valor-convertido">
+                                    <label for="fahrenheits">Fagrenheits</label>
+                                    <input type="number" id="fah" disabled>
                                 </div>
                             </div>
-                            <div style="display:flex; justify-content:center; width:100%; margin-top:20px">
-                                <button style="padding:20px; background-color:rgb(51, 31, 73); border:none; border-radius:30px; color:white" id="btnConvert">Converte</button>
+                            <div  class="container-btn">
+                                <button id="btnConvert">Converte</button>
                             </div>
                         </div>`;
     var btnConvert = document.getElementById('btnConvert');
