@@ -67,6 +67,12 @@
     border-radius:20px; 
     font-size:15px
 }
+.painel div .container-inputs select{
+    width:270px; 
+    padding:5px; 
+    border-radius:20px; 
+    font-size:15px
+}
 .painel div .container-inputs{
     display: flex;
     flex-direction: row;
