@@ -1,43 +1,190 @@
 body {
-    font-family: "Roboto Mono", monospace;
-    text-align: center;
-    background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-04-aluraflix-e-filmes.png");
-    background-color: #000000;
-    background-size: cover;
-    background-position: center top;
-    background-repeat: no-repeat;
-  }
+  font-family: "Roboto Mono", monospace;
+  background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-04-aluraflix-e-filmes.png");
+  background-color: #000000;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.container {
+  text-align: center;
+  align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10vh;
+}
+
+.page-title {
+  color: #ffffff;
+  margin: 0 0 5px;
+}
+
+.page-subtitle {
+  color: #ffffff;
+  margin-top: 5px;
+}
+
+.page-logo {
+  width: 200px;
+}
+
+.alura-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+body>img {
+  margin: 0 10px;
+}
+
+img {
+  max-height: 250px;
+}
+
+.container-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  color: white;
+  text-transform: uppercase;
+  align-items: cente;
+  justify-content: center;
+}
+
+.container-input {
+  display: flex;
+  flex-direction: column;
+  row-gap: 9px;
+}
+
+.container-input div {
+  display: flex;
+  flex-direction: row;
+  row-gap: 0;
+}
+
+.container-input input {
+  width: 325px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: rgb(39, 39, 39);
+}
+
+.container-input select {
+  width: 160px;
+  padding: 10px;
+  border: none;
+  border-radius: 20px 0px 0px 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  color: rgb(39, 39, 39);
+}
+
+.container-input button,
+.container-criar .centraliza .main-categoria .container-listas div button {
+  width: 190px;
+  padding: 10px;
+  border: none;
+  border-radius: 0px 20px 20px 0px;
+  background-color: rgba(39, 25, 56, 0.6);
+  color: white;
+  cursor: pointer;
+}
+
+.container-input button:hover,
+.container-criar .centraliza .main-categoria .container-listas div button:hover {
+
+  background-color: rgba(49, 33, 70, 0.6);
+  color: rgba(205, 164, 255, 0.6);
+}
+
+
+.container-categoria, .container-movie{
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  flex-wrap: wrap;
   
-  .container {
-    text-align: center;
-    padding: 20px;
-  }
+}
+
+.container-categoria button,
+.container-criar .centraliza .main-categoria .container-btncategoria button {
+  width: 150px;
+  padding: 10px;
+  background-color: rgb(92, 45, 55);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.container-categoria button:hover,
+.container-criar .centraliza .main-categoria .container-btncategoria button:hover {
+
+  background-color: rgb(104, 51, 62);
+  color: rgb(255, 188, 202);
+
+}
+
+.container .container-btnAdd button {
+  border: none;
+  color: white;
+  background-color: rgb(40, 40, 77);
+  border-radius: 20px;
+  padding: 20px;
+  text-transform: uppercase;
+  width: 200px;
+  cursor: pointer;
+}
+
+.container .container-btnAdd button:hover {
+  color: rgb(190, 190, 255);
+  background-color: rgb(50, 50, 94);
+}
+
+.container  .container-capa .container-desc {
+  position: relative;
+  bottom: 101%;
+  background-color: rgba(0,0,0,0.7);
+  text-align: justify;
+  height: 100%;
+  padding: 8px;
+  transition: 0.5s ease-in-out;
+  transform: translateY(800px);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
-  .page-title {
-    color: #ffffff;
-    margin: 0 0 5px;
-  }
-  
-  .page-subtitle {
-    color: #ffffff;
-    margin-top: 5px;
-  }
-  
-  .page-logo {
-    width: 200px;
-  }
-  
-  .alura-logo {
-    width: 40px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  body > img {
-    margin: 0 10px;
-  }
-  
-  img {
-    max-height: 250px;
-  }
+}
+.container  .container-capa:hover .container-desc{
+  transform: translateY(0px);
+}
+
+.container .container-capa .container-desc p {
+  margin: 0;
+  padding: 5px;
+  font-size: 15px;
+  color: white;
+  width: 200px;
+}
+.container .container-capa .container-desc h4{
+  text-align: center;
+  color: white;
+  width: 200px;
+}
+.container  .container-capa {
+  overflow-y: hidden !important;
+  height: 375px;
+}
+
+.container .container-capa img {
+  min-height: 375px;
+}

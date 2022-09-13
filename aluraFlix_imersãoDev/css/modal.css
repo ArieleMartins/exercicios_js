@@ -1,0 +1,76 @@
+.container-criar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+    display: none;
+    
+  }
+  .container-criar h1{
+    color: rgb(92, 48, 56);
+    
+  }
+  .container-criar .container-margin{
+    width: 80%;
+    margin: auto;
+    
+  }
+  .container-criar .container-margin .close{
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    float: right;  
+    width: 40px;
+  }
+  .container-criar .centraliza{
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-criar .centraliza .main-categoria{
+    width: 500px;
+    height: 500px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    align-items: center;
+    row-gap: 20px;
+    background-color: white;
+  }
+  .container-criar .centraliza .main-categoria .container-criando{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 30px;
+    align-items: center;
+    row-gap: 20px;
+  
+  }
+  .container-criar .centraliza .main-categoria input{
+    width: 250px;
+    padding: 10px;
+    border: 0.2px solid rgb(175, 175, 175);
+    border-radius: 20px;
+  
+  }
+  .container-criar .centraliza .main-categoria .container-btncategoria{
+    width: 100%;
+  }
+  .container-criar .centraliza .main-categoria .container-listas {
+    display: flex;
+    flex-direction: row;
+  }
+  .container-criar .centraliza .main-categoria .container-listas select{
+    width: 160px;
+    padding: 10px;
+    border: 0.2px solid rgb(209, 209, 209);
+    border-radius: 20px 0px 0px 20px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+  }

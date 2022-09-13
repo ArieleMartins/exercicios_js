@@ -1,21 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <title>Document</title>
 </head>
+
 <body>
-    <div class="container">
-        <h1 class="page-title">
-          Aluraflix
-        </h1>
-        <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo" alt="">
+  <div class="container">
+    <div>
+      <h1 class="page-title">
+        Aluraflix
+      </h1>
+      <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo"
+        alt="">
+    </div>
+    <div class="container-inputs">
+      <div class="container-input">
+        <label for="nome">Titulo</label>
+        <input type="text" name="nome" placeholder="Titulo" id="titulo">
       </div>
-      <a href="https://alura.com.br/" target="_blank">
-        <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
-      </a>
+      <div class="container-input">
+        <label for="desc">Descrição</label>
+        <input type="text" name="desc" placeholder="Descrição" id="desc">
+      </div>
+      <div class="container-input">
+        <label for="capa">Capa</label>
+        <input type="text" name="capa" placeholder="URL - imagem capa" id="url">
+      </div>
+      <div class="container-input">
+        <label for="categoria">Categoria</label>
+        <div>
+          <select name="categoria" id="categorias">
+          </select>
+          <button id="btnAbrirModal">Criar/Remover Categoria</button>
+        </div>
+      </div>
+      
+    </div>
+    <span style="color:white" id="erroCamposVazio"></span>
+    <div class="container-btnAdd"><button id="btnAdicionar" class="btnAdicionar">Adicionar</button></div>
+    <div class="container-categoria" id="containerCategoria">
+    </div>
+    <div class="container-movie" id="containerMovie">
+      <div class="container-capa">
+        <img src="" alt="">
+        <div class="container-desc">
+          <h4></h4>
+          <p></p></div>
+      </div>
+    </div>
+  </div>
+  <a href="https://alura.com.br/" target="_blank">
+    <img src="https://www.alura.com.br/assets/img/home/alura-logo.svg" alt="" class="alura-logo">
+  </a>
+  <div class="container-criar" id="modal">
+    <div class="container-margin">
+      <span class="close" id="close">&times;</span>
+      <div class="centraliza">
+        <div class="main-categoria">
+          <div class="container-criando">
+            <h1>Criando Categora</h1>
+            <label for="nomeCategoria">Nome</label>
+            <input type="text" id="nomeCat">
+            <div class="container-btncategoria">
+              <button id="criarCategoria">Criar</button>
+            </div>
+            <span id="alerta"></span>
+
+          </div>
+          <h4>Remover Categoria</h4>
+          <div class="container-listas">
+            <select id="listaCategorias">
+
+            </select>
+            <div>
+              <button id="removerCategoria">Remover</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
+
 </html>
+<script type="module" src="js/script.js"></script>
