@@ -102,14 +102,23 @@ img {
   background-color: rgba(49, 33, 70, 0.6);
   color: rgba(205, 164, 255, 0.6);
 }
-
-
-.container-categoria, .container-movie{
+.container-categoria{
   display: flex;
-  flex-direction: row;
-  column-gap: 20px;
+  flex-direction: row; 
+  width: 90%;
+  overflow-x: auto;
+  height: 60px;
+  align-items: center;
+  gap: 20px;
+}
+.container-movie{
+  display: flex;
+  flex-direction: row; 
   flex-wrap: wrap;
-  
+  column-gap: 80px;
+  row-gap: 40px;
+  width: 90%;
+  justify-content: center;
 }
 
 .container-categoria button,
@@ -158,8 +167,7 @@ img {
   transition: 0.5s ease-in-out;
   transform: translateY(800px);
   overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
+  display: block;
   align-items: center;
   justify-content: center;
   
@@ -187,4 +195,18 @@ img {
 
 .container .container-capa img {
   min-height: 375px;
+}
+
+
+/* estilizando scroll */
+.container-categoria::-webkit-scrollbar, .container-movie::-webkit-scrollbar{
+  background-color: rgba(104, 51, 62, 0);
+ 
+}
+.container-categoria::-webkit-scrollbar-button, .container-movie::-webkit-scrollbar-button{
+  background-color: rgba(104, 51, 62, 0);
+}
+.container-categoria::-webkit-scrollbar-thumb , .container-movie::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.322);
+  border-radius: 20px;
 }
