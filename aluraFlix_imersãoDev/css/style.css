@@ -3,10 +3,7 @@ body {
   font-family: "Roboto Mono", monospace;
   padding: 0;
   margin: 0;
-  background-image: url("../imgs/beautiful-african-girl-with-funny-hairstyle-watching-movie-in-cinema.jpg");
-  background-color: #000000;
-  background-size: cover;
-  background-position: center top;
+  background-color: rgb(28, 28, 46);
   background-repeat: no-repeat;
 }
 
@@ -26,12 +23,6 @@ body {
   font-size: 70px;
   font-family: 'Saira Condensed', sans-serif;
 }
-
-.page-subtitle {
-  color: #ffffff;
-  margin-top: 5px;
-}
-
 .page-logo {
   width: 200px;
 }
@@ -177,7 +168,7 @@ img {
   position: relative;
   bottom: 101%;
   background-color: rgba(0,0,0,0.7);
-  text-align: justify;
+  text-align: center;
   height: 100%;
   padding: 8px;
   transition: 0.5s ease-in-out;
@@ -189,10 +180,14 @@ img {
 .container  .container-capa:hover .container-desc{
   transform: translateY(0px);
 }
+.container .container-capa .container-desc h4 {
+  width: 230px !important;
+}
 
 .container .container-capa .container-desc p {
   margin: 0;
   padding:0px 0px 14px 8px;
+  text-align: justify;
   font-size: 15px;
   color: white;
   width: 230px;
@@ -213,14 +208,14 @@ img {
 
 
 /* estilizando scroll */
-.container-categoria::-webkit-scrollbar, .container-movie::-webkit-scrollbar{
+.container-categoria::-webkit-scrollbar, .container-movie .container-capa .container-desc::-webkit-scrollbar{
   background-color: rgba(104, 51, 62, 0);
  
 }
-.container-categoria::-webkit-scrollbar-button, .container-movie::-webkit-scrollbar-button{
+.container-categoria::-webkit-scrollbar-button, .container-movie .container-capa .container-desc::-webkit-scrollbar-button{
   background-color: rgba(104, 51, 62, 0);
 }
-.container-categoria::-webkit-scrollbar-thumb , .container-movie::-webkit-scrollbar-thumb {
+.container-categoria::-webkit-scrollbar-thumb , .container-movie .container-capa .container-desc::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.322);
   border-radius: 20px;
 }
@@ -233,4 +228,31 @@ footer{
 footer a{
   color: white;
   text-decoration: none;
+}
+
+@media(max-width:700px){
+  .container-inputs {
+    grid-template-columns: 1fr;
+  }
+  .container-input input {
+    width: 225px;
+    padding: 5px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgb(39, 39, 39);
+  }
+  
+  .container-input select {
+    width: 120px;
+    padding: 5px;
+  }
+  .container-input button {
+  width: 120px;
+  padding: 5px;
+}
+.container-inputs-add{
+  padding: 20px;
+  row-gap: 30px;
+}
 }

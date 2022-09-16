@@ -28,7 +28,7 @@ abrirModal.addEventListener('click', function abrirModal() {
     modal.style.display = "flex";
     modal.style.position = "fixed";
     for (var i = 0; i < categoria.length; i++) {
-        listaCategorias.innerHTML += '<option value="' + categoria[i] + '">'+ categoria[i] + '</option>';
+        listaCategorias.innerHTML += '<option value="' + categoria[i] + '">' + categoria[i] + '</option>';
     }
 })
 
@@ -40,52 +40,98 @@ criarCategoria.addEventListener('click', function criandoCategorias() {
     } else {
         categorias.criandoCategoria(alerta, nomeCategoria, categoria, selectCategorias, listaCategorias, btnsCategoria);
     }
+    if (categoria.length >= 0) {
+        for (var i = 0; i < categoria.length; i++) {
+            const btnMovie = document.getElementsByClassName('btnsCategoria');
+            const botao = document.getElementById(btnMovie[i].value);
+            var movieCategoria = btnMovie[i].value;
+            botao.addEventListener('click', function () {
+                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+            });
+        }
+    }
 })
 
-var removerCat = document.getElementById('removerCategoria').addEventListener('click', function removerCategoria(){
+var removerCat = document.getElementById('removerCategoria').addEventListener('click', function removerCategoria() {
+    
     var indexCategoria = listaCategorias.selectedIndex;;
     var options = document.getElementsByTagName('option');
     categorias.removendoCategoria(indexCategoria, options, selectCategorias, categoria, listaCategorias, btnsCategoria, containerMovie, moviesDados);
-    if(categoria.length >= 0){
-        for(var i = 0; i < categoria.length; i++){
+    if (categoria.length >= 0) {
+        for (var i = 0; i < categoria.length; i++) {
             const btnMovie = document.getElementsByClassName('btnsCategoria');
             const botao = document.getElementById(btnMovie[i].value);
-            botao.addEventListener('click', function (){
-                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria);
+            var movieCategoria = btnMovie[i].value;
+            botao.addEventListener('click', function () {
+                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+            });
+        }
+    }
+    if (categoria.length >= 0) {
+        for (var i = 0; i < categoria.length; i++) {
+            const btnMovie = document.getElementsByClassName('btnsCategoria');
+            const botao = document.getElementById(btnMovie[i].value);
+            var movieCategoria = btnMovie[i].value;
+            botao.addEventListener('click', function () {
+                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
             });
         }
     }
 })
 
 // funcão de adicionar movie
-const btnAdicionar = document.getElementById('btnAdicionar').addEventListener('click', function addMovie(){
+const btnAdicionar = document.getElementById('btnAdicionar').addEventListener('click', function addMovie() {
     var titulo = document.getElementById('titulo');
     var descricao = document.getElementById('desc');
     var capa = document.getElementById('url');
     var select = selectedCategoria.selectedIndex;
-    var movieCategoria = selectedCategoria.options[select].text;
-    if(!titulo || !descricao || !capa || selectedCategoria.selectedIndex < 0){
+    var movieCategoria = "";
+    var encerrar = 0;
+    if (!titulo.value || !descricao.value || !capa.value || select < 0) {
         erro.innerText = "Por favor preencha os campos e selecione/crie uma categoria";
-    }else{
-        erro.innerText = "";
-        var botao = "";
-        if(categoria.length >= 0){
-            for(var i = 0; i < categoria.length; i++){
-                const btnMovie = document.getElementsByClassName('btnsCategoria');
-                botao = document.getElementById(btnMovie[i].value);
-               
-            }
-            movies.adicionarMovie(titulo, descricao, capa, movieCategoria, categoria, btnsCategoria, containerMovie, moviesDados, botao.value);
-        }
+    } else {
         
-    }
-    if(categoria.length >= 0){
-        for(var i = 0; i < categoria.length; i++){
-            const btnMovie = document.getElementsByClassName('btnsCategoria');
-            const botao = document.getElementById(btnMovie[i].value);
-            botao.addEventListener('click', function (){
-                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
-            });
+        if(moviesDados.length > 0) {
+            var index = 0;
+            for (var i = 0; i < moviesDados.length; i++) {
+                if(moviesDados[i].category == selectedCategoria.options[select].text){
+                    moviesDados[i].movie.forEach(() => {
+                        if (moviesDados[select].movie[index].title == titulo.value) {
+                            encerrar = 1;
+                            
+                        }
+                        index++;
+                    })
+                }
+                
+            }
         }
+        if (encerrar == 0) {
+            erro.innerText = "";
+            var botao = "";
+            movieCategoria = selectedCategoria.options[select].text;
+            if (categoria.length >= 0) {
+                for (var i = 0; i < categoria.length; i++) {
+                    const btnMovie = document.getElementsByClassName('btnsCategoria');
+                    botao = document.getElementById(btnMovie[i].value);
+
+                }
+                movies.adicionarMovie(titulo, descricao, capa, movieCategoria, categoria, btnsCategoria, containerMovie, moviesDados, botao.value);
+            }
+            if (categoria.length >= 0) {
+                for (var i = 0; i < categoria.length; i++) {
+                    const btnMovie = document.getElementsByClassName('btnsCategoria');
+                    const botao = document.getElementById(btnMovie[i].value);
+                    botao.addEventListener('click', function () {
+                        movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+                    });
+                }
+            }
+        }else{
+            erro.innerText = "Titulo já adicionado";
+        }
+
+
     }
+    
 })

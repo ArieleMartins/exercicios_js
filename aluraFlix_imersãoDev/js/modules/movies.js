@@ -7,11 +7,16 @@ export function adicionarMovie(titulo, descricao, capa, movieCategoria, categori
     if (movies.length > 0) {
         for (var i = 0; i < movies.length; i++) {
             index = movies[i].category.indexOf(movieCategoria);
-            if(index == 0){
-                ident = i;
-                break;
+            if (index >= 0) {
+                if (movies[i].category == movieCategoria) {
+                    ident = i;
+                    break;
+                } else {
+                    index = -1;
+                    break;
+                }
             }
-            
+
         }
         if (index > -1) {
             movies[ident].movie.push({ title: titulo.value, desc: descricao.value, img: capa.value, id: id });
@@ -42,7 +47,7 @@ export function adicionarMovie(titulo, descricao, capa, movieCategoria, categori
             if (movieCategoria == movies[j].category) {
                 movies[j].movie.forEach(() => {
                     containerMovie.innerHTML += `<div class="container-capa">  
-                                                <img src="${movies[j].movie[i].img}" alt="${movies[j].movie[i].title}">
+                                                <img src="${movies[j].movie[i].img}" alt="" id="${movies[j].movie[i].title}">
                                                 <div class="container-desc">
                                                     <div style="float:right;color:white;cursor:pointer"><span id="${movies[j].movie[i].id}" >&times;</span></div>
                                                     <h4>${movies[j].movie[i].title}</h4>
@@ -54,7 +59,9 @@ export function adicionarMovie(titulo, descricao, capa, movieCategoria, categori
             }
 
         }
+
     }
+    verificarImagem(movies, movieCategoria);
     if (categoria.length >= 0) {
 
         for (var i = 0; i < movies.length; i++) {
@@ -82,6 +89,7 @@ export function adicionarMovie(titulo, descricao, capa, movieCategoria, categori
             }
         }
     }
+    console.log(movies);
     titulo.value = "";
     capa.value = "";
     descricao.value = "";
@@ -94,7 +102,7 @@ export function exibirMovieCategoria(containerMovie, value, movies, categoria, m
         if (value == movies[i].category) {
             movies[i].movie.forEach(() => {
                 containerMovie.innerHTML += `<div class="container-capa">  
-                                                <img src="${movies[i].movie[j].img}" alt="${movies[i].movie[j].title}">
+                                                <img src="${movies[i].movie[j].img}" alt="" id="${movies[i].movie[j].title}">
                                                 <div class="container-desc">
                                                     <div style="float:right;color:white;cursor:pointer"><span id="${movies[i].movie[j].id}" >&times;</span></div>
                                                     <h4>${movies[i].movie[j].title}</h4>
@@ -107,6 +115,7 @@ export function exibirMovieCategoria(containerMovie, value, movies, categoria, m
         }
 
     }
+    verificarImagem(movies, movieCategoria);
     if (categoria.length >= 0) {
 
         for (var i = 0; i < movies.length; i++) {
@@ -121,7 +130,7 @@ export function exibirMovieCategoria(containerMovie, value, movies, categoria, m
                             if (deleteMovie != null) {
                                 deleteMovie.addEventListener('click', function () {
                                     movies[ident].movie.splice(index, 1);
-                                    exibirMovieCategoria(containerMovie, value, movies, categoria, movieCategoria);
+                                    exibirMovieCategoria(containerMovie, value, movies, categoria);
                                 })
                             }
                             z++;
@@ -132,7 +141,30 @@ export function exibirMovieCategoria(containerMovie, value, movies, categoria, m
             }
         }
     }
+
 }
 
 
+function verificarImagem(movies, movieCategoria) {
+    if (movies.length > 0) {
+        var index = 0;
+        for (var i = 0; i < movies.length; i++) {
+            movies[i].movie.forEach(() => {
+                if (movies[i].category == movieCategoria) {
+                    const verificarImg = document.getElementById(movies[i].movie[index].title);
+                    if (verificarImg != null) {
+                        verificarImg.onerror = function () {
+                            verificarImg.style.maxWidth = "250px";
+                            verificarImg.style.backgroundColor = "rgb(26, 26, 26)";
+                            verificarImg.src = "../../imgs/Oops! 404 Error with a broken robot-rafiki.svg";
+                        }
+                        index++;
+                    }
+                }
 
+
+            })
+
+        }
+    }
+}
