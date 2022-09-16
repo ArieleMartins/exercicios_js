@@ -10,8 +10,8 @@ window.document.body.onload = function gerarNumero(){
 }
 
 enviar.onclick = function veriNumero(){
-    if(tentativa >= 20){
-        window.alert('Desclpa :( Você gastou todas as 20 tentativas tente novamente');
+    if(tentativa >= 10){
+        window.alert('Desclpa :( Você gastou todas as 10 tentativas tente novamente');
         numero = numero = Math.floor(Math.random() * 101);
         tentativa = 0;
         tentativas.innerHTML = "";
