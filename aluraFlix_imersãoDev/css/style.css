@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@800&display=swap');
 body {
   font-family: "Roboto Mono", monospace;
-  background-image: url("https://www.alura.com.br/assets/img/imersoes/dev-2021/dia-04-aluraflix-e-filmes.png");
+  padding: 0;
+  margin: 0;
+  background-image: url("../imgs/beautiful-african-girl-with-funny-hairstyle-watching-movie-in-cinema.jpg");
   background-color: #000000;
   background-size: cover;
   background-position: center top;
@@ -13,12 +16,15 @@ body {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  row-gap: 10vh;
+  row-gap: 50px;
+ 
 }
 
 .page-title {
   color: #ffffff;
   margin: 0 0 5px;
+  font-size: 70px;
+  font-family: 'Saira Condensed', sans-serif;
 }
 
 .page-subtitle {
@@ -44,7 +50,16 @@ body>img {
 img {
   max-height: 250px;
 }
-
+.container-inputs-add{
+  border-radius: 20px;
+  background-color:rgba(0, 0,0, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}
 .container-inputs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,6 +68,7 @@ img {
   text-transform: uppercase;
   align-items: cente;
   justify-content: center;
+  
 }
 
 .container-input {
@@ -168,8 +184,6 @@ img {
   transform: translateY(800px);
   overflow-y: scroll;
   display: block;
-  align-items: center;
-  justify-content: center;
   
 }
 .container  .container-capa:hover .container-desc{
@@ -178,10 +192,10 @@ img {
 
 .container .container-capa .container-desc p {
   margin: 0;
-  padding: 5px;
+  padding:0px 0px 14px 8px;
   font-size: 15px;
   color: white;
-  width: 200px;
+  width: 230px;
 }
 .container .container-capa .container-desc h4{
   text-align: center;
@@ -209,4 +223,14 @@ img {
 .container-categoria::-webkit-scrollbar-thumb , .container-movie::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.322);
   border-radius: 20px;
+}
+
+footer{
+  padding: 30px;
+  color: white;
+  text-align: center;
+}
+footer a{
+  color: white;
+  text-decoration: none;
 }

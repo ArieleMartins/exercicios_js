@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/modal.css">
-  <title>Document</title>
+  <title>AluraFlix - Imersão Dev</title>
 </head>
 
 <body>
@@ -16,39 +16,40 @@
       <h1 class="page-title">
         Aluraflix
       </h1>
-      <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo"
-        alt="">
+      <img src="https://www.alura.com.br/assets/img/imersoes/dev-2021/logo-imersao-aluraflix.svg" class="page-logo" alt="logo - imersão Dev - Alura">
     </div>
-    <div class="container-inputs">
-      <div class="container-input">
-        <label for="nome">Titulo</label>
-        <input type="text" name="nome" placeholder="Titulo" id="titulo">
-      </div>
-      <div class="container-input">
-        <label for="desc">Descrição</label>
-        <input type="text" name="desc" placeholder="Descrição" id="desc">
-      </div>
-      <div class="container-input">
-        <label for="capa">Capa</label>
-        <input type="text" name="capa" placeholder="URL - imagem capa" id="url">
-      </div>
-      <div class="container-input">
-        <label for="categoria">Categoria</label>
-        <div>
-          <select name="categoria" id="categorias">
-          </select>
-          <button id="btnAbrirModal">Criar/Remover Categoria</button>
+    <div class="container-inputs-add">
+      <div class="container-inputs">
+        <div class="container-input">
+          <label for="nome">Titulo</label>
+          <input type="text" name="nome" placeholder="Titulo" id="titulo">
         </div>
-      </div>
+        <div class="container-input">
+          <label for="desc">Descrição</label>
+          <input type="text" name="desc" placeholder="Descrição" id="desc">
+        </div>
+        <div class="container-input">
+          <label for="capa">Capa</label>
+          <input type="text" name="capa" placeholder="URL - imagem capa" id="url">
+        </div>
+        <div class="container-input">
+          <label for="categoria">Categoria</label>
+          <div>
+            <select name="categoria" id="categorias">
+            </select>
+            <button id="btnAbrirModal">Criar/Remover Categoria</button>
+          </div>
+        </div>
 
+      </div>
+      <span style="color:white" id="erroCamposVazio"></span>
+      <div class="container-btnAdd"><button id="btnAdicionar" class="btnAdicionar">Adicionar</button></div>
     </div>
-    <span style="color:white" id="erroCamposVazio"></span>
-    <div class="container-btnAdd"><button id="btnAdicionar" class="btnAdicionar">Adicionar</button></div>
     <div class="container-categoria" id="containerCategoria">
-      
+
     </div>
     <div class="container-movie" id="containerMovie">
-
+      
     </div>
   </div>
   <a href="https://alura.com.br/" target="_blank">
@@ -83,7 +84,7 @@
       </div>
     </div>
   </div>
-
+  <footer><a href="https://br.freepik.com/fotos-gratis/linda-garota-africana-com-penteado-engracado-assistindo-filme-no-cinema_8794202.htm#page=2&query=filmes&position=17&from_view=search">Imagem de serhii_bobyk</a> no Freepik</footer>
 </body>
 
 </html>
