@@ -156,7 +156,7 @@ function verificarImagem(movies, movieCategoria) {
                         verificarImg.onerror = function () {
                             verificarImg.style.maxWidth = "250px";
                             verificarImg.style.backgroundColor = "rgb(26, 26, 26)";
-                            verificarImg.src = "../../imgs/Oops! 404 Error with a broken robot-rafiki.svg";
+                            verificarImg.src = "../../imgs/opss-error.svg";
                         }
                         index++;
                     }
