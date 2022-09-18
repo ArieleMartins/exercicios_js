@@ -172,7 +172,6 @@ async function conversorMoeda() {
     btnConvert.addEventListener('click', function converter() {
         selecionado = select.options[select.selectedIndex].value;
         var real = parseFloat(document.getElementById('real').value);
-        console.log(real);
         if (!real) {
             spanConvertido.innerText = "Por favor adicione algum valor";
             spanBitcoin.innerText = "";
