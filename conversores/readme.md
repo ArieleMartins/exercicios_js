@@ -1,4 +1,4 @@
-# WConversor
+<h1 align="center">WConversor</h1>
 <p align="center"> Projeto feito na Imersão Dev da Alura</p>
 <p >Um site com diversos conversores, como: Conversor de Ano-luz, Conversor de Moeda, Conversor de Temperatura</p>
 <p> - Para o conversor de moeda foi utilizado a API - <a target="_blank" href="https://docs.awesomeapi.com.br/api-de-moedas">AwesomeAPI</a>
