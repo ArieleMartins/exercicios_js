@@ -1,14 +1,14 @@
 var ident = 0;
 var id = 0;
-export function adicionarMovie(titulo, descricao, capa, movieCategoria, categoria, btnsCategoria, containerMovie, movies, value) {
+export function adicionarMovie(titulo, descricao, capa, movieGenero, genero, btnsGenero, containerMovie, movies, value) {
 
     containerMovie.innerHTML = "";
     var index = -1;
     if (movies.length > 0) {
         for (var i = 0; i < movies.length; i++) {
-            index = movies[i].category.indexOf(movieCategoria);
+            index = movies[i].genero.indexOf(movieGenero);
             if (index >= 0) {
-                if (movies[i].category == movieCategoria) {
+                if (movies[i].genero == movieGenero) {
                     ident = i;
                     break;
                 } else {
@@ -22,84 +22,38 @@ export function adicionarMovie(titulo, descricao, capa, movieCategoria, categori
             movies[ident].movie.push({ title: titulo.value, desc: descricao.value, img: capa.value, id: id });
             id++;
         } else {
-            btnsCategoria.innerHTML = "";
-            movies.push({ identificador: id, category: movieCategoria, movie: [{ title: titulo.value, desc: descricao.value, img: capa.value, id: id }] });
-            for (var i = 0; i < categoria.length; i++) {
-                btnsCategoria.innerHTML += '<div style="width:150px"><button id="' + categoria[i] + '" value="' + categoria[i] + '" class="btnsCategoria">' + categoria[i] + '</button></div>';
+            btnsGenero.innerHTML = "";
+            movies.push({ identificador: id, genero: movieGenero, movie: [{ title: titulo.value, desc: descricao.value, img: capa.value, id: id }] });
+            for (var i = 0; i < genero.length; i++) {
+                btnsGenero.innerHTML += '<div style="width:150px"><button id="' + genero[i] + '" value="' + genero[i] + '" class="btnsGenero">' + genero[i] + '</button></div>';
 
             }
             id++;
         }
 
     } else {
-        btnsCategoria.innerHTML = "";
-        movies.push({ identificador: id, category: movieCategoria, movie: [{ title: titulo.value, desc: descricao.value, img: capa.value, id: id }] });
-        for (var i = 0; i < categoria.length; i++) {
-            btnsCategoria.innerHTML += '<div style="width:150px"><button id="' + categoria[i] + '" value="' + categoria[i] + '" class="btnsCategoria">' + categoria[i] + '</button></div>';
+        btnsGenero.innerHTML = "";
+        movies.push({ identificador: id, genero: movieGenero, movie: [{ title: titulo.value, desc: descricao.value, img: capa.value, id: id }] });
+        for (var i = 0; i < genero.length; i++) {
+            btnsGenero.innerHTML += '<div style="width:150px"><button id="' + genero[i] + '" value="' + genero[i] + '" class="btnsGenero">' + genero[i] + '</button></div>';
 
         }
         id++;
     }
 
     if (movies.length > 0) {
-        var i = 0;
-        for (var j = 0; j < movies.length; j++) {
-            if (movieCategoria == movies[j].category) {
-                movies[j].movie.forEach(() => {
-                    containerMovie.innerHTML += `<div class="container-capa">  
-                                                <img src="${movies[j].movie[i].img}" alt="" id="${movies[j].movie[i].title}">
-                                                <div class="container-desc">
-                                                    <div style="float:right;color:white;cursor:pointer"><span id="${movies[j].movie[i].id}" >&times;</span></div>
-                                                    <h4>${movies[j].movie[i].title}</h4>
-                                                    <p>${movies[j].movie[i].desc}</p>
-                                                </div>
-                                            </div>`
-                    i++;
-                })
-            }
-
-        }
-
+        exibirMovieGenero(containerMovie, value, movies, genero);
     }
-    verificarImagem(movies, movieCategoria);
-    if (categoria.length >= 0) {
-
-        for (var i = 0; i < movies.length; i++) {
-            if (movies.length >= 0) {
-                var z = 0;
-                for (var j = 0; j < movies.length; j++) {
-                    if (categoria[i] == movies[j].category) {
-                        movies[j].movie.forEach(() => {
-                            const deleteMovie = document.getElementById(movies[j].movie[z].id);
-                            var ident = j;
-                            var index = z;
-                            if (deleteMovie != null) {
-
-                                deleteMovie.addEventListener('click', function () {
-                                    movies[ident].movie.splice(index, 1);
-                                    containerMovie.innerHTML = "";
-                                    exibirMovieCategoria(containerMovie, value, movies, categoria, movieCategoria);
-                                })
-                            }
-                            z++;
-                        })
-                    }
-
-                }
-            }
-        }
-    }
-    console.log(movies);
     titulo.value = "";
     capa.value = "";
     descricao.value = "";
 }
 
-export function exibirMovieCategoria(containerMovie, value, movies, categoria, movieCategoria) {
+export function exibirMovieGenero(containerMovie, value, movies, genero) {
     containerMovie.innerHTML = "";
     var j = 0;
     for (var i = 0; i < movies.length; i++) {
-        if (value == movies[i].category) {
+        if (value == movies[i].genero) {
             movies[i].movie.forEach(() => {
                 containerMovie.innerHTML += `<div class="container-capa">  
                                                 <img src="${movies[i].movie[j].img}" alt="" id="${movies[i].movie[j].title}">
@@ -115,42 +69,18 @@ export function exibirMovieCategoria(containerMovie, value, movies, categoria, m
         }
 
     }
-    verificarImagem(movies, movieCategoria);
-    if (categoria.length >= 0) {
-
-        for (var i = 0; i < movies.length; i++) {
-            if (movies.length >= 0) {
-                var z = 0;
-                for (var j = 0; j < movies.length; j++) {
-                    if (categoria[i] == movies[j].category) {
-                        movies[j].movie.forEach(() => {
-                            const deleteMovie = document.getElementById(movies[j].movie[z].id);
-                            var ident = j;
-                            var index = z;
-                            if (deleteMovie != null) {
-                                deleteMovie.addEventListener('click', function () {
-                                    movies[ident].movie.splice(index, 1);
-                                    exibirMovieCategoria(containerMovie, value, movies, categoria);
-                                })
-                            }
-                            z++;
-                        })
-                    }
-
-                }
-            }
-        }
-    }
+    verificarImagem(movies, value);
+    adicionarEventoDeleteMovie(genero, movies, containerMovie, value);
 
 }
 
 
-function verificarImagem(movies, movieCategoria) {
+function verificarImagem(movies, value) {
     if (movies.length > 0) {
         var index = 0;
         for (var i = 0; i < movies.length; i++) {
             movies[i].movie.forEach(() => {
-                if (movies[i].category == movieCategoria) {
+                if (movies[i].genero == value) {
                     const verificarImg = document.getElementById(movies[i].movie[index].title);
                     if (verificarImg != null) {
                         verificarImg.onerror = function () {
@@ -165,6 +95,36 @@ function verificarImagem(movies, movieCategoria) {
 
             })
 
+        }
+    }
+}
+
+function adicionarEventoDeleteMovie(genero, movies, containerMovie, value, movieGenero){
+    if (genero.length >= 0) {
+
+        for (var i = 0; i < movies.length; i++) {
+            if (movies.length >= 0) {
+                var z = 0;
+                for (var j = 0; j < movies.length; j++) {
+                    if (genero[i] == movies[j].genero) {
+                        movies[j].movie.forEach(() => {
+                            const deleteMovie = document.getElementById(movies[j].movie[z].id);
+                            var ident = j;
+                            var index = z;
+                            if (deleteMovie != null) {
+
+                                deleteMovie.addEventListener('click', function () {
+                                    movies[ident].movie.splice(index, 1);
+                                    containerMovie.innerHTML = "";
+                                    exibirMovieGenero(containerMovie, value, movies, genero, movieGenero);
+                                })
+                            }
+                            z++;
+                        })
+                    }
+
+                }
+            }
         }
     }
 }

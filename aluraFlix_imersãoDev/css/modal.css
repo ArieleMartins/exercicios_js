@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
   }
-  .container-criar .centraliza .main-categoria{
+  .container-criar .centraliza .main-genero{
     width: 500px;
     height: 500px;
     padding: 30px;
@@ -43,7 +43,7 @@
     row-gap: 20px;
     background-color: white;
   }
-  .container-criar .centraliza .main-categoria .container-criando{
+  .container-criar .centraliza .main-genero .container-criando{
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -52,21 +52,21 @@
     row-gap: 20px;
   
   }
-  .container-criar .centraliza .main-categoria input{
+  .container-criar .centraliza .main-genero input{
     width: 250px;
     padding: 10px;
     border: 0.2px solid rgb(175, 175, 175);
     border-radius: 20px;
   
   }
-  .container-criar .centraliza .main-categoria .container-btncategoria{
+  .container-criar .centraliza .main-genero .container-btngenero{
     width: 100%;
   }
-  .container-criar .centraliza .main-categoria .container-listas {
+  .container-criar .centraliza .main-genero .container-listas {
     display: flex;
     flex-direction: row;
   }
-  .container-criar .centraliza .main-categoria .container-listas select{
+  .container-criar .centraliza .main-genero .container-listas select{
     width: 160px;
     padding: 10px;
     border: 0.2px solid rgb(209, 209, 209);

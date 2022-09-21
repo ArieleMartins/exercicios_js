@@ -1,82 +1,72 @@
-import * as categorias from "./modules/categorias.js";
+import * as generos from "./modules/genero.js";
 import * as movies from "./modules/movies.js";
 
-// criando e removendo categoria
+// criando e removendo genero
 const abrirModal = document.getElementById('btnAbrirModal');
 const modal = document.getElementById('modal');
 const close = document.getElementById('close');
-const criarCategoria = document.getElementById('criarCategoria');
-const selectCategorias = document.getElementById('categorias');
-const listaCategorias = document.getElementById('listaCategorias');
-//array para armazenar as categorias
-var categoria = [];
+const criargenero = document.getElementById('criarGenero');
+const selectGeneros = document.getElementById('generos');
+const listaGeneros = document.getElementById('listaGeneros');
+//array para armazenar as generos
+var genero = [];
 
 // adicionando movie
-var selectedCategoria = document.getElementById('categorias');
+var selectedGenero = document.getElementById('generos');
 var erro = document.getElementById("erroCamposVazio");
-const btnsCategoria = document.getElementById('containerCategoria'); //container onde ficarão os botões das categorias
+const btnsGenero = document.getElementById('containerGenero'); //container onde ficarão os botões das generos
 const containerMovie = document.getElementById('containerMovie'); // container onde ficarão os movies
 var moviesDados = [];
 
-// funcões do criar e remover categoria
+// funcões do criar e remover genero
 close.addEventListener('click', function fecharModal() {
     modal.style.display = 'none';
-    listaCategorias.innerHTML = "";
+    listaGeneros.innerHTML = "";
 })
 
 abrirModal.addEventListener('click', function abrirModal() {
     modal.style.display = "flex";
     modal.style.position = "fixed";
-    for (var i = 0; i < categoria.length; i++) {
-        listaCategorias.innerHTML += '<option value="' + categoria[i] + '">' + categoria[i] + '</option>';
+    for (var i = 0; i < genero.length; i++) {
+        listaGeneros.innerHTML += '<option value="' + genero[i] + '">' + genero[i] + '</option>';
     }
 })
 
-criarCategoria.addEventListener('click', function criandoCategorias() {
+criarGenero.addEventListener('click', function criandogeneros() {
     var alerta = document.getElementById('alerta');
-    var nomeCategoria = document.getElementById('nomeCat');
-    if (!nomeCategoria.value) {
-        alerta.innerText = 'Por favor digite o nome da categoria no campo';
+    var nomeGenero = document.getElementById('nomeGe');
+    if (!nomeGenero.value) {
+        alerta.innerText = 'Por favor digite o nome da genero no campo';
     } else {
-        categorias.criandoCategoria(alerta, nomeCategoria, categoria, selectCategorias, listaCategorias, btnsCategoria);
+        generos.criandoGenero(alerta, nomeGenero, genero, selectGeneros, listaGeneros, btnsGenero);
     }
-    if (categoria.length >= 0) {
-        for (var i = 0; i < categoria.length; i++) {
-            const btnMovie = document.getElementsByClassName('btnsCategoria');
+    if (genero.length >= 0) {
+        for (var i = 0; i < genero.length; i++) {
+            const btnMovie = document.getElementsByClassName('btnsGenero');
             const botao = document.getElementById(btnMovie[i].value);
-            var movieCategoria = btnMovie[i].value;
+            var movieGenero = btnMovie[i].value;
             botao.addEventListener('click', function () {
-                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+                movies.exibirMovieGenero(containerMovie, botao.value, moviesDados, genero);
             });
         }
     }
 })
 
-var removerCat = document.getElementById('removerCategoria').addEventListener('click', function removerCategoria() {
+var removerGe = document.getElementById('removerGenero').addEventListener('click', function removerGenero() {
     
-    var indexCategoria = listaCategorias.selectedIndex;;
+    var indexGenero = listaGeneros.selectedIndex;;
     var options = document.getElementsByTagName('option');
-    categorias.removendoCategoria(indexCategoria, options, selectCategorias, categoria, listaCategorias, btnsCategoria, containerMovie, moviesDados);
-    if (categoria.length >= 0) {
-        for (var i = 0; i < categoria.length; i++) {
-            const btnMovie = document.getElementsByClassName('btnsCategoria');
+    generos.removendoGenero(indexGenero, options, selectGeneros, genero, listaGeneros, btnsGenero, containerMovie, moviesDados);
+    if (genero.length >= 0) {
+        for (var i = 0; i < genero.length; i++) {
+            const btnMovie = document.getElementsByClassName('btnsGenero');
             const botao = document.getElementById(btnMovie[i].value);
-            var movieCategoria = btnMovie[i].value;
             botao.addEventListener('click', function () {
-                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+                movies.exibirMovieGenero(containerMovie, botao.value, moviesDados, genero);
             });
         }
     }
-    if (categoria.length >= 0) {
-        for (var i = 0; i < categoria.length; i++) {
-            const btnMovie = document.getElementsByClassName('btnsCategoria');
-            const botao = document.getElementById(btnMovie[i].value);
-            var movieCategoria = btnMovie[i].value;
-            botao.addEventListener('click', function () {
-                movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
-            });
-        }
-    }
+    
 })
 
 // funcão de adicionar movie
@@ -84,17 +74,17 @@ const btnAdicionar = document.getElementById('btnAdicionar').addEventListener('c
     var titulo = document.getElementById('titulo');
     var descricao = document.getElementById('desc');
     var capa = document.getElementById('url');
-    var select = selectedCategoria.selectedIndex;
-    var movieCategoria = "";
+    var select = selectedGenero.selectedIndex;
+    var movieGenero = "";
     var encerrar = 0;
     if (!titulo.value || !descricao.value || !capa.value || select < 0) {
-        erro.innerText = "Por favor preencha os campos e selecione/crie uma categoria";
+        erro.innerText = "Por favor preencha os campos e selecione/crie uma genero";
     } else {
         
         if(moviesDados.length > 0) {
             var index = 0;
             for (var i = 0; i < moviesDados.length; i++) {
-                if(moviesDados[i].category == selectedCategoria.options[select].text){
+                if(moviesDados[i].genero == selectedGenero.options[select].text){
                     moviesDados[i].movie.forEach(() => {
                         if (moviesDados[select].movie[index].title == titulo.value) {
                             encerrar = 1;
@@ -109,21 +99,21 @@ const btnAdicionar = document.getElementById('btnAdicionar').addEventListener('c
         if (encerrar == 0) {
             erro.innerText = "";
             var botao = "";
-            movieCategoria = selectedCategoria.options[select].text;
-            if (categoria.length >= 0) {
-                for (var i = 0; i < categoria.length; i++) {
-                    const btnMovie = document.getElementsByClassName('btnsCategoria');
+            movieGenero = selectedGenero.options[select].text;
+            if (genero.length >= 0) {
+                for (var i = 0; i < genero.length; i++) {
+                    const btnMovie = document.getElementsByClassName('btnsGenero');
                     botao = document.getElementById(btnMovie[i].value);
 
                 }
-                movies.adicionarMovie(titulo, descricao, capa, movieCategoria, categoria, btnsCategoria, containerMovie, moviesDados, botao.value);
+                movies.adicionarMovie(titulo, descricao, capa, movieGenero, genero, btnsGenero, containerMovie, moviesDados, botao.value);
             }
-            if (categoria.length >= 0) {
-                for (var i = 0; i < categoria.length; i++) {
-                    const btnMovie = document.getElementsByClassName('btnsCategoria');
+            if (genero.length >= 0) {
+                for (var i = 0; i < genero.length; i++) {
+                    const btnMovie = document.getElementsByClassName('btnsGenero');
                     const botao = document.getElementById(btnMovie[i].value);
                     botao.addEventListener('click', function () {
-                        movies.exibirMovieCategoria(containerMovie, botao.value, moviesDados, categoria, movieCategoria);
+                        movies.exibirMovieGenero(containerMovie, botao.value, moviesDados, genero);
                     });
                 }
             }
@@ -135,3 +125,6 @@ const btnAdicionar = document.getElementById('btnAdicionar').addEventListener('c
     }
     
 })
+
+
+

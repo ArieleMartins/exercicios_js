@@ -93,7 +93,7 @@ img {
 }
 
 .container-input button,
-.container-criar .centraliza .main-categoria .container-listas div button {
+.container-criar .centraliza .main-genero .container-listas div button {
   width: 190px;
   padding: 10px;
   border: none;
@@ -104,12 +104,12 @@ img {
 }
 
 .container-input button:hover,
-.container-criar .centraliza .main-categoria .container-listas div button:hover {
+.container-criar .centraliza .main-genero .container-listas div button:hover {
 
   background-color: rgba(49, 33, 70, 0.6);
   color: rgba(205, 164, 255, 0.6);
 }
-.container-categoria{
+.container-genero{
   display: flex;
   flex-direction: row; 
   width: 90%;
@@ -128,8 +128,8 @@ img {
   justify-content: center;
 }
 
-.container-categoria button,
-.container-criar .centraliza .main-categoria .container-btncategoria button {
+.container-genero button,
+.container-criar .centraliza .main-genero .container-btngenero button {
   width: 150px;
   padding: 10px;
   background-color: rgb(92, 45, 55);
@@ -140,8 +140,8 @@ img {
   cursor: pointer;
 }
 
-.container-categoria button:hover,
-.container-criar .centraliza .main-categoria .container-btncategoria button:hover {
+.container-genero button:hover,
+.container-criar .centraliza .main-genero .container-btngenero button:hover {
 
   background-color: rgb(104, 51, 62);
   color: rgb(255, 188, 202);
@@ -208,14 +208,14 @@ img {
 
 
 /* estilizando scroll */
-.container-categoria::-webkit-scrollbar, .container-movie .container-capa .container-desc::-webkit-scrollbar{
+.container-genero::-webkit-scrollbar, .container-movie .container-capa .container-desc::-webkit-scrollbar{
   background-color: rgba(104, 51, 62, 0);
  
 }
-.container-categoria::-webkit-scrollbar-button, .container-movie .container-capa .container-desc::-webkit-scrollbar-button{
+.container-genero::-webkit-scrollbar-button, .container-movie .container-capa .container-desc::-webkit-scrollbar-button{
   background-color: rgba(104, 51, 62, 0);
 }
-.container-categoria::-webkit-scrollbar-thumb , .container-movie .container-capa .container-desc::-webkit-scrollbar-thumb {
+.container-genero::-webkit-scrollbar-thumb , .container-movie .container-capa .container-desc::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.322);
   border-radius: 20px;
 }
