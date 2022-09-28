@@ -12,7 +12,7 @@ button.addEventListener("click", function (){ // ao clicar no botão, execute o 
 
 dropImg.addEventListener('dragover', (e) => { // quando o mouse o arquivo entrar execute
     e.preventDefault(); // remover um evento padrão
-    dropImg.style.backgroundColor = 'rgb(185, 185, 255)'; // mudar a cor do background
+    dropImg.style.backgroundColor = 'rgb(213, 213, 255)'; // mudar a cor do background
 })
 
 dropImg.addEventListener('dragleave', (e) => { // quando o mouse com o arquivo sair execute
@@ -54,8 +54,8 @@ function exibirArquivo(file){ // recebendo e arquivo no parametro
     const reader = new FileReader() // para ler arquivos assincronamente
     reader.onload = (e) =>{ // no carregando crie as tags no html e passe os dados - e.target.result = url da imagem - file.name = nome da imagem
         exibir.innerHTML += `
-                        <div>
-                            <div style="display:flex; align-items:center">
+                        <div class="container-img" style="height:60px; border-radius:20px;padding-left:20px; display:flex; flex-direction:column; justify-content:center">
+                            <div style="display:flex; align-items:center; column-gap:20px">
                                 <img style="max-width:80px" src='${e.target.result}' alt='${file.name}'>
                                 <span>${file.name}</span>
                             </div>

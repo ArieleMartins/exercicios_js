@@ -5,6 +5,7 @@
 }
 body{
     height: 100%;
+    background-color: rgb(28, 28, 49);
 }
 main{
     height: 100vh;
@@ -25,7 +26,7 @@ main{
 .drop-img{
     width: 500px;
     height: 500px;
-    border: 2px rgb(182, 182, 182);
+    border: 4px rgb(182, 182, 182);
     border-style: dashed;
     border-radius: 30px;
     text-align: center;
@@ -34,6 +35,7 @@ main{
     align-items: center;
     justify-content: center;
     row-gap: 50px;
+    background-color: rgb(231, 231, 231);
 }
 .drop-img.active{
     background-color: rgb(134, 207, 255);
@@ -46,7 +48,16 @@ main{
     height: 600px;
     overflow-x: scroll;
     display: flex;
+    background-color: rgb(56, 56, 82);
     flex-direction: column;
+    color: white;
+    row-gap:20px;
+    border: 1px dashed white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.container-img:hover{
+    background-color: rgb(67, 67, 95);
 }
 button{
     width: 200px;
