@@ -6,8 +6,8 @@
 
 body {
     background-color: rgb(19, 19, 41);
-    height: 100vh;
-    
+    height: 100%;
+    padding-bottom: 20px;
 }
 
 .container {

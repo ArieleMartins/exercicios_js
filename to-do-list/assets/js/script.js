@@ -6,7 +6,7 @@ var input = document.getElementById('dados');
 var list = document.getElementById('list');
 const erro = document.getElementById('error')
 var index = [];
-var total = 0;
+
 bt.addEventListener('click', function adicionar() {
     var dados = input.value;
     if (!dados) {
@@ -16,21 +16,40 @@ bt.addEventListener('click', function adicionar() {
         erro.style.width = '100%'
         erro.innerText = 'Por favor preencha o campo'
     } else {
-        erro.innerText = ""
-        list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" id='${total}' value='${dados}' ><i class="fa-solid fa-trash-can"></i></button></div></li>`;
-        input.value = "";
-        index.push(total);
-        total = total + 1
-        total = index;
+        if (index.length > 0) {
+            if (index.includes(dados)) {
+                erro.style.color = 'red';
+                erro.style.fontSize = '12px'
+                erro.style.textAlign = 'center'
+                erro.style.width = '100%'
+                erro.innerText = 'Tarefa já adicionada'
+            } else {
+                erro.innerText = ""
+                list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" id='${dados}'><i class="fa-solid fa-trash-can"></i></button></div></li>`;
+                input.value = "";
+                index.push(dados);
+            }
+        } else {
+            erro.innerText = ""
+            list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" id='${dados}'><i class="fa-solid fa-trash-can"></i></button></div></li>`;
+            input.value = "";
+            index.push(dados);
+        }
+
+
     }
-    for (var i = 0; i < index.length; i++){
-        const del = document.getElementById(i)
-        del.addEventListener('click', function deletar(){
-            console.log(index);
-            const elemento = document.getElementById(del.value)
-            list.removeChild(elemento);
-            index.splice(i, 1);
-            console.log(index)
-        })
+    for (var i = 0; i < index.length; i++) {
+        const del = document.getElementById(index[i])
+        deleteElemento(index, index[i], del)
     }
 })
+function deleteElemento(index, dado, elemento) {
+    elemento.addEventListener('click', function deletar() {
+        if(index.includes(dado)){
+            var posicao = index.indexOf(dado)
+            index.splice(posicao, 1)
+        }           
+        const valor = document.getElementById(elemento.id)
+        list.removeChild(valor);
+    })
+} 
