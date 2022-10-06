@@ -95,11 +95,13 @@ body {
     border: 2px solid rgb(80, 35, 57);
     width: 33px;
     height: 33px;
-    font-size: 20px;
+    font-size: 15px;
+    position: relative;
     text-align: center;
     color: rgb(80, 35, 57);
     cursor: pointer;
     border-radius: 5px;
+    z-index: 1;
 }
 
 .delete:hover {
@@ -209,4 +211,7 @@ footer {
 footer a {
     text-decoration: none;
     color: white;
+}
+.hidden{
+    display: none !important;
 }

@@ -5,8 +5,10 @@ var bt = document.getElementById('ad');
 var input = document.getElementById('dados');
 var list = document.getElementById('list');
 const erro = document.getElementById('error')
-var index = [];
 
+const pesquisa = document.getElementById('pesquisar')
+var index = [];
+var contador = 1;
 bt.addEventListener('click', function adicionar() {
     var dados = input.value;
     if (!dados) {
@@ -25,31 +27,69 @@ bt.addEventListener('click', function adicionar() {
                 erro.innerText = 'Tarefa já adicionada'
             } else {
                 erro.innerText = ""
-                list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" id='${dados}'><i class="fa-solid fa-trash-can"></i></button></div></li>`;
+                list.innerHTML += `<li id='${dados}' ><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" value='${dados}' id="btnElement${dados}"><i class="fa-solid fa-trash-can" id="element${dados}"> </i></button></div></li>`;
                 input.value = "";
+                contador = contador + 1;
                 index.push(dados);
             }
         } else {
             erro.innerText = ""
-            list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" id='${dados}'><i class="fa-solid fa-trash-can"></i></button></div></li>`;
+            list.innerHTML += `<li id='${dados}'><div style='display:flex; column-gap:10px; '><input type='checkbox''><label style="display:flex;flex-wrap:wrap">${dados}</label></div><div><button  class="delete" value='${dados}' id="btnElement${dados}"><i class="fa-solid fa-trash-can" id="element${dados}"></i></button></div></li>`;
             input.value = "";
+            contador = contador + 1;
             index.push(dados);
+            
         }
 
 
     }
-    for (var i = 0; i < index.length; i++) {
-        const del = document.getElementById(index[i])
-        deleteElemento(index, index[i], del)
-    }
+    
 })
-function deleteElemento(index, dado, elemento) {
-    elemento.addEventListener('click', function deletar() {
+function deleteElemento(index, dado) {
         if(index.includes(dado)){
             var posicao = index.indexOf(dado)
             index.splice(posicao, 1)
         }           
-        const valor = document.getElementById(elemento.id)
-        list.removeChild(valor);
-    })
+        const elementLiDelete = document.getElementById(dado)
+        list.removeChild(elementLiDelete);
 } 
+
+pesquisar.addEventListener('click', function (){
+    const valorBuscar = document.getElementById("buscar")
+        const listaLi = list.children;
+        if(listaLi.length > 0){
+            for(var posicao = 0; posicao < listaLi.length; posicao++){
+                if(valorBuscar.value == ''){
+                    listaLi[posicao].classList.remove('hidden')
+                }else{
+                    if(listaLi[posicao].id != valorBuscar.value){
+                        if(index.includes(valorBuscar.value)){
+                            listaLi[posicao].classList.add('hidden');
+                        }else{
+                            listaLi[posicao].classList.remove('hidden')
+                        }
+                        
+                    }else{
+                        listaLi[posicao].classList.remove('hidden')
+                    }
+                }
+                
+            }
+    }
+})
+
+document.addEventListener('click', function (e){
+    if(index.includes(e.target.id.replace('btnElement', ''))){
+        if(e.target.id == 'btnElement' + e.target.id.replace('btnElement', '')){
+            console.log('ta aqui')
+            deleteElemento(index, e.target.value)
+        }
+        
+    }else if(index.includes(e.target.id.replace('element', '')) ){
+        if(e.target.id == 'element' + e.target.id.replace('element', '')){
+            
+            deleteElemento(index, e.target.id.replace('element', ''))
+        }
+        
+    }
+})
