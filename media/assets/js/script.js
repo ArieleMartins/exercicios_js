@@ -4,11 +4,14 @@ const btnCalcularMedia = document.getElementById('btnCalcularMedia');
 const spanAviso = document.getElementById('aviso');
 const selectNomeAlunos = document.getElementById('nomesAlunos');
 const containerExibirMedia = document.getElementById('container-dados');
+const slideAnterior = document.getElementById('anterior')
+const slideProximo = document.getElementById('proximo');
 
 var indexSelect = 0;
 var verificarAlunoCadastrado = false;
 var alunos = []
 var identificadorAluno;
+
 
 btnAddAluno.addEventListener('click', function () {
     var nome = document.getElementById('nomeAluno');
@@ -76,6 +79,7 @@ btnCalcularMedia.addEventListener('click', function(){
 })
 
 function somaNotasMedia(aluno){
+    containerExibirMedia.innerHTML = '';
     var somaNotas = 0;
     var media  = 0;
     if(aluno.grades.length > 0){
@@ -84,7 +88,7 @@ function somaNotasMedia(aluno){
         }
         media = somaNotas / aluno.grades.length;
         containerExibirMedia.innerHTML += `
-                <div>
+                <div class="slide">
                     <div class="container-nome-aluno">
                         <h3 id="nome-aluno">${aluno.name}</h3>
                     </div>
@@ -112,8 +116,17 @@ function somaNotasMedia(aluno){
 
         `
         const exibirNotasAluno = document.getElementById('notas-aluno-' + aluno.name);
+        exibirNotasAluno.innerHTML = '';
+        const slides = document.getElementsByClassName("slide")
+        console.log(slides)
+        if(slides.length > 0){
+            slides[0].style.display = 'block'
+        }
+        for(var index = 1; index < slides.length; index++){
+            slides[index].style.display = 'none'
+        }
         for(var index = 0; index < aluno.grades.length; index++){
-            exibirNotasAluno.innerHTML += `<p>${aluno.grades[index]}</p>`
+            exibirNotasAluno.innerHTML += `<p>${index + 1} : ${aluno.grades[index]}</p>`
         }
     }else{
         spanAviso.innerHTML = `<p>${aluno.name} não possui notas</p>`
@@ -131,5 +144,32 @@ function adicionarAlunoSelect(verificador, alunos, nome) {
         nome.value = "";
     } else {
         spanAviso.innerText = "Aluno/Participante Já Cadastrado"
+    }
+}
+
+slideAnterior.addEventListener('click', function(){
+    passandoSlideAnterior(-1);
+})
+slideProximo.addEventListener('click', function(){
+    passandoSlideAnterior(1)
+})
+var slideIndex = 1;
+function passandoSlideAnterior(slide){
+   
+    var slides = document.getElementsByClassName('slide');
+    slideIndex = slide + slideIndex;
+    for(var index = 0; index < slides.length; index++){
+        slides[index].style.display = 'none'
+    }
+    if(slideIndex < 1){
+        slideIndex = slides.length
+    }else if(slideIndex > slides.length){
+        slideIndex = 1;
+    }
+    if(slides.length > 0){
+        if(slideIndex > 0){
+            slides[slideIndex - 1].style.display = 'block'
+        }
+        
     }
 }
