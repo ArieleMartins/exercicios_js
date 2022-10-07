@@ -6,31 +6,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/btn_inputs.css">
+    <link rel="stylesheet" href="assets/css/exibirMedia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Treinando Javascript - Média</title>
 </head>
 
 <body>
-    <div class="container-grid">
-        <div class="grid-item-1">
+    <main class="container-flex">
+        <section class="container-add-dados-alunos">
             <h1>Calculando Média</h1>
-            <p>Digite as notas de 0 a 10</p>
-            <input type="number" class="dados" id="dados">
-            <div class="flex-row">
-                <button id="ad" class="ad">Adicionar</button>
-                <button id="calc" class="calc">Calcular</button>
+            <div class="container-btn-input">
+                <div class="container-input-aluno">
+                    <label for="nomeAluno">Alunos/Participantes</label>
+                    <input type="text" id="nomeAluno" placeholder="Nome do Aluno/Participante"
+                        title="Adicione o nome de cada aluno por vez" required>
+                </div>
+                <div class="container-btn">
+                    <button id="btnAdicionarAluno" title="Adicionar aluno"><i class="fa-solid fa-plus"></i></button>
+                </div>
             </div>
-            <div class="media">
-                <h3>Média</h3>
-                <p id="media"></p>
-            </div>
-        </div>
-        <div class="grid-item-2">
-            <h2>Notas</h2>
-            <div class="flex-column" id="notas">
+            <div class="container-select-input">
+                <div class="container-select-aluno">
+                    <label for="nomesAlunos">Aluno/Participante</label>
+                    <select name="" id="nomesAlunos">
+
+                    </select>
+                </div>
+                <div class="container-flex-end">
+                    <div class="container-nota">
+                        <label for="notas">Notas</label>
+                        <div class="container-input-btn-notas">
+                            <input type="number" id="notas">
+                            <button id="btnAddNota" title="Adicionar nota - adicionar uma de cada vez" required><i
+                                    class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
-        </div>
-    </div>
+            <div class="container-btn-media">
+                <button id="btnCalcularMedia">Calcular Média</button>
+            </div>
+            <div class="container-erro">
+                <span id="aviso"></span>
+            </div>
+        </section>
+        <section class="contaner-dados-alunos">
+            <div class="container-caixa-dados" id="container-dados">
+        
+            </div>
+
+        </section>
+    </main>
 </body>
 
 </html>

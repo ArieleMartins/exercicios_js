@@ -1,0 +1,61 @@
+.container-dados-alunos {
+   
+}
+
+.container-caixa-dados {
+    width: 360px;
+    height: 500px;
+    background-color: #131318;
+    border-radius: 20px;
+    padding: 10px;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    column-gap: 15px;
+    overflow-y: scroll;
+}
+
+.container-caixa-dados::-webkit-scrollbar,
+.container-caixa-dados::-webkit-scrollbar-button,
+.container-caixa-dados::-webkit-scrollbar-track,
+.container-caixa-dados::-webkit-scrollbar-track-piece,
+.container-caixa-dados::-webkit-scrollbar-corner, 
+.notas-aluno::-webkit-scrollbar,
+.notas-aluno::-webkit-scrollbar-button,
+.notas-aluno::-webkit-scrollbar-track,
+.notas-aluno::-webkit-scrollbar-track-piece,
+.notas-aluno::-webkit-scrollbar-corner{
+    background-color: transparent;
+}
+
+.container-caixa-dados::-webkit-scrollbar-thumb,
+.notas-aluno::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+.container-nome-aluno, .container-titulo-notas, .container-total{
+    border-bottom: 2px solid #3b3b41;
+    padding: 10px;
+    text-align: center;
+    width: 330px;
+}
+.notas-aluno{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    height: 400px;
+    overflow-y: scroll;
+}
+.container-notas{
+    border-bottom: 2px solid #3b3b41;
+}
+
+.container-titulo-media, #media-aluno{
+    text-align: center;
+    padding: 10px;
+}
+.container-total{
+    display: flex;
+    flex-direction: column;
+    row-gap:10px;
+}

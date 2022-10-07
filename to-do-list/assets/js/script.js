@@ -81,7 +81,6 @@ pesquisar.addEventListener('click', function (){
 document.addEventListener('click', function (e){
     if(index.includes(e.target.id.replace('btnElement', ''))){
         if(e.target.id == 'btnElement' + e.target.id.replace('btnElement', '')){
-            console.log('ta aqui')
             deleteElemento(index, e.target.value)
         }
         
