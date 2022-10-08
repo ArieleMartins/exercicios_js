@@ -22,12 +22,18 @@
 .notas-aluno::-webkit-scrollbar-button,
 .notas-aluno::-webkit-scrollbar-track,
 .notas-aluno::-webkit-scrollbar-track-piece,
-.notas-aluno::-webkit-scrollbar-corner{
+.notas-aluno::-webkit-scrollbar-corner,
+.container-erro::-webkit-scrollbar,
+.container-erro::-webkit-scrollbar-button,
+.container-erro::-webkit-scrollbar-track,
+.container-erro::-webkit-scrollbar-track-piece,
+.container-erro::-webkit-scrollbar-corner{
     background-color: transparent;
 }
 
 .container-caixa-dados::-webkit-scrollbar-thumb,
-.notas-aluno::-webkit-scrollbar-thumb {
+.notas-aluno::-webkit-scrollbar-thumb,
+.container-erro::-webkit-scrollbar-thumb{
     background-color: rgba(255, 255, 255, 0.3);
 }
 .container-nome-aluno, .container-titulo-notas, .container-total{

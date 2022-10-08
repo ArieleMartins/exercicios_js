@@ -73,10 +73,16 @@ body{
 }
 .container-erro{
     width: 340px;
+    height: 50px;
     text-align: center;
     overflow-y: scroll;
+   
 }
+
 #aviso{
     color: red;
     font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }

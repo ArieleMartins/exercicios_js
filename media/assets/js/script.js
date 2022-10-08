@@ -4,11 +4,11 @@ const btnCalcularMedia = document.getElementById('btnCalcularMedia');
 const spanAviso = document.getElementById('aviso');
 const selectNomeAlunos = document.getElementById('nomesAlunos');
 const containerExibirMedia = document.getElementById('container-dados');
-const slideAnterior = document.getElementById('anterior')
+const slideAnterior = document.getElementById('anterior');
 const slideProximo = document.getElementById('proximo');
 
 var indexSelect = 0;
-var alunos = []
+var alunos = [];
 var identificadorAluno;
 
 
@@ -16,14 +16,14 @@ btnAddAluno.addEventListener('click', function () {
     var verificarAlunoCadastrado = false;
     var nome = document.getElementById('nomeAluno');
     if (!nome.value) {
-        spanAviso.innerText = "Por favor preencha o campo nome"
+        spanAviso.innerText = "Por favor preencha o campo nome";
     } else {
-        spanAviso.innerText = ""
+        spanAviso.innerText = "";
         if (alunos.length > 0) {
             for (var index = 0; index < alunos.length; index++) {
                 (alunos[index].name.toUpperCase() == nome.value.toUpperCase())
                 if (alunos[index].name.toUpperCase() == nome.value.toUpperCase()) {
-                    spanAviso.innerText = "Aluno já cadastrado"
+                    spanAviso.innerText = "Aluno já cadastrado";
                     verificarAlunoCadastrado = true;
                 }
             }
@@ -68,6 +68,7 @@ selectNomeAlunos.addEventListener('change', function () {
 
 btnCalcularMedia.addEventListener('click', function(){
     containerExibirMedia.innerHTML =  ""
+    spanAviso.innerHTML = ""
     if(alunos.length == 0){
         spanAviso.innerText = "Por favor adicione algum aluno/participante para verificar sua média"
     }else{
@@ -135,7 +136,7 @@ function somaNotasMedia(aluno){
                                           `
         }
     }else{
-        spanAviso.innerHTML = `<p>${aluno.name} não possui notas </p> `
+        spanAviso.innerHTML += `<p>${aluno.name} não possui notas </p> `
     }
 }
 
@@ -179,6 +180,7 @@ function passandoSlideAnterior(slide){
         
     }
 }
+
 document.addEventListener("click", function (e){
     for(var index = 0; index < alunos.length; index++){
         if(e.target.value != undefined){
@@ -199,6 +201,7 @@ function deleteNota(nota, aluno){
     var posicaoNota = aluno.grades.indexOf(nota)
     aluno.grades.splice(posicaoNota, 1)
     containerExibirMedia.innerHTML = ""
+    spanAviso.innerHTML = ""
     for(var index = 0; index < alunos.length; index++){
         somaNotasMedia(alunos[index])
     }
