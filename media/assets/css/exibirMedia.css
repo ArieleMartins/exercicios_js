@@ -80,5 +80,16 @@
     background-color: #3b3b41;
     border-radius: 10px;
 }
-
+.btnDelete{
+    padding: 7px;
+    font-size: 9px;
+    float: right;
+}
+.nota{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
 

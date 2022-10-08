@@ -8,13 +8,14 @@ const slideAnterior = document.getElementById('anterior')
 const slideProximo = document.getElementById('proximo');
 
 var indexSelect = 0;
-var verificarAlunoCadastrado = false;
 var alunos = []
 var identificadorAluno;
 
 
 btnAddAluno.addEventListener('click', function () {
+    var verificarAlunoCadastrado = false;
     var nome = document.getElementById('nomeAluno');
+    console.log(nome.value)
     console.log(!nome.value);
     if (!nome.value) {
         spanAviso.innerText = "Por favor preencha o campo nome"
@@ -22,6 +23,7 @@ btnAddAluno.addEventListener('click', function () {
         spanAviso.innerText = ""
         if (alunos.length > 0) {
             for (var index = 0; index < alunos.length; index++) {
+                (alunos[index].name.toUpperCase() == nome.value.toUpperCase())
                 if (alunos[index].name.toUpperCase() == nome.value.toUpperCase()) {
                     spanAviso.innerText = "Aluno já cadastrado"
                     verificarAlunoCadastrado = true;
@@ -67,6 +69,7 @@ selectNomeAlunos.addEventListener('change', function () {
 })
 
 btnCalcularMedia.addEventListener('click', function(){
+    containerExibirMedia.innerHTML =  ""
     if(alunos.length == 0){
         spanAviso.innerText = "Por favor adicione algum aluno/participante para verificar sua média"
     }else{
@@ -79,14 +82,16 @@ btnCalcularMedia.addEventListener('click', function(){
 })
 
 function somaNotasMedia(aluno){
-    containerExibirMedia.innerHTML = '';
+    
     var somaNotas = 0;
     var media  = 0;
     if(aluno.grades.length > 0){
         for(var index = 0; index < aluno.grades.length; index++){
-            somaNotas = parseInt(aluno.grades[index]) + somaNotas;
+            somaNotas = parseFloat(aluno.grades[index]) + somaNotas;
         }
         media = somaNotas / aluno.grades.length;
+        aluno.total = somaNotas;
+        aluno.avegare = media;
         containerExibirMedia.innerHTML += `
                 <div class="slide">
                     <div class="container-nome-aluno">
@@ -101,7 +106,7 @@ function somaNotasMedia(aluno){
                         </div>
                     </div>
                     <div class="container-total">
-                        <p id="total-notas">Total : ${somaNotas}<br>Quantidade de Notas:${aluno.grades.length}</p>
+                        <p id="total-notas">Total : ${aluno.total}<br>Quantidade de Notas:${aluno.grades.length}</p>
                     </div>
                     <div class="container-media">
                         <div class="container-titulo-media">
@@ -109,7 +114,7 @@ function somaNotasMedia(aluno){
                         </div>
 
                         <div id="media-aluno">
-                            <p>${media}</p>
+                            <p>${aluno.avegare.toFixed(2)}</p>
                         </div>
                     </div>
                 </div>
@@ -125,11 +130,17 @@ function somaNotasMedia(aluno){
         for(var index = 1; index < slides.length; index++){
             slides[index].style.display = 'none'
         }
+        exibirNotasAluno.innerHTML = '';
         for(var index = 0; index < aluno.grades.length; index++){
-            exibirNotasAluno.innerHTML += `<p>${index + 1} : ${aluno.grades[index]}</p>`
+            exibirNotasAluno.innerHTML += ` <p class="nota">${index + 1} : ${aluno.grades[index]} 
+                                                <button class="btnDelete" id="btnDelete${aluno.grades[index]}" value="deleteNota${aluno.name}">
+                                                    Remover
+                                                </button>
+                                            </p>
+                                          `
         }
     }else{
-        spanAviso.innerHTML = `<p>${aluno.name} não possui notas</p>`
+        spanAviso.innerHTML = `<p>${aluno.name} não possui notas </p> `
     }
 }
 
@@ -172,4 +183,29 @@ function passandoSlideAnterior(slide){
         }
         
     }
+}
+document.addEventListener("click", function (e){
+    for(var index = 0; index < alunos.length; index++){
+        if(e.target.value != undefined){
+            if(e.target.value.replace("deleteNota", '') == alunos[index].name){
+                if(e.target.value == 'deleteNota' + alunos[index].name){
+                    aluno = alunos[index]
+                    deleteNota(e.target.id.replace('btnDelete', ''), alunos[index])
+                }
+                
+            }
+        }
+        
+    }
+    
+})
+
+function deleteNota(nota, aluno){
+    var posicaoNota = aluno.grades.indexOf(nota)
+    aluno.grades.splice(posicaoNota, 1)
+    containerExibirMedia.innerHTML = ""
+    for(var index = 0; index < alunos.length; index++){
+        somaNotasMedia(alunos[index])
+    }
+    
 }
