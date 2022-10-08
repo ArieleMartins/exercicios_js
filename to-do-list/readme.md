@@ -1,5 +1,6 @@
 <h1 align="center">TO-DO LIST</h1>
 <p align="center" style="padding:20px; font-size:17px">Nos organizar e planejar é algo essencial para alcançar o que desejamos, então desenvolvi um To-Do List</p>
+<p align="center" style="font-size:17px">Link do Projeto: <a href="https://arielemartins.github.io/exercicios_js/to-do-list/">TO-DO List</a></p>
 
 [to-do-list.webm](https://user-images.githubusercontent.com/83427685/194727982-202d114c-3626-42df-ac67-7cd777b5dff6.webm)
 
