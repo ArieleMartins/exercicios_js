@@ -65,7 +65,6 @@ pesquisar.addEventListener('click', function (){
                     listaLi[posicao].classList.remove('hidden')
                 }else{
                     var id = listaLi[posicao].id.split(' ');
-                    console.log(id)
                     var valor = valorBuscar.value.split(' ');
                     for(var index = 0; index < valor.length; index++){
                         if(id.includes(valor[index])){
