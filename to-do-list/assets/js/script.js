@@ -64,16 +64,17 @@ pesquisar.addEventListener('click', function (){
                 if(valorBuscar.value == ''){
                     listaLi[posicao].classList.remove('hidden')
                 }else{
-                    if(listaLi[posicao].id != valorBuscar.value){
-                        if(index.includes(valorBuscar.value)){
-                            listaLi[posicao].classList.add('hidden');
-                        }else{
+                    var id = listaLi[posicao].id.split(' ');
+                    console.log(id)
+                    var valor = valorBuscar.value.split(' ');
+                    for(var index = 0; index < valor.length; index++){
+                        if(id.includes(valor[index])){
                             listaLi[posicao].classList.remove('hidden')
+                        }else{
+                            listaLi[posicao].classList.add('hidden');
                         }
-                        
-                    }else{
-                        listaLi[posicao].classList.remove('hidden')
-                    }
+                    }  
+                   
                 }
                 
             }
