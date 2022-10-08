@@ -23,7 +23,7 @@
                 <div class="container-input-aluno">
                     <label for="nomeAluno">Alunos/Participantes</label>
                     <input type="text" id="nomeAluno" placeholder="Nome do Aluno/Participante"
-                        title="Adicione o nome de cada aluno por vez" required>
+                        title="Adicione o nome de cada aluno por vez" required tabindex="1">
                 </div>
                 <div class="container-btn">
                     <button id="btnAdicionarAluno" title="Adicionar aluno"><i class="fa-solid fa-plus"></i></button>
@@ -32,7 +32,7 @@
             <div class="container-select-input">
                 <div class="container-select-aluno">
                     <label for="nomesAlunos">Aluno/Participante</label>
-                    <select name="" id="nomesAlunos">
+                    <select name="" id="nomesAlunos" tabindex="2">
 
                     </select>
                 </div>
@@ -40,7 +40,7 @@
                     <div class="container-nota">
                         <label for="notas">Notas</label>
                         <div class="container-input-btn-notas">
-                            <input type="number" id="notas">
+                            <input type="number" id="notas" tabindex="3">
                             <button id="btnAddNota" title="Adicionar nota - adicionar uma de cada vez" required><i
                                     class="fa-solid fa-plus"></i></button>
                         </div>
@@ -49,7 +49,7 @@
 
             </div>
             <div class="container-btn-media">
-                <button id="btnCalcularMedia">Calcular Média</button>
+                <button id="btnCalcularMedia" tabindex="4">Calcular Média</button>
             </div>
             <div class="container-erro">
                 <span id="aviso"></span>

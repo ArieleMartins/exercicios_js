@@ -15,8 +15,6 @@ var identificadorAluno;
 btnAddAluno.addEventListener('click', function () {
     var verificarAlunoCadastrado = false;
     var nome = document.getElementById('nomeAluno');
-    console.log(nome.value)
-    console.log(!nome.value);
     if (!nome.value) {
         spanAviso.innerText = "Por favor preencha o campo nome"
     } else {
@@ -73,9 +71,7 @@ btnCalcularMedia.addEventListener('click', function(){
     if(alunos.length == 0){
         spanAviso.innerText = "Por favor adicione algum aluno/participante para verificar sua média"
     }else{
-        console.log('Estou passando por aqui')
         for(var index = 0; index < alunos.length; index++){
-            console.log('Estou passando por aqui')
             somaNotasMedia(alunos[index]);
         }
     }
@@ -123,7 +119,6 @@ function somaNotasMedia(aluno){
         const exibirNotasAluno = document.getElementById('notas-aluno-' + aluno.name);
         exibirNotasAluno.innerHTML = '';
         const slides = document.getElementsByClassName("slide")
-        console.log(slides)
         if(slides.length > 0){
             slides[0].style.display = 'block'
         }
@@ -209,3 +204,15 @@ function deleteNota(nota, aluno){
     }
     
 }
+
+document.addEventListener('keydown', function(e){
+    if(e.target.id == 'nomeAluno'){
+        if(e.key == 'Enter'){
+            btnAddAluno.click();
+        }
+    }else if(e.target.id == 'notas'){
+        if(e.key == 'Enter'){
+            btnAddNota.click();
+        }
+    }
+})
