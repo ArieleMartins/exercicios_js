@@ -1,5 +1,6 @@
 <h1 align="center">CALCULANDO MÉDIA</h1>
 <p align="center" style="padding:20px; font-size:16px">Calcule a médias dos seus alunos ou dos participantes</p>
+<p align="center" style="font-size:16px">Link do projeto: <a href="https://arielemartins.github.io/exercicios_js/media/" target="_blank">Calculando Média</a></p>
 
 [CalculandoMedia.webm](https://user-images.githubusercontent.com/83427685/194721853-8c20d957-680e-4fc7-b1fd-5694cb264fa5.webm)
 
