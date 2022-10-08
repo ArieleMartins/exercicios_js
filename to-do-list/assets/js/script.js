@@ -5,6 +5,8 @@ var bt = document.getElementById('ad');
 var input = document.getElementById('dados');
 var list = document.getElementById('list');
 const erro = document.getElementById('error')
+const select = document.getElementById('filter');
+
 
 const pesquisa = document.getElementById('pesquisar')
 var index = [];
@@ -90,5 +92,50 @@ document.addEventListener('click', function (e){
             deleteElemento(index, e.target.id.replace('element', ''))
         }
         
+    }
+
+})
+
+select.addEventListener('change', function (){
+    var indexSelect = select.selectedIndex;
+    var option = select.options[indexSelect];
+    if(option.value == "Feitos"){
+        if(list.children != undefined){
+            for(var index = 0; index < list.children.length; index++){
+                if(list.children[index].children[0].children[0].checked){
+                    list.children[index].style.display = "flex"
+                }else{
+                    list.children[index].style.display = "none"
+                }
+            }
+        }
+    }else if(option.value == "Todos"){
+        if(list.children != undefined){
+            for(var index = 0; index < list.children.length; index++){
+                list.children[index].style.display = "flex"
+            }
+        }
+    }else if(option.value == "Fazer"){
+        if(list.children != undefined){
+            for(var index = 0; index < list.children.length; index++){
+                if(list.children[index].children[0].children[0].checked == false){
+                    list.children[index].style.display = "flex"
+                }else{
+                    list.children[index].style.display = "none"
+                }
+            }
+        }
+    }
+})
+
+document.addEventListener('keydown', function (e){
+    if(e.target.id == "dados"){
+        if(e.key == 'Enter'){
+            bt.click()
+        }
+    }else if(e.target.id == 'buscar'){
+        if(e.key == 'Enter'){
+            pesquisa.click()
+        }
     }
 })
