@@ -1,0 +1,21 @@
+@media(max-width:700px){
+    .container-icons{
+        height: 100px;
+        column-gap:50px;
+        font-size: 50px;
+    }
+    .container{
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        align-items: center;
+        justify-content: center;
+        row-gap: 40px;
+    }
+    .titulo{
+        font-size:7vw;
+    }
+    .font-family{
+        font-size: 14px;
+    }
+}
