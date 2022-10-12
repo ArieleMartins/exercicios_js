@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Pedra, Papel e Tesoura - Ariele Martins</title>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <h1 class="titulo">Pedra, Papel e Tesoura</h1>
+            <p class="font-family">Seleciona uma das opções e clique em jogar</p>
+            <div class="container-radios">
+                <div class="container-radio">
+                    <input type="radio" name="radio-input" id="papel" checked value="0">
+                    <label for="papel" class="font-family">Papel</label>
+                </div>
+                <div class="container-radio">
+                    <input type="radio" name="radio-input" id="pedra" value="1">
+                    <label for="pedra" class="font-family">Pedra</label>
+                </div>
+                <div class="container-radio">
+                    <input type="radio" name="radio-input" id="tesoura" value="2">
+                    <label for="tesoura" class="font-family">Tesoura</label>
+                </div>
+            </div>
+            <div class="container-btn">
+                <button class="btnJogar" id="btnJogar">Jogar</button>
+            </div>
+            <div class="container-icons">
+                <div class="container-icon-jogador" id="container-jogador">
+                   
+                </div>
+                <div class="container-x">
+                    <i class="fa-solid fa-x"></i>
+                </div>
+                <div class="container-icon-maquina" id="container-maquina">
+                    
+                </div>
+            </div>
+            <div class="container-ganhador">
+                <h2 id="ganhador"></h2>
+            </div>
+            <div class="container-pontuacao">
+                <p class="font-family">Jogador: <span id="pontoJogador">0</span></p>
+                <p class="font-family">Maquina: <span id="pontoMaquina">0</span></p>
+            </div>
+        </div>
+
+    </main>
+</body>
+<script src="assets/js/script.js"></script>
+
+</html>

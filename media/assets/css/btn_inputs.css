@@ -4,8 +4,8 @@
 }
 #nomeAluno{
     width: 276px;
+    height: 38px;
 }
-
 input, select{
     background-color: #131318;
     color: white;

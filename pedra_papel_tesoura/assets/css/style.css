@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Poppins&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #121214;
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    margin:auto;
+}
+.container{
+    width: 800px;
+    background-color: #202024;
+    border-radius: 20px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.titulo{
+    font-family: 'Archivo', sans-serif;
+    font-size:3vw;
+}
+.font-family{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+}
+.container-radios{
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.container-radio{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    align-items: center;
+}
+.container-icons{
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    column-gap:100px;
+    align-items: center;
+    justify-content: center;
+    font-size: 90px;
+}
+.container-icon-jogador{
+    color: rgb(155, 46, 67);
+}
+.container-icon-maquina{
+    color:indigo;
+}
+.btnJogar{
+    border:none;
+    background-color: rgb(95, 54, 62);
+    cursor: pointer;
+    padding: 10px 50px;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+.btnJogar:hover{
+    background-color: rgb(114, 65, 75);
+}
+.container-pontuacao{
+    display: flex;
+    flex-direction: row;
+    column-gap: 100px;
+    align-items: center;
+    justify-content: center;
+}
+
+#papel, #pedra, #tesoura{
+    width: 20px;
+    height: 20px;
+    background-color: #131318;
+    border-radius: 50%;
+    -webkit-appearance: none;
+}
+#papel:checked, #pedra:checked, #tesoura:checked{
+    border: 2px solid #4f4f57;
+    background-image: url('../imgs/Ellipse1.png');
+    background-repeat: no-repeat;
+    background-size: 8px;
+    background-position: center;
+}
+.container-ganhador{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+#ganhador{
+    font-size: 20px;
+    color: rgb(114, 65, 75);
+    text-transform: uppercase;
+}
