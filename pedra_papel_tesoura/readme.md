@@ -1,6 +1,6 @@
 <h1 align="center">Pedra, Papel e Tesoura</h1>
 <p align="center">Você e seu computador pode se divertir juntos, como? Jogue agora pedra, papel e tesoura.<br>Quem será o grande ganhador?!</p>
-<p>Link do Projeto<a href="https://arielemartins.github.io/exercicios_js/pedra_papel_tesoura/">Pedra, Papel e Tesoura</a></p>
+<p align="center">Link do Projeto <a href="https://arielemartins.github.io/exercicios_js/pedra_papel_tesoura/">Pedra, Papel e Tesoura</a></p>
 
 [pedra_papel_tesoura.webm](https://user-images.githubusercontent.com/83427685/195465265-3b61eaf7-96bb-4522-a74f-fbeafc37f730.webm)
 
