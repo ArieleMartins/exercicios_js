@@ -74,18 +74,22 @@ function adicionandoOperadores(valor) {
     var array = Array.from(result.innerText)
     var operadores = ['+', '-', 'x', '%']
     var indexOperador = -1
-    operadores.forEach(operador => {
-        if (array.indexOf(operador) != -1 && array.indexOf(operador) != 0) {
-            indexOperador = array.indexOf(operador)
-        } else {
-            if (array[indexOperador] != '+' && array[indexOperador] != "-" && array[indexOperador] != 'x' && array[indexOperador] != '%') {
+    if(array[0] == '-'){
+        array[0] = ''
+    }
+    array.forEach(element =>{
+        operadores.forEach(op =>{
+            if(element == op){
+                    indexOperador = array.indexOf(element)
+            }else if(array.includes('+') == false && array.includes('-') == false && array.includes('x') == false && array.includes('%') == false){
                 indexOperador = array.length
-            } else {
-                indexOperador = array.length - 1
             }
-        }
+        })
     })
     array[indexOperador] = valor
+    if(array[0] == '' ){
+        array[0] = '-'
+    }
     result.innerText = array.join('')
     verificadorTrocaOperador = true
 }
@@ -100,7 +104,9 @@ export function calcular(conteudo, result) {
     var unirValor1
     var unirValor2
     var resultado
-
+    if(array[0] == '-'){
+        array[0] = ''
+    }
     operadores.forEach(element => {
         if (array.indexOf(element) != -1) {
             indexOperador = array.indexOf(element)
@@ -109,6 +115,9 @@ export function calcular(conteudo, result) {
     })
     for (var index = 0; index < array.length; index++) {
         if (index < indexOperador) {
+            if(array[0] == ''){
+                array[0] = '-'
+            }
             valor1.push(array[index])
         } else if (index > indexOperador) {
             valor2.push(array[index])
