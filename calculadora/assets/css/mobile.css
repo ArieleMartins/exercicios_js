@@ -1,0 +1,9 @@
+@media(max-width:600px){
+    .principal{
+        justify-content: inherit;
+        height: 500px;
+    }
+    .painel{
+        width: 100vw; 
+    }
+}
