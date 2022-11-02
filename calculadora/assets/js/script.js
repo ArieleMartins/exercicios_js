@@ -42,13 +42,13 @@ document.addEventListener('click', function(e){
     case 'x':
         calculadora.painel('x', result)
     break;
-    case '%':
-        calculadora.painel('%', result)
+    case '/':
+        calculadora.painel('/', result)
     break;
    }
    var array = Array.from(result.innerText)
    if(e.target.id.replace('span', '') == '='){
-        if(result.innerText != '0' && (array.includes('+') || array.includes('-') || array.includes('x') || array.includes('%')) != false){
+        if(result.innerText != '0' && (array.includes('+') || array.includes('-') || array.includes('x') || array.includes('/')) != false){
             calculadora.calcular(result.innerText, result)
         }
    }
@@ -93,12 +93,12 @@ document.addEventListener('keyup', function (e){
         case 'x':
             calculadora.painel(e.key, result)
         break;
-        case '%':
+        case '/':
             calculadora.painel(e.key, result)
         break;
         case 'Enter':
             var array = Array.from(result.innerText)
-            if(result.innerText != '0' && (array.includes('+') || array.includes('-') || array.includes('x') || array.includes('%')) != false){
+            if(result.innerText != '0' && (array.includes('+') || array.includes('-') || array.includes('x') || array.includes('/')) != false){
                 calculadora.calcular(result.innerText, result)
             }
         break;

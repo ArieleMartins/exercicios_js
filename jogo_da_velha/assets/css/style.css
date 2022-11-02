@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --bg-body: #121214;
+    --bg-container: #202024;
+    --bg-hover: hsl(0, 0%, 100%, 0.03); /* cor principal, saturação, iluminação, opacidade*/
+    --font-winner: hsl(120, 30%, 50%);
+    --font-color: hsl(0, 0%, 70%);
+    --bg-radio: rgba(0, 0, 0, 0.438);
+}
+body{
+    background-color: var(--bg-body);
+}
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    row-gap: 50px;
+}
+.container{
+    grid-template-columns: 1fr 1fr 1fr;
+    color: var(--font-color) ;
+    display: none;
+}
+.c.o, .c.x{
+    cursor: not-allowed;
+}
+.c{
+    height: 200px;
+    width: 200px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 150px;
+}
+.container.o .c:not(.x):not(.o):hover:before{
+    content: '';
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: transparent;
+    z-index: -1;
+    position: absolute;
+    border:20px solid var(--bg-hover);
+}
+
+.container.x .c:not(.x):not(.o):hover::before,.container.x .c:not(.x):not(.o):hover::after{
+    content: '';
+    width: 20px;
+    height: 130px;
+    border-radius: 20px;
+    z-index: -1;
+    position: absolute;
+    background-color: var(--bg-hover);
+}
+
+.container.x .c:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+.container.x .c:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+.b-1{
+    border-right: 2px solid var(--font-color);
+    border-bottom: 2px solid var(--font-color);
+}
+.b-2{
+    border: 2px solid var(--font-color);
+}
+.b-3{
+    border-left: 2px solid var(--font-color);
+    border-bottom: 2px solid var(--font-color);
+}
+.b-4{
+    border-bottom: 2px solid var(--font-color);
+}
+.b-5{
+    border-right: 2px solid var(--font-color);
+}
+.b-6{
+    border-left: 2px solid var(--font-color);
+}
+
+.ganhador{
+    color: var(--font-winner);
+    font-size: 30px;
+}
+
+.modal{
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+h1{
+    font-size: 40px;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#e79898, #a00085);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container-start{
+    background-color: var(--bg-container);
+    width: 800px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 50px;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.2);
+}
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+    font-family: 'Fredoka One', cursive;
+}
+
+input[type='radio']{
+    -webkit-appearance: none;
+    width: 30px;
+    height: 30px;
+    background-color: var(--bg-radio);
+    border-radius: 50%;
+    position: relative;
+}
+input[type='radio']:checked{
+    border: 2px solid #e79898;
+    
+}
+input[type='radio']:checked::after{
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #e79898;
+    top: 7.2px;
+    left: 7.0px;
+    border-radius: 50%;
+}
+
+.container-radios{
+    display: flex;
+    flex-direction: row;
+    column-gap: 90px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-family: 'Fredoka One', cursive;
+    color: white
+}
+.radio{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+}
+
+button{
+    border: none;
+    color: var(--bg-radio);
+    font-size: 25px;
+    width: 190px;
+    height: 60px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 20px;
+    border: 5px solid;
+}
+
+button:hover{
+    color: #e79898;
+}
+
