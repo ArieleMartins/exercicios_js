@@ -63,7 +63,7 @@ radioBot.addEventListener("click", () => { // trocar a cor da label ao clicar no
 
 btnStart.addEventListener("click", () => { // iniciar o jogo
   if (radioBot.checked) {
-    selectFriend = false;
+    selectFriend = false; // se o radibot for selecionado, entao o selectFriend é falso
   }else{
     selectFriend = true
   }
