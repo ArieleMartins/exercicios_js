@@ -92,7 +92,7 @@ main{
 
 .ganhador{
     color: var(--font-winner);
-    font-size: 30px;
+    font-size: 15px;
 }
 
 .modal{
@@ -118,7 +118,7 @@ h1{
     display: flex;
     flex-direction: column;
     align-items: center;
-    row-gap: 50px;
+    row-gap: 30px;
     padding: 50px;
     border-radius: 20px;
     box-shadow: 4px 4px 5px rgba(0,0,0,0.2);
