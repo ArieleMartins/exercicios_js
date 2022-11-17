@@ -1,14 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Sono&display=swap');
+
 *{
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
+
+:root{
+    --font-size: 65.6%;
+    --bg-color: rgb(43, 43, 75);
+    --font-color-white: white;
+    --bg-color-button: cornflowerblue;
+    --border-color-button: rgb(93, 133, 207);
+    --bg-color-modal: rgba(0, 0, 0, 0.3);
+    --font-color-black: black;
+    --bg-color-container-modal:rgb(231, 231, 231);
+    --font-family:'Sono', sans-serif;
+    --bg-color-title-game: rgb(42, 28, 51);
+    --bg-color-play-hover: rgb(52, 36, 63);
+    --font-size-media-600: 50%;
+    --font-size-media-800: 60%
+}
+
+
+html{
+    font-size: var(--font-size);
+    font-family: var(--font-family);
+}
+
 body{
-    background-color: rgb(43, 43, 75);
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--font-color-white);
     text-align: center;
     height: 100vh;
+    font-size: 1.6rem;
 }
-.container-principal{
+.container-main{
     height: 100vh;
     width: 100%;
     display: flex;
@@ -22,37 +49,38 @@ body{
     justify-content: center;
     align-items: center;
 }
-.container-dados{
+.container-data{
     display: flex;
     flex-direction: column;
     row-gap: 20px;
 }
-.container-dados input{
+.container-data input{
     border-radius: 10px;
     padding: 8px;
     width: 100px;
     margin: auto;
 }
-.container-dados button{
+.container-data button{
     border-radius: 10px;
     padding: 8px;
     width: 90px;
-    background-color: cornflowerblue;
-    border-color: rgb(93, 133, 207);
+    background-color: var(--bg-color-button);
+    border-color: var(--border-color-button);
     margin:auto;
 }
 h1{
-    font-size: 50px;
+    font-size: 5rem;
     font-family: Arial, Helvetica, sans-serif;
 }
-.container-pontos{
+.container-points{
     display: flex;
     flex-direction: column;
     row-gap: 20px;
     height: 280px;
 }
-.tentativas{
+.attempts{
     width: 100%;
     height: 100px;
     overflow: scroll;
 }
+

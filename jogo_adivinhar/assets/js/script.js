@@ -1,13 +1,10 @@
-var numero = 0;
 var input = document.getElementById('dados');
 var enviar = document.getElementById('enviar');
 var pontuacao = document.getElementById('adivinho');
 var pontos = 0;
 var tentativa = 0;
 var tentativas = document.getElementById('tentativas');
-window.document.body.onload = function gerarNumero(){
-    numero = Math.floor(Math.random() * 101);
-}
+var number = Math.floor(Math.random)
 
 enviar.onclick = function veriNumero(){
     if(tentativa >= 10){

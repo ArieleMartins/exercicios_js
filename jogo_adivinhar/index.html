@@ -5,25 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/mobile/modal-mobile.css">
     <title>Treinando Javascript - Jogo Adivinhação</title>
 </head>
 <body>
-    <main class="container-principal">
+    <main class="container-main">
         <div class="container">
-            <div class="container-dados">
+            <div class="container-data">
                 <h1>Qual é o número?</h1>
                 <input type="number" id="dados">
-                <button id="enviar">ENVIAR</button>
-                <div class="tentativas" id="tentativas">
+                <button id="submit">ENVIAR</button>
+                <div class="attempts">
 
                 </div>
             </div>
-            <div class="container-pontos">
+            <div class="container-points">
                 <h2>Adivinhou</h2>
-                <p id="adivinho"> Você conseguiu adivinha : 0 números</p>
+                <p id="guessed"> Você conseguiu adivinha : 0 números</p>
             </div>
         </div>
     </main>
+    <div class="modal">
+        <div class="container-modal">
+            <h1 class="title-game">Jogo da adivinhação</h1>
+            <span class="emoji">🤔</span>
+            <div class="container-inputs">
+                <div class="container-numberEnd">
+                    <label for="numberEnd" class="numberEnd">Até que número?</label>
+                    <input type="number" id="numberEnd">
+                </div>
+                <div class="container-numberAttempts">
+                    <label for="numberAttempts" class="numberAttempts">Quantas tentativas?</label>
+                    <input type="number" id="numberAttempts">
+                </div>
+            </div>
+            
+            <div class="container-btn">
+                <button class="btnPlay" id="btnPlay">Jogar</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-<script src="assets/js/script.js"></script>

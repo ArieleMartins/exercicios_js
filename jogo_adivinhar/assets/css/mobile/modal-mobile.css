@@ -1,0 +1,32 @@
+@media(max-width: 817px){
+    .container-modal{
+        width: 90vw;
+        height: 50vh;
+        box-shadow:0px;
+    }
+    html{
+        font-size: var(--font-size-media-800);
+    }
+    .container-numberEnd #numberEnd, .container-numberAttempts #numberAttempts{
+        padding: 5px;
+    }
+}
+
+@media(max-width: 600px){
+    .container-modal{
+        width: 90vw;
+        height: 70vh;
+        box-shadow:0px;
+    }
+    .container-inputs{
+        flex-direction: column;
+        row-gap: 20px;
+        column-gap: 0px;
+    }
+    html{
+        font-size: var(--font-size-media-600);
+    }
+    .container-numberEnd #numberEnd, .container-numberAttempts #numberAttempts{
+        padding: 5px;
+    }
+}
