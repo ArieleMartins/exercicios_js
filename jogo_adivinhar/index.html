@@ -14,15 +14,16 @@
         <div class="container">
             <div class="container-data">
                 <h1>Qual é o número?</h1>
-                <input type="number" id="dados">
-                <button id="submit">ENVIAR</button>
+                <input type="number" id="numberPlayer" min="0">
+                <button id="submitNumberPlayer">ENVIAR</button>
+                <span class="error"></span>
                 <div class="attempts">
 
                 </div>
             </div>
             <div class="container-points">
                 <h2>Adivinhou</h2>
-                <p id="guessed"> Você conseguiu adivinha : 0 números</p>
+                <p > Você conseguiu adivinha : <span id="guessed">0</span> números</p>
             </div>
         </div>
     </main>
@@ -30,21 +31,23 @@
         <div class="container-modal">
             <h1 class="title-game">Jogo da adivinhação</h1>
             <span class="emoji">🤔</span>
+            <span class="winner"></span>
             <div class="container-inputs">
                 <div class="container-numberEnd">
                     <label for="numberEnd" class="numberEnd">Até que número?</label>
-                    <input type="number" id="numberEnd">
+                    <input type="number" id="numberEnd" tabindex="1">
                 </div>
                 <div class="container-numberAttempts">
                     <label for="numberAttempts" class="numberAttempts">Quantas tentativas?</label>
-                    <input type="number" id="numberAttempts">
+                    <input type="number" id="numberAttempts" tabindex="2">
                 </div>
             </div>
             
             <div class="container-btn">
-                <button class="btnPlay" id="btnPlay">Jogar</button>
+                <button class="btnPlay" id="btnPlay"tabindex="3">Jogar</button>
             </div>
         </div>
     </div>
 </body>
+<script src="assets/js/script.js"></script>
 </html>
