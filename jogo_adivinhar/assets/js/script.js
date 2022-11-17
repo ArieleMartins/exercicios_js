@@ -56,6 +56,8 @@ function play(){
     modal.style.visibility = "hidden"
     numberBot = moveBot(Number(inputNumberEnd.value))
     numberPlayer.setAttribute('max', inputNumberEnd.value)
+    attempts = 1
+    containerAttempts.innerHTML = ''
 }
 
 function moveBot(numberEnd){
