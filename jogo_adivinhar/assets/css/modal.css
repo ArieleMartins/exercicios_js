@@ -88,8 +88,7 @@
     background-color: var(--bg-color-play-hover);
 }
 
-.winner{
-    color: rgb(37, 78, 37);
+.alert{
     font-size: 1.4rem;
     display: flex;
     flex-wrap: wrap;

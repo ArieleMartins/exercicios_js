@@ -5,7 +5,7 @@ const inputNumberAttempts = document.getElementById('numberAttempts')
 const submitNumberPlayer = document.getElementById('submitNumberPlayer')
 const numberPlayer = document.getElementById('numberPlayer')
 const guessed = document.getElementById('guessed')
-const spanWinner = document.querySelector('.winner')
+const spanAlert = document.querySelector('.alert')
 const error = document.querySelector('.error')
 const containerAttempts = document.querySelector('.attempts')
 var attempts = 1
@@ -53,11 +53,17 @@ function checkDataInputs(data, input){
 }
 
 function play(){
-    modal.style.visibility = "hidden"
-    numberBot = moveBot(Number(inputNumberEnd.value))
-    numberPlayer.setAttribute('max', inputNumberEnd.value)
-    attempts = 1
-    containerAttempts.innerHTML = ''
+    if(Number(inputNumberAttempts.value) < 3 || Number(inputNumberAttempts.value) > Number(inputNumberEnd.value) - 1){
+        spanAlert.style.color = 'red';
+        spanAlert.innerText = "Número de tentativas invalido"
+    } else{
+        spanAlert.innerText = ''
+        modal.style.visibility = "hidden"
+        numberBot = moveBot(Number(inputNumberEnd.value))
+        numberPlayer.setAttribute('max', inputNumberEnd.value)
+        attempts = 1
+        containerAttempts.innerHTML = ''
+    }
 }
 
 function moveBot(numberEnd){
@@ -99,7 +105,8 @@ function checkNumberPlaye(){
 }
 
 function winnerPlayer(){
-    spanWinner.innerHTML = "Parabéns você consegui acerta o numero"
+    spanAlert.style.color = 'rgb(37, 78, 37)'
+    spanAlert.innerHTML = "Parabéns você consegui acerta o numero"
     winners += 1
     guessed.innerText = winners
     btnPlay.innerText = "Reset"
@@ -107,7 +114,7 @@ function winnerPlayer(){
 }
 
 function finishedAttempts(){
-    spanWinner.innerHTML = "Suas tentativas acabaram 🙁"
+    spanAlert.innerHTML = "Suas tentativas acabaram 🙁"
     btnPlay.innerText = "Reset"
     modal.style.visibility = "visible"
 }
