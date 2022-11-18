@@ -1,9 +1,9 @@
-<h1 align="center">WConversor</h1>
-<p align="center"> Projeto feito na Imersão Dev da Alura</p>
-<p align="center" >Um site com diversos conversores, como: Conversor de Ano-luz, Conversor de Moeda, Conversor de Temperatura</p>
-<p align="center"> - Para o conversor de moeda foi utilizado a API - <a target="_blank" href="https://docs.awesomeapi.com.br/api-de-moedas">AwesomeAPI</a>
+<h1 align="center">CONTADOR</h1>
+<p align="center" style="padding:20px; font-size:16px">Simples contador</p>
+<p align="center" style="font-size:16px">Link do projeto: <a href="https://arielemartins.github.io/exercicios_js/Contador/" target="_blank">Contador</a></p>
 
-[WConversores.webm](https://user-images.githubusercontent.com/83427685/190881913-335b9b19-fad2-48c8-98ea-86424cb9aa5e.webm)
+![Contador](https://user-images.githubusercontent.com/83427685/202767058-22c77d63-3056-4348-9ac1-a130194b013a.png)
+
 
 <h1 align="center">TECNOLOGIAS</h1>
 <div align="center" style="padding:20px;">

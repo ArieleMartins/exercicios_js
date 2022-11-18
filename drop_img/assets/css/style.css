@@ -6,6 +6,7 @@
 body{
     height: 100%;
     background-color: rgb(28, 28, 49);
+    padding: 20px;
 }
 main{
     height: 100vh;
@@ -58,6 +59,7 @@ main{
 }
 .container-img:hover{
     background-color: rgb(67, 67, 95);
+    cursor: pointer;
 }
 
 .modal{

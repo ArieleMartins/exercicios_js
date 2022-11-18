@@ -71,7 +71,7 @@ function screenImg(url){
     
     const containerImgModa = document.querySelector('.container-img-modal')
     modal.style.visibility = "visible"
-    containerImgModa.innerHTML = `<img src='${url}' />'`
+    containerImgModa.innerHTML = `<img src='${url}' />`
 }
 
 function closeModal(){
