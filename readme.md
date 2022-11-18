@@ -12,5 +12,8 @@
 
 #
 
+<p align="center"><a href="https://arielemartins.github.io/exercicios_js/" target="_blank">Projetos</a></p>
+
+
 <p align="center" style="font-size:17px">Aqui tem alguns exercicios que fiz enquanto estudo javascript</p>
 <p align="center" style="font-size:17px">Clique no repositório do exercício e lá terá um readme com uma breve explicação sobre o projeto e o link para que você possa testa-lo</p>
