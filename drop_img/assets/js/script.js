@@ -3,6 +3,7 @@ const dropImg = document.getElementById('drop-img') // responsavel por receber a
 const input = document.getElementById('arquivos') // responsavel por receber o arquivo
 const erro = document.getElementById('error') // responsavel por avisar ao usuario que o tipo de arquivo não foi  aceito
 const exibir = document.getElementById('files') // exibir os arquivos enviados
+const modal = document.querySelector('.modal')
 
 var tipos = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'] // para verificar os tipos de arquivos
 
@@ -54,13 +55,25 @@ function exibirArquivo(file){ // recebendo e arquivo no parametro
     const reader = new FileReader() // para ler arquivos assincronamente
     reader.onload = (e) =>{ // no carregando crie as tags no html e passe os dados - e.target.result = url da imagem - file.name = nome da imagem
         exibir.innerHTML += `
-                        <div class="container-img" style="height:60px; border-radius:20px;padding-left:20px; display:flex; flex-direction:column; justify-content:center">
+                        <div class="container-img" style="height:80px; border-radius:20px;padding-left:20px; display:flex; flex-direction:column; justify-content:center" onclick="screenImg('${e.target.result}')">
                             <div style="display:flex; align-items:center; column-gap:20px">
-                                <img style="max-width:80px" src='${e.target.result}' alt='${file.name}'>
+                                <img style="max-width:30px" src='${e.target.result}' alt='${file.name}'>
                                 <span>${file.name}</span>
                             </div>
                         </div>
                             `
     }
     reader.readAsDataURL(file) // para iniciar a leitura
+}
+
+
+function screenImg(url){
+    
+    const containerImgModa = document.querySelector('.container-img-modal')
+    modal.style.visibility = "visible"
+    containerImgModa.innerHTML = `<img src='${url}' />'`
+}
+
+function closeModal(){
+    modal.style.visibility = "hidden"
 }
