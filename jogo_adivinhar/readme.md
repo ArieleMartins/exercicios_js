@@ -8,7 +8,7 @@
 ![CIniciando_partida](https://user-images.githubusercontent.com/83427685/202761598-4f2b09c1-e6df-43d6-b342-d0ec5d8532aa.png)
 
 <h2 align="center">Começou o Jogo</h2>
-<p align="center" style="padding:20px; font-size:16px">Enquanto o usuário tenta adivinhar o jogo vai dando dicas, como: se o núumero enviado é maior ou menor que o número pensado pela máquina. E o usuário pode ver a quantidade de acertos que ele fez</p>
+<p align="center" style="padding:20px; font-size:16px">Enquanto o usuário tenta adivinhar, o jogo vai dando dicas, como: se o número enviado é maior ou menor que o número pensado pela máquina. E o usuário pode ver a quantidade de acertos que ele fez</p>
 
 ![comecou_jogo](https://user-images.githubusercontent.com/83427685/202761606-ef337b3d-ef3d-4e73-8dc9-b666be129ce6.png)
 
@@ -20,7 +20,7 @@
 <h1 align="center">FUNÇÕES 🛠 </h1>
 <ul style="padding:20px; font-size:16px">
     <li>O usuário pode colocar até que número a máquina pode pensar e a quantidade de tentativas</li>
-    <li>As tentativas não podem ser menores que 3 e não podem ser maiores que o número limite, adicionado pelo usuário, que a máquina pode pensar</li>
+    <li>O número de tentativas não pode ser menor que 3 e maior que o número limite que a maquina pode pensar</li>
     <li>Usuário adivinhando: ao clicar para enviar, o número não pode ser maior que o número limite que a máquina pode pensar e não pode ser negativo</li>
 </ul>
 <h1 align="center">O QUE USEI E APRENDI 📖</h1>
