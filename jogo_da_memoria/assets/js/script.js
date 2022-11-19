@@ -41,9 +41,21 @@ const createCard =  function(urlImage){
 }
 
 
-function loadGame(){
+
+function shiffledUrlsCapture(){
+    var urlsShiffledSix = []
     
-    const duplicateUrls = [ ... urlImages, ... urlImages]
+    const shiffledUrls = urlImages.sort(() => Math.floor(Math.random() * 5))
+
+    for (var index = 0; index < 9; index++){
+        urlsShiffledSix.push(shiffledUrls[index])
+    }
+
+    return urlsShiffledSix
+}
+function loadGame(){
+    const urls = shiffledUrlsCapture()
+    const duplicateUrls = [ ... urls, ... urls]
 
     const shiffledUrls = duplicateUrls.sort(() => Math.floor(Math.random() * 5))
     
