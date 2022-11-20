@@ -65,6 +65,13 @@ const conteudo = [
         href: 'https://arielemartins.github.io/exercicios_js/Contador/',
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/Contador'
     },
+    {
+        img:'https://user-images.githubusercontent.com/83427685/202924047-ae86e060-ca27-43b6-8cdc-91b453f6103c.png',
+        alt: 'Jogo da Memória',
+        desc: {name: 'Jogo da Memória', desc: 'Jogo da memória utilizando api Rick and Morty e Pokemon para os temas das cartas'},
+        href: 'https://arielemartins.github.io/exercicios_js/jogo_da_memoria/',
+        github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/jogo_da_memoria'
+    },
 ]
 
 var slideIndex = 1
