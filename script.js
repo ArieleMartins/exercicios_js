@@ -8,7 +8,14 @@ const conteudo = [
         desc: {name: 'AluraFlix', desc: 'Projeto feito durante a imersão dev Alura. Site onde você pode adicionar capas de seus filmes/séries/hqs favoritos e separa-los por genêro.'},
         href: 'https://arielemartins.github.io/exercicios_js/aluraFlix_imers%C3%A3oDev/"',
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/aluraFlix_imers%C3%A3oDev'
-    }, 
+    },
+    {
+        img:'https://user-images.githubusercontent.com/83427685/202924047-ae86e060-ca27-43b6-8cdc-91b453f6103c.png',
+        alt: 'Jogo da Memória',
+        desc: {name: 'Jogo da Memória', desc: 'Jogo da memória utilizando api Rick and Morty e Pokemon para os temas das cartas'},
+        href: 'https://arielemartins.github.io/exercicios_js/jogo_da_memoria/',
+        github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/jogo_da_memoria'
+    },
     {
         img: 'https://user-images.githubusercontent.com/83427685/202807366-e4281a64-66fd-4dbd-be74-f3a998d12204.png',
         alt: 'Projeto WebConversor - Projeto onde possui diversos conversores',
@@ -65,13 +72,7 @@ const conteudo = [
         href: 'https://arielemartins.github.io/exercicios_js/Contador/',
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/Contador'
     },
-    {
-        img:'https://user-images.githubusercontent.com/83427685/202924047-ae86e060-ca27-43b6-8cdc-91b453f6103c.png',
-        alt: 'Jogo da Memória',
-        desc: {name: 'Jogo da Memória', desc: 'Jogo da memória utilizando api Rick and Morty e Pokemon para os temas das cartas'},
-        href: 'https://arielemartins.github.io/exercicios_js/jogo_da_memoria/',
-        github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/jogo_da_memoria'
-    },
+    
 ]
 
 var slideIndex = 1
