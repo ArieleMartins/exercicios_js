@@ -36,11 +36,12 @@ body{
     width: 100% !important;
     display: flex;
     align-items: center;
+    visibility: hidden;
 
 }
 
 .container-main header{
-    width: 80vw;
+    width: 70vw;
     background-color: var(--bg-color-modal);
     padding: 20px;
     border-radius: 10px;
@@ -56,11 +57,9 @@ body{
 }
 .card{
     background-color: var(--bg-color-modal);
-    
     position: relative;
     transition: all 0.5s ease;
     transform-style: preserve-3d;
-   
 }
 .card,.face{
     width: 150px;
@@ -81,9 +80,27 @@ body{
     background-image: url('../img/memory.png');
 }
 
-.card:hover{
+.rotate-card{
     transform: rotateY(180deg);
 }
+
+.card-equals{
+    animation: animation 1s ease-in-out forwards;
+}
+
+
+
+@keyframes animation{
+    from{
+        filter: saturate(1);
+        opacity: 1;
+    }
+    to{
+        filter: saturate(0);
+        opacity: 0.5;
+    }
+}
+
 .face{
     position: absolute;
     cursor: pointer;
@@ -99,10 +116,10 @@ body{
 .modal{
     background-color: var(--bg-color-modal);
     width: 100%;
-    max-width: 484px;
-    height: 70vh;
+    max-width: 504px;
+    
     border-radius: 20px;
-    padding: 10px;
+    padding: 20px;
     
 }
 
@@ -178,4 +195,16 @@ body{
 
 input[type="radio"]:checked + label, .container-btn button:hover{
     color: var(--border-color);
+}
+
+.winner{
+    color: green;
+    
+}
+.timerWinner{
+    color: white;
+}
+.timerWinner, .winner{
+    text-align: center;
+    font-size: 1.6rem;
 }
