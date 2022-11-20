@@ -1,10 +1,11 @@
-const url = 'https://rickandmortyapi.com/api/character'
 const containerCards = document.querySelector(".container-cards")
 const play = document.getElementById("play")
 const modal = document.querySelector('.container')
 const main = document.querySelector('.container-main')
 const spanTimer = document.querySelector('.timer')
 
+var url = ''
+var theme = true
 var firstCard = ''
 var secondCard = ''
 var urlImages = []
@@ -17,17 +18,36 @@ async function acessUrl(){
     try{
         const response = await fetch(url)
         const dataJson = await response.json()
-        
-        for (const data of dataJson.results){
-            urlImages.push(data.image)
+
+        if(theme){
+            for (const data of dataJson.results){
+                urlImages.push(data.image)
+            }
+        }else{
+            for (const data of dataJson.results){
+                await acessUrlPokemon(data.url)
+            }      
         }
     }
     catch (e){
         console.log('Opa.. Deu erro')
     }
+
     return urlImages
    
 }
+
+async function acessUrlPokemon(url){
+    try{
+        const response = await fetch(url)
+        const dataJson = await response.json()
+        urlImages.push(dataJson.sprites.front_default)
+    }
+    catch (e){
+        console.log('Opa.. Deu erro')
+    }
+}
+
 
 const createElement = function(tag, className){
     const element = document.createElement(tag)
@@ -39,8 +59,18 @@ const createCard =  function(urlImage){
     const card =  createElement('div', 'card')
     const front = createElement('div', 'face front')
     const back = createElement('div', 'face back')
-
+    if(theme){
+        back.style.backgroundImage =`url('assets/img/rickandmorty.png')`
+    }else{
+        back.style.backgroundImage =`url('assets/img/pokemon.png')`
+    }
+   
     front.style.backgroundImage =`url('${urlImage}')`
+
+    
+    
+    
+
     card.addEventListener('click', rotateCard)
     card.appendChild(front)
     card.appendChild(back)
@@ -82,10 +112,13 @@ function createCardAddImageCard(urls){
 }
 
 play.addEventListener('click', async function (){
+    urlImages = []
     modal.style.visibility = 'hidden'
     main.style.visibility = 'visible'
     main.lastElementChild.innerHTML = ''
     spanTimer.innerText = '0:00'
+   
+    await checkTheme()
     await acessUrl()
     await loadGame()
     await startTimer()
@@ -193,4 +226,18 @@ function visibleModalWinner(){
     spanTimerWinner.innerText = timerValue
     
 }
+
+async function checkTheme(){
+    const radioThemePokemon = document.getElementById("pokemon")
+    const radioThemeRickMorty = document.getElementById("rickmorty")
+
+    if(radioThemePokemon.checked){
+        theme = false
+        url = 'https://pokeapi.co/api/v2/pokemon?limit=50'
+    }else if(radioThemeRickMorty.checked){
+        theme = true
+        url = 'https://rickandmortyapi.com/api/character'
+    }
+}
+
 

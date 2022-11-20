@@ -67,7 +67,6 @@ body{
     border-radius: 10px;
 }
 .back{
-    background-image: url('../img/rickandmorty.png');
     backface-visibility: hidden;
 }
 .back, .front{
@@ -77,7 +76,6 @@ body{
 .front{
     border-radius: 20px;
     transform: rotateY(180deg);
-    background-image: url('../img/memory.png');
 }
 
 .rotate-card{
