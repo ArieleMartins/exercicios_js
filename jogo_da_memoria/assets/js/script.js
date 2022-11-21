@@ -3,11 +3,23 @@ const play = document.getElementById("play")
 const modal = document.querySelector('.container')
 const main = document.querySelector('.container-main')
 const spanTimer = document.querySelector('.timer')
+const containerCustomize = document.querySelector('.container-customize')
+const menuNormal = document.getElementById('normal')
+const menuCustomize = document.getElementById('customize')
+const numberAttemps = document.getElementById('number-attempts')
+const inputRange = document.getElementById('range-cards')
+
 
 var theme = true
 var firstCard = ''
 var secondCard = ''
 var urlImages = []
+
+var numberCaptureAttempts = 25
+var attempts = 0
+var cards = 9
+var dificult = false
+var numberCards
 
 var timerValueSeconds = 0
 var timerValueMinuts = 0
@@ -39,7 +51,7 @@ async function acessUrlPokemon(url){ // acessar as urls que a url do pokemon pas
     try{
         const response = await fetch(url)
         const dataJson = await response.json()
-        urlImages.push(dataJson.sprites.front_default)
+        await urlImages.push(dataJson.sprites.front_default)
     }
     catch (e){
         console.log('Opa.. Deu erro')
@@ -79,8 +91,14 @@ function shiffledUrlsCapture(){ // enbaralhando as urls e pegando somente seis d
     var urlsShiffledSix = []
     
     const shiffledUrls = urlImages.sort(() => Math.floor(Math.random() * 5))
+    
+    if(dificult){
+        numberCards = cards  + 1 
+    }else{
+        numberCards = 9
+    }
 
-    for (var index = 0; index < 9; index++){
+    for (var index = 0; index < numberCards; index++){
         urlsShiffledSix.push(shiffledUrls[index])
     }
 
@@ -105,16 +123,29 @@ function createCardAddImageCard(urls){ // criando e adicionando a url no element
 }
 
 play.addEventListener('click', async function (){ // quando o usuário aperta play
-    urlImages = [] // zerar as urls
-    modal.style.visibility = 'hidden' // esconder o modal
-    main.style.visibility = 'visible' // deixar o contianer principal visivel
-    main.lastElementChild.innerHTML = '' // zerar o container cards
-    spanTimer.innerText = '0:00' // zerar o timer
-   
-    const url = await checkTheme()
-    await acessUrl(url)
-    await loadGame()
-    await startTimer()
+    if(Number(numberAttemps.value) > Number(inputRange.value * 2)){
+        visibilityModalError()
+    }else{
+        attempts = 0
+        urlImages = [] // zerar as urls
+        modal.style.visibility = 'hidden' // esconder o modal
+        main.style.visibility = 'visible' // deixar o contianer principal visivel
+        spanTimer.innerText = '0:00' // zerar o timer
+        timerValueMinuts = 0
+        timerValueSeconds = 0
+    
+    
+        if(dificult){
+                numberCaptureAttempts = Number(numberAttemps.value)
+                cards = Number(inputRange.value)
+        }
+        
+        visibilityCustomize('normal')
+        const url = await checkTheme()
+        await acessUrl(url)
+        await loadGame()
+        await startTimer()
+    }
 })
 
 
@@ -124,9 +155,14 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     checkNumberCard(card) 
 
     if(winnerGame()){
+        containerCards.innerHTML = ''
         main.style.visibility = 'hidden'
         clearInterval(timer) // parar o timer
         setTimeout(visibleModalWinner, 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
+    }else if(attempts == numberCaptureAttempts){
+        containerCards.innerHTML = ''
+        main.style.visibility = 'hidden'
+        setTimeout(visibleModalFail, 700)
     }
     
 }
@@ -157,12 +193,19 @@ function checkCards(first, second){ // verificando se as cartas selecionadas sã
     const childrenSecondFront = second.children[0] 
     const urlImageFirstCard = window.getComputedStyle(childrenFirstFront).getPropertyValue('background-image') // pegando o valor da propriedade css background-image
     const urlImageSecondCard = window.getComputedStyle(childrenSecondFront).getPropertyValue('background-image')
+    const spanAttempts = document.querySelector('.attempts')
 
     const checkUrls = urlImageFirstCard == urlImageSecondCard ? true : false // vericando se são iguais
 
     if(checkUrls){ // se for execute
         cardsEquals(first, second)
     }else{ // senao execute
+        if(dificult){
+            attempts += 1
+            spanAttempts.innerText = attempts
+        }else{
+            spanAttempts.innerText = ''
+        }
         setTimeout(cardsNotEquals, 500)     
     }
 
@@ -186,7 +229,7 @@ function cardsEquals(first, second){ // se elas forem iguais faça
 function winnerGame(){ // verificar se o usuário conseguiu achar os pares de todas as cartas
     const cardsEquals = document.querySelectorAll('.card-equals')
 
-   if(cardsEquals.length == 18){
+   if(cardsEquals.length == (numberCards * 2)){
         return true
    }
 }
@@ -214,10 +257,19 @@ function visibleModalWinner(){ // se ele ganhou faça
     modal.style.visibility = 'visible'
     const spanWinner = document.querySelector('.winner')
     const spanTimerWinner = document.querySelector('.timerWinner')
-    spanWinner.innerText = "PARABÉNS !!! VOCÊ CONSEGUIU!!!"
-
+    spanWinner.style.color = 'green'
+    spanWinner.innerText = "PARABÉNS !!! VOCÊ CONSEGUIU!!!" 
     spanTimerWinner.innerText = timerValue
     
+}
+
+function visibleModalFail(){
+    modal.style.visibility = 'visible'
+    const spanWinner = document.querySelector('.winner')
+    const spanTimerWinner = document.querySelector('.timerWinner')
+    spanWinner.style.color = 'red'
+    spanWinner.innerText = "PERDEU!!! 😭"
+    spanTimerWinner.innerText = timerValue
 }
 
 async function checkTheme(){ // verificar o tema selecionado pelo usuário
@@ -230,9 +282,60 @@ async function checkTheme(){ // verificar o tema selecionado pelo usuário
         return url
     }else if(radioThemeRickMorty.checked){
         theme = true
-        var url = 'https://rickandmortyapi.com/api/character'
+        var url = 'https://rickandmortyapi.com/api/character/?page=2'
         return url
     }
 }
 
+// menu
 
+menuNormal.addEventListener('click', () =>{
+    visibilityCustomize('normal')
+    numberAttemps.value = '16'
+    dificult = false
+})
+
+menuCustomize.addEventListener('click', () =>{
+    visibilityCustomize('customize')
+    numberAttemps.value = '16'
+    inputRange.value = '8'
+    dificult = true
+})
+
+inputRange.addEventListener("input", () =>{
+    const spanNumberCards = document.querySelector(".cards")
+    spanNumberCards.innerText = inputRange.value
+})
+
+function visibilityCustomize(menuDificult){
+    if(menuDificult == 'normal'){
+        menuNormal.classList.add('active')
+        menuCustomize.classList.remove("active")
+        containerCustomize.classList.remove('customize')
+        containerCustomize.classList.add('normal')
+    }else{
+        menuCustomize.classList.add('active')
+        menuNormal.classList.remove("active")
+        containerCustomize.classList.add('customize')
+        containerCustomize.classList.remove('normal')
+    }
+}
+
+function visibilityModalError(){
+    const  modalError = document.querySelector('.modal-error')
+    modalError.style.visibility = 'visible'
+    var widthBarErro = 10
+    const barErro = document.querySelector('.loading-bar')
+    var timerError = setInterval(() => {
+        widthBarErro += 10
+
+        barErro.style.width = `${widthBarErro}%`
+
+        if(widthBarErro >= 100){
+            clearInterval(timerError)
+            modalError.style.visibility = 'hidden'
+            barErro.style.width = `0%`
+        }
+    }, 500);
+
+}

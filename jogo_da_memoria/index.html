@@ -13,6 +13,7 @@
     <main class="container-main">
         <header>
             <h2 class="theme">Rick and Morty</h2>
+            <span class="attempts"></span>
             <span class="timer">0:00</span>
         </header>
         <div class="container-cards">
@@ -38,8 +39,33 @@
                     <label for="pokemon" class="label-radio">Pokémon</label>
                 </div>
             </div>
+            <div class="container-dificult">
+                <h2>Dificuldade</h2>
+                <ul>
+                    <li id="normal" class="active">Normal</li>
+                    <li  id="customize">Personalizada</li>
+                </ul>
+            </div>
+            <div class="container-customize normal">
+                <div class="container-option">
+                    <label for="range-cards">Quantidade de cartas: <span class="cards">8</span></label>
+                    <input type="range" id="range-cards" min="8" step="4" max="16" value="0">
+                </div>
+                <div class="container-option">
+                    <label for="number-attempts">Quantidade de tentativas</label>
+                    <input type="number" id="number-attempts" min="16" value="0">
+                </div>
+            </div>
             <div class="container-btn">
                 <button id="play">Play</button>
+            </div>
+        </div>
+        <div class="modal-error">
+            <div class="container-message">
+                <span>Número de Tentativas Inválido</span>
+                <span>Maior que 2x o número de cartas</span>
+            </div>
+            <div class="loading-bar">
             </div>
         </div>
     </div>
