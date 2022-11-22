@@ -30,6 +30,8 @@ var checkRangeTimer = false
 var timer 
 var timerValue
 
+checkboxTimer.checked = false
+
 async function acessUrl(url){ // metodo para acessar as urls
     try{
         const response = await fetch(url)

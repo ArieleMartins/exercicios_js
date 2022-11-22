@@ -10,7 +10,7 @@ const conteudo = [
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/aluraFlix_imers%C3%A3oDev'
     },
     {
-        img:'https://user-images.githubusercontent.com/83427685/202924047-ae86e060-ca27-43b6-8cdc-91b453f6103c.png',
+        img:'https://user-images.githubusercontent.com/83427685/203377046-de251bfc-b7fb-41bd-a552-6e8a894af580.png',
         alt: 'Jogo da Memória',
         desc: {name: 'Jogo da Memória', desc: 'Jogo da memória utilizando api Rick and Morty e Pokemon para os temas das cartas'},
         href: 'https://arielemartins.github.io/exercicios_js/jogo_da_memoria/',
