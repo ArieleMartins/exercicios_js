@@ -305,6 +305,7 @@ input[type="radio"]:checked + label,
     width: 70px;
     padding: 5px;
     margin: auto;
+    background-color: white;
 }
 
 .cards{
