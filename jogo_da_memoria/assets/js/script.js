@@ -28,6 +28,7 @@ var timerValueMinuts = 0
 var checkFloatRangeTimer = false
 var checkRangeTimer = false 
 var timer 
+var timerValue
 
 async function acessUrl(url){ // metodo para acessar as urls
     try{
@@ -156,15 +157,17 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
 
 const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     const card = target.parentNode // pegando o elemento pai
-
+    
     checkNumberCard(card) 
 
     if(winnerGame()){
         clearInterval(timer) // parar o timer
         setTimeout(visibleModalWinner, 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
-    }else if(attempts == numberCaptureAttempts){
+    }else if(attempts >= numberCaptureAttempts){
+        clearInterval(timer)
         setTimeout(visibleModalFail, 700)
     }
+    
     
 }
 
@@ -203,7 +206,7 @@ function checkCards(first, second){ // verificando se as cartas selecionadas sã
     }else{ // senao execute
         if(dificult){
             attempts += 1
-            spanAttempts.innerText = attempts
+            spanAttempts.innerHTML = `<span> Tentativas: <span class="value-attempts">${attempts}</span></span>`
         }else{
             spanAttempts.innerText = ''
         }
@@ -237,8 +240,8 @@ function winnerGame(){ // verificar se o usuário conseguiu achar os pares de to
 
 function startTimer(){ // iniciando o timer
     timer = setInterval(()=>{
-        var value = Number(spanTimer.innerText.replace(`${timerValueMinuts}:`, ''))
-        var seconds = value + 1
+        var valueSpanTimer = Number(spanTimer.innerText.replace(`${timerValueMinuts}:`, ''))
+        var seconds = valueSpanTimer + 1
         if(seconds == 60){
             timerValueMinuts += 1
             seconds = 0
@@ -255,7 +258,7 @@ function startTimer(){ // iniciando o timer
             checkFloatRangeTimer = (timerValueMinuts >= Number(rangeTimer.value.replace('.5', ''))  && timerValueMinuts != 0) && seconds >= Number(`${rangeTimer.value.replace(`${rangeTimer.value.replace('.5', '')}.`, '')}0`)
             checkRangeTimer = timerValueMinuts >= Number(rangeTimer.value) && timerValueMinuts != 0
             checkSecondsRangeTimer = Number(rangeTimer.value.replace('0.', '')) == seconds && Number(rangeTimer.value.replace('0.', '')) > seconds || (Number(rangeTimer.value.replace('0.', '') + '0')  == seconds && Number(rangeTimer.value.replace('0.', '')) == 5)
-            console.log(Number(rangeTimer.value.replace('0.', '')))
+
             if(checkFloatRangeTimer || checkRangeTimer || checkSecondsRangeTimer){
                 clearInterval(timer)
                 setTimeout(visibleModalFail, 500)
@@ -308,13 +311,13 @@ async function checkTheme(){ // verificar o tema selecionado pelo usuário
 
 menuNormal.addEventListener('click', () =>{
     visibilityCustomize('normal')
-    numberAttemps.value = '16'
+    numberAttemps.value = '10'
     dificult = false
 })
 
 menuCustomize.addEventListener('click', () =>{
     visibilityCustomize('customize')
-    numberAttemps.value = '16'
+    numberAttemps.value = '10'
     inputRange.value = '8'
     dificult = true
 })
