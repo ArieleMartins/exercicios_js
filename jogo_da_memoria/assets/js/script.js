@@ -25,6 +25,8 @@ var dificult = false
 var numberCards
 
 var timerValueMinuts = 0
+var checkFloatRangeTimer = false
+var checkRangeTimer = false 
 var timer 
 
 async function acessUrl(url){ // metodo para acessar as urls
@@ -128,6 +130,8 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
     if(Number(numberAttemps.value) > Number(inputRange.value * 2)){
         visibilityModalError()
     }else{
+        checkFloatRangeTimer = false
+        checkRangeTimer = false
         attempts = 0
         urlImages = [] // zerar as urls
         modal.style.visibility = 'hidden' // esconder o modal
@@ -154,7 +158,7 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     const card = target.parentNode // pegando o elemento pai
 
     checkNumberCard(card) 
-    
+
     if(winnerGame()){
         clearInterval(timer) // parar o timer
         setTimeout(visibleModalWinner, 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
@@ -247,10 +251,12 @@ function startTimer(){ // iniciando o timer
 
         spanTimer.innerText = `${timerValueMinuts}:${secondsString}`
         timerValue = spanTimer.innerText
-        if(dificult){
-            const checkFloatRangeTimer = timerValueMinuts >= Number(rangeTimer.value.replace('.5', '')) && seconds >= Number(`${rangeTimer.value.replace(`${rangeTimer.value.replace('.5', '')}.`, '')}0`)
-            const checkRangeTimer = timerValueMinuts >= Number(rangeTimer.value)
-            if(checkFloatRangeTimer || checkRangeTimer){
+        if(dificult && checkboxTimer.checked){
+            checkFloatRangeTimer = (timerValueMinuts >= Number(rangeTimer.value.replace('.5', ''))  && timerValueMinuts != 0) && seconds >= Number(`${rangeTimer.value.replace(`${rangeTimer.value.replace('.5', '')}.`, '')}0`)
+            checkRangeTimer = timerValueMinuts >= Number(rangeTimer.value) && timerValueMinuts != 0
+            checkSecondsRangeTimer = Number(rangeTimer.value.replace('0.', '')) == seconds && Number(rangeTimer.value.replace('0.', '')) > seconds || (Number(rangeTimer.value.replace('0.', '') + '0')  == seconds && Number(rangeTimer.value.replace('0.', '')) == 5)
+            console.log(Number(rangeTimer.value.replace('0.', '')))
+            if(checkFloatRangeTimer || checkRangeTimer || checkSecondsRangeTimer){
                 clearInterval(timer)
                 setTimeout(visibleModalFail, 500)
             }
