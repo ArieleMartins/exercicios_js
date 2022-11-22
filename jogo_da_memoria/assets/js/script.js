@@ -1,6 +1,6 @@
 import { acessUrl as api } from "./modules/api.js"
 import { visibilityModalError } from "./modules/modal.js"
-import { startTimer } from "./modules/timer.js" 
+import { startTimer } from "./modules/timer.js"
 import { checkTheme, themeStyle } from "./modules/theme.js"
 import { createCardAddImageCard } from "./modules/cards.js"
 

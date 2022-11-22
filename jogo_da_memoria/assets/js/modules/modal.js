@@ -1,5 +1,3 @@
-
-
 const spanWinner = document.querySelector('.winner')
 const spanTimerWinner = document.querySelector('.timerWinner')
 
