@@ -12,6 +12,8 @@
     --font-family: 'Inconsolata', monospace;
     --bg-radio: rgba(0, 0, 0, 0.37);
     --border-color: #e79898;
+    --bg-color-error: #794545;
+    --bg-color-bar:#b88484;
 }
 
 html, 
@@ -27,7 +29,7 @@ body{
 
 .container,
 .container-logo-title,
-.container-radio{
+.container-radio, .container-number-timer{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,7 +129,8 @@ body{
 .container-main,
 .container-dificult,
 .container-customize,
-.container-option{
+.container-option, 
+.container-timer{
     display: flex;
     flex-direction: column;
 }
@@ -136,7 +139,8 @@ body{
 .modal,
 .container-dificult,
 .container-option,
-.container-customize{
+.container-customize,
+.container-timer{
     row-gap: 15px;
 }
 
@@ -236,6 +240,42 @@ input[type="radio"]:checked + label,
     color: var(--bg-color);
 }
 
+.container-options{
+    display: flex;
+    column-gap: 20px;
+    padding: 10px;
+}
+
+.container-number-timer{
+    column-gap: 10px;
+}
+
+#range-timer, .range-timer{
+    visibility: hidden;
+}
+
+.range-timer{
+    color: var(--border-color);
+}
+
+.number-timer{
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: var(--bg-color);
+    border-radius: 3px;
+    position: relative;
+    
+}
+
+.number-timer:checked{
+    border: 2px solid var(--border-color);
+    background-image: url('../img/Vector.svg');
+    background-size: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 .customize{
     height: 150px;
     animation: animationCustomize 3s ease-in forwards;
@@ -259,7 +299,7 @@ input[type="radio"]:checked + label,
 
 .container-customize input[type='number']{
     width: 70px;
-    padding: 10px;
+    padding: 5px;
     margin: auto;
 }
 
@@ -274,7 +314,7 @@ input[type="radio"]:checked + label,
     display: flex;
     flex-direction: column;
     width: 20vw;
-    background-color: #794545;
+    background-color: var(--bg-color-error);
     height: 100px;
     border-radius: 5px;
     visibility: hidden;
@@ -291,7 +331,7 @@ input[type="radio"]:checked + label,
 }
 .loading-bar{
     width: 0%;
-    background-color: #b88484;
+    background-color: var(--bg-color-bar);
     height: 3px;
     border-bottom-left-radius: 5px;
     transition: all 0.5s linear;

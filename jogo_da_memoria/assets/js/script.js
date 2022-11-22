@@ -8,6 +8,9 @@ const menuNormal = document.getElementById('normal')
 const menuCustomize = document.getElementById('customize')
 const numberAttemps = document.getElementById('number-attempts')
 const inputRange = document.getElementById('range-cards')
+const checkboxTimer = document.getElementById('numberTimer')
+const rangeTimer = document.getElementById('range-timer')
+const spanRangeTimer = document.querySelector('.range-timer')
 
 
 var theme = true
@@ -21,7 +24,6 @@ var cards = 9
 var dificult = false
 var numberCards
 
-var timerValueSeconds = 0
 var timerValueMinuts = 0
 var timer 
 
@@ -132,12 +134,11 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
         main.style.visibility = 'visible' // deixar o contianer principal visivel
         spanTimer.innerText = '0:00' // zerar o timer
         timerValueMinuts = 0
-        timerValueSeconds = 0
     
     
         if(dificult){
-                numberCaptureAttempts = Number(numberAttemps.value)
-                cards = Number(inputRange.value)
+            numberCaptureAttempts = Number(numberAttemps.value)
+            cards = Number(inputRange.value)
         }
         
         visibilityCustomize('normal')
@@ -153,15 +154,11 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     const card = target.parentNode // pegando o elemento pai
 
     checkNumberCard(card) 
-
+    
     if(winnerGame()){
-        containerCards.innerHTML = ''
-        main.style.visibility = 'hidden'
         clearInterval(timer) // parar o timer
         setTimeout(visibleModalWinner, 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
     }else if(attempts == numberCaptureAttempts){
-        containerCards.innerHTML = ''
-        main.style.visibility = 'hidden'
         setTimeout(visibleModalFail, 700)
     }
     
@@ -250,10 +247,22 @@ function startTimer(){ // iniciando o timer
 
         spanTimer.innerText = `${timerValueMinuts}:${secondsString}`
         timerValue = spanTimer.innerText
+        if(dificult){
+            const checkFloatRangeTimer = timerValueMinuts >= Number(rangeTimer.value.replace('.5', '')) && seconds >= Number(`${rangeTimer.value.replace(`${rangeTimer.value.replace('.5', '')}.`, '')}0`)
+            const checkRangeTimer = timerValueMinuts >= Number(rangeTimer.value)
+            if(checkFloatRangeTimer || checkRangeTimer){
+                clearInterval(timer)
+                setTimeout(visibleModalFail, 500)
+            }
+        }
+        
     }, 1000)
+    
 }
 
 function visibleModalWinner(){ // se ele ganhou faça
+    containerCards.innerHTML = ''
+    main.style.visibility = 'hidden'
     modal.style.visibility = 'visible'
     const spanWinner = document.querySelector('.winner')
     const spanTimerWinner = document.querySelector('.timerWinner')
@@ -264,6 +273,8 @@ function visibleModalWinner(){ // se ele ganhou faça
 }
 
 function visibleModalFail(){
+    containerCards.innerHTML = ''
+    main.style.visibility = 'hidden'
     modal.style.visibility = 'visible'
     const spanWinner = document.querySelector('.winner')
     const spanTimerWinner = document.querySelector('.timerWinner')
@@ -339,3 +350,21 @@ function visibilityModalError(){
     }, 500);
 
 }
+
+// container customize checktimer
+
+checkboxTimer.addEventListener("click", ()=>{
+    if(checkboxTimer.checked){
+        spanRangeTimer.style.visibility = 'visible'
+        rangeTimer.style.visibility = 'visible'
+    }else{
+        spanRangeTimer.style.visibility = 'hidden'
+        rangeTimer.style.visibility = 'hidden'
+    }
+    
+})
+
+rangeTimer.addEventListener('input', ()=>{
+    spanRangeTimer.innerText = ` ${rangeTimer.value} minutos`
+})
+
