@@ -1,8 +1,9 @@
 var theme
+const radioThemePokemon = document.getElementById("pokemon")
+const radioThemeRickMorty = document.getElementById("rickmorty") 
 
 export async function checkTheme(){ // verificar o tema selecionado pelo usuário
-    const radioThemePokemon = document.getElementById("pokemon")
-    const radioThemeRickMorty = document.getElementById("rickmorty")
+   
     const subtitleTheme = document.querySelector('.theme')
 
     if(radioThemePokemon.checked){
@@ -13,7 +14,7 @@ export async function checkTheme(){ // verificar o tema selecionado pelo usuári
     }else if(radioThemeRickMorty.checked){
         theme = true
         subtitleTheme.innerText = "Rick and Morty"
-        var url = 'https://rickandmortyapi.com/api/character/?page=2'
+        var url = 'https://rickandmortyapi.com/api/character'
         return url
     }
 }
@@ -21,3 +22,6 @@ export async function checkTheme(){ // verificar o tema selecionado pelo usuári
 export function themeStyle(){
     return theme
 }
+
+radioThemeRickMorty.focus()
+

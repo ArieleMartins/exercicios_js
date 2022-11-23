@@ -1,6 +1,8 @@
 import { visibleModalFail, visibleModalWinner } from "./modal.js"
+import { themeStyle } from "./theme.js"
+import { returnNamesCharacters } from "./api.js"
 
-var theme
+
 var containerCards
 var firstCard = ''
 var secondCard = ''
@@ -8,10 +10,14 @@ var numberCards
 var dificult
 var attempts
 var numberCaptureAttempts
-var timer
+var timer 
 var main
 var modal
 var spanTimer
+var oldAltFirst 
+var oldAltSecond
+
+var altNumberCard = 1
 
 const createElement = function(tag, className){ // criando o elemento
     const element = document.createElement(tag)
@@ -23,25 +29,31 @@ const createCard =  function(urlImage){ // criando as cartas
     const card =  createElement('div', 'card')
     const front = createElement('div', 'face front')
     const back = createElement('div', 'face back')
-
+    const img = createElement('img', 'imageCard')
+    var theme = themeStyle()
+    
     if(theme){
         back.style.backgroundImage =`url('assets/img/rickandmorty.png')` 
     }else{
         back.style.backgroundImage =`url('assets/img/pokemon.png')`
     }
-   
-    front.style.backgroundImage =`url('${urlImage}')`
 
+    img.setAttribute('src', `${urlImage}`)
+    img.setAttribute('alt', `carta ${altNumberCard}`)
+
+    /* front.style.backgroundImage =`url('${urlImage}')` */
+    front.appendChild(img)
     card.addEventListener('click', rotateCard)
+    card.setAttribute('tabindex', '0')
     card.appendChild(front)
     card.appendChild(back)
-    
+    altNumberCard += 1
+
     return card
 }
 
-export function createCardAddImageCard(urls, themeMain, containerCardsMain, numberCardsMain, dificultMain, attemptsMain, timerMain, contianerMain, modalMain, spanTimerMain, numberCaptureAttemptsMain){ // criando e adicionando a url no element, e adicionando no container cards 
-
-    theme = themeMain
+export function createCardAddImageCard(urls, containerCardsMain, numberCardsMain, dificultMain, attemptsMain, timerMain, contianerMain, modalMain, spanTimerMain, numberCaptureAttemptsMain){ // criando e adicionando a url no element, e adicionando no container cards 
+   
     containerCards = containerCardsMain
     numberCards = numberCardsMain
     attempts = attemptsMain
@@ -59,9 +71,15 @@ export function createCardAddImageCard(urls, themeMain, containerCardsMain, numb
 }
 
 const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
-    const card = target.parentNode // pegando o elemento pai
-
-    checkNumberCard(card) 
+    
+    var card = target.parentNode // pegando o elemento pai
+    if(!card.classList.contains('card')){
+        card = target
+    }else{
+        var image = card.children[0].children[0].src
+    }
+    
+    checkNumberCard(card, image) 
 
     if(winnerGame()){
         clearInterval(timer) // parar o timer
@@ -72,24 +90,33 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     }     
 }
 
-function checkNumberCard(card){ // adicionando e verificando se foi seleciona duas cartas
+function checkNumberCard(card, image){ // adicionando e verificando se foi seleciona duas cartas
     if(!card.classList.contains('rotate-card')){ // se o elemento possui esta classe não faça
         const checkFirstCard = firstCard == '' ? true : false // verificando se a variavel esta vazia
         const checkSecondCard = secondCard == '' ? true : false
+        const objectNames = returnNamesCharacters()
 
         if(checkFirstCard){ // se estiver faça
-            if(!card.classList.contains('container-cards')){
+            if(!card.classList.contains('container-cards') && !card.classList.contains('imageCard')){
                 card.classList.add('rotate-card')
                 firstCard = card
+                oldAltFirst = firstCard.children[0].children[0].alt
             }
         }else if (checkSecondCard){ // senao se a segunda variavel estiver faça
-            if(!card.classList.contains('container-cards')){
+            if(!card.classList.contains('container-cards') && !card.classList.contains('imageCard')){
                 card.classList.add('rotate-card')
                 secondCard = card
+                oldAltSecond = secondCard.children[0].children[0].alt
             }
         }
 
-        const checkCardsAdd = !checkFirstCard && checkSecondCard // se as duas estiverem preenchidas
+        objectNames.map((element) =>{
+            if(element.image == image){
+                card.children[0].children[0].setAttribute('alt', `${element.name}`)
+            }
+        })
+
+        const checkCardsAdd = !checkFirstCard && (checkSecondCard  && !secondCard.classList.contains('container-cards'))// se as duas estiverem preenchidas
 
         if(checkCardsAdd){ // se for verdadeiro faça
             checkCards(firstCard, secondCard)
@@ -106,10 +133,15 @@ function winnerGame(){ // verificar se o usuário conseguiu achar os pares de to
 }
 
 function checkCards(first, second){ // verificando se as cartas selecionadas são iguais
-    const childrenFirstFront = first.children[0] // pegando o primeiro filho da card
-    const childrenSecondFront = second.children[0] 
-    const urlImageFirstCard = window.getComputedStyle(childrenFirstFront).getPropertyValue('background-image') // pegando o valor da propriedade css background-image
-    const urlImageSecondCard = window.getComputedStyle(childrenSecondFront).getPropertyValue('background-image')
+    const childrenFirstFront = first.children[0].children[0]// pegando o primeiro filho da card   
+    const childrenSecondFront = second.children[0].children[0] 
+    
+    const urlImageFirstCard = childrenFirstFront.src
+    const urlImageSecondCard = childrenSecondFront.src
+
+/*  const urlImageFirstCard = window.getComputedStyle(childrenFirstFront).getPropertyValue('background-image') // pegando o valor da propriedade css background-image
+    const urlImageSecondCard = window.getComputedStyle(childrenSecondFront).getPropertyValue('background-image') */
+
     const spanAttempts = document.querySelector('.attempts')
 
     const checkUrls = urlImageFirstCard == urlImageSecondCard ? true : false // vericando se são iguais
@@ -124,7 +156,7 @@ function checkCards(first, second){ // verificando se as cartas selecionadas sã
         }else{
             spanAttempts.innerText = ''
         }
-        setTimeout(cardsNotEquals, 500)     
+        setTimeout(cardsNotEquals, 500)
     }
 
 
@@ -134,6 +166,8 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
     if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
         firstCard.classList.remove("rotate-card")
         secondCard.classList.remove("rotate-card")
+        firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
+        secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
         firstCard = ''
         secondCard = ''
     }
@@ -141,7 +175,6 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
 
 function cardsEquals(first, second){ // se elas forem iguais faça
     if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
-        console.log(first.children[0])
         first.children[0].classList.add('card-equals')
         second.children[0].classList.add('card-equals')
         firstCard = ''

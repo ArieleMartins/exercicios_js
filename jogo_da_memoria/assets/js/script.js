@@ -13,6 +13,7 @@ const menuNormal = document.getElementById('normal')
 const menuCustomize = document.getElementById('customize')
 const numberAttemps = document.getElementById('number-attempts')
 const inputRange = document.getElementById('range-cards')
+const containerCustomize = document.querySelector('.container-customize')
 
 var theme = true
 var urlImages = []
@@ -50,7 +51,7 @@ function loadGame(){ // iniciando o jogo
 
     const shiffledUrls = duplicateUrls.sort(() => Math.random() - 0.5) // embaralhando novamente
    
-    createCardAddImageCard(shiffledUrls, theme, containerCards, numberCards, dificult, attempts, timer, main, modal, spanTimer, numberCaptureAttempts)
+    createCardAddImageCard(shiffledUrls, containerCards, numberCards, dificult, attempts, timer, main, modal, spanTimer, numberCaptureAttempts)
 }
 
 play.addEventListener('click', async function (){ // quando o usuário aperta play
@@ -110,7 +111,6 @@ inputRange.addEventListener("input", () =>{
 })
 
 function visibilityCustomize(menuDificult){
-    const containerCustomize = document.querySelector('.container-customize')
     if(menuDificult == 'normal'){
         menuNormal.classList.add('active')
         menuCustomize.classList.remove("active")
@@ -125,4 +125,47 @@ function visibilityCustomize(menuDificult){
 }
 
 
+window.addEventListener("keyup", (event) =>{
+    const checkVisibilityModal = window.getComputedStyle(modal).getPropertyValue('visibility') == 'visible' ? true : false
+    const checkVisibilityCustomize = window.getComputedStyle(containerCustomize).getPropertyValue('visibility') == 'visible' ? true : false
+    const checkTimerBox = checkVisibilityCustomize && event.target.classList.contains("number-timer")
+
+    if(checkVisibilityModal){
+        switch(event.target.id){
+            case 'normal':
+                clickEvent(event.key, menuNormal)
+                break
+            case 'customize':
+                clickEvent(event.key, menuCustomize)
+                break
+        }
+        if(checkTimerBox){
+            clickEvent(event.key, event.target)
+        }
+    } 
+})
+
+window.addEventListener("keydown", (event) =>{
+    const checkVisibilityMain = window.getComputedStyle(main).getPropertyValue('visibility') == 'visible' ? true : false
+
+    if(event.key == "ArrowRight"){
+        if(event.target.nextElementSibling != undefined){
+            event.target.nextElementSibling.focus()
+        }
+    }else if(event.key == 'ArrowLeft'){
+        if(event.target.previousElementSibling != undefined){
+            event.target.previousElementSibling.focus()
+        }
+    }
+
+    if(checkVisibilityMain){
+        clickEvent(event.key, event.target)
+    }
+})
+
+function clickEvent(key, element){
+    if(key == 'Enter'){
+        element.click()
+    }
+}
 
