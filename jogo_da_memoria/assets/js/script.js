@@ -29,8 +29,7 @@ var timer
 
 function shiffledUrlsCapture(){ // enbaralhando as urls e pegando somente seis delas
     var urlsShiffledSix = []
-    
-    const shiffledUrls = urlImages.sort(() => Math.floor(Math.random() * 5))
+    const shiffledUrls = urlImages.sort(() => Math.random() - 0.5)
     
     if(dificult){
         numberCards = cards 
@@ -46,11 +45,11 @@ function shiffledUrlsCapture(){ // enbaralhando as urls e pegando somente seis d
 }
 
 function loadGame(){ // iniciando o jogo
-    const urls = shiffledUrlsCapture() // pegando as seis urls embaralhadas
+    const urls = shiffledUrlsCapture() // pegando as urls embaralhadas
     const duplicateUrls = [ ... urls, ... urls] // duplicando-as
 
-    const shiffledUrls = duplicateUrls.sort(() => Math.floor(Math.random() * 5)) // embaralhando novamente
-    
+    const shiffledUrls = duplicateUrls.sort(() => Math.random() - 0.5) // embaralhando novamente
+   
     createCardAddImageCard(shiffledUrls, theme, containerCards, numberCards, dificult, attempts, timer, main, modal, spanTimer, numberCaptureAttempts)
 }
 
@@ -82,7 +81,6 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
         const url = await checkTheme()
         theme = themeStyle()
         await api(url, urlImages, theme)
-        /* await acessUrl(url) */
         timer = await startTimer(main, modal, containerCards, checkFloatRangeTimer, checkRangeTimer, timerValueMinuts, spanTimer, dificult )
         await loadGame()
         
@@ -125,9 +123,6 @@ function visibilityCustomize(menuDificult){
         containerCustomize.classList.remove('normal')
     }
 }
-
-
-
 
 
 

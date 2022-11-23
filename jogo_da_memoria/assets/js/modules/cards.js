@@ -78,11 +78,15 @@ function checkNumberCard(card){ // adicionando e verificando se foi seleciona du
         const checkSecondCard = secondCard == '' ? true : false
 
         if(checkFirstCard){ // se estiver faça
-            card.classList.add('rotate-card')
-            firstCard = card
+            if(!card.classList.contains('container-cards')){
+                card.classList.add('rotate-card')
+                firstCard = card
+            }
         }else if (checkSecondCard){ // senao se a segunda variavel estiver faça
-            card.classList.add('rotate-card')
-            secondCard = card
+            if(!card.classList.contains('container-cards')){
+                card.classList.add('rotate-card')
+                secondCard = card
+            }
         }
 
         const checkCardsAdd = !checkFirstCard && checkSecondCard // se as duas estiverem preenchidas
@@ -127,15 +131,20 @@ function checkCards(first, second){ // verificando se as cartas selecionadas sã
 }
 
 function cardsNotEquals(){ // se as cartas não forem iguais faça
-    firstCard.classList.remove("rotate-card")
-    secondCard.classList.remove("rotate-card")
-    firstCard = ''
-    secondCard = ''
+    if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
+        firstCard.classList.remove("rotate-card")
+        secondCard.classList.remove("rotate-card")
+        firstCard = ''
+        secondCard = ''
+    }
 }
 
 function cardsEquals(first, second){ // se elas forem iguais faça
-    first.children[0].classList.add('card-equals')
-    second.children[0].classList.add('card-equals')
-    firstCard = ''
-    secondCard = ''
+    if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
+        console.log(first.children[0])
+        first.children[0].classList.add('card-equals')
+        second.children[0].classList.add('card-equals')
+        firstCard = ''
+        secondCard = ''
+    }
 }
