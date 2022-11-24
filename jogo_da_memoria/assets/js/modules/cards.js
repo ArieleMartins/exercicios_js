@@ -81,20 +81,21 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     }else{
         var image = card.children[0].children[0].src
     }
-    
-    checkNumberCard(card, image) 
 
-    if(winnerGame()){
-        clearInterval(timer) // parar o timer
-        setTimeout(visibleModalWinner(main, modal, containerCards, spanTimer), 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
-    }else if((attempts >= numberCaptureAttempts) && dificult){
-        clearInterval(timer)
-        setTimeout(visibleModalFail( main, modal, containerCards, spanTimer), 700)
-    }     
+    if(!card.classList.contains('rotate-card') && !card.classList.contains('name')){ // se o elemento possui esta classe não faça
+        checkNumberCard(card, image) 
+
+        if(winnerGame()){
+            clearInterval(timer) // parar o timer
+            setTimeout(visibleModalWinner(main, modal, containerCards, spanTimer), 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
+        }else if((attempts >= numberCaptureAttempts) && dificult){
+            clearInterval(timer)
+            setTimeout(visibleModalFail( main, modal, containerCards, spanTimer), 700)
+        }
+    }
 }
 
-function checkNumberCard(card, image){ // adicionando e verificando se foi seleciona duas cartas
-    if(!card.classList.contains('rotate-card')){ // se o elemento possui esta classe não faça
+function checkNumberCard(card, image){ // adicionando e verificando se foi seleciona duas cartas 
         const checkFirstCard = firstCard == '' ? true : false // verificando se a variavel esta vazia
         const checkSecondCard = secondCard == '' ? true : false
         const objectNames = returnNamesCharacters()
@@ -125,7 +126,6 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         if(checkCardsAdd){ // se for verdadeiro faça
             checkCards(firstCard, secondCard)
         }
-    }
 }
 
 function winnerGame(){ // verificar se o usuário conseguiu achar os pares de todas as cartas
