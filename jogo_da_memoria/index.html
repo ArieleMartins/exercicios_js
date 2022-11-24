@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Jogo da Memória - Treinando Javascript</title>
 </head>
@@ -17,11 +20,17 @@
             <span class="timer">0:00</span>
         </header>
         <div class="container-cards">
-            
+
         </div>
     </main>
     <div class="container">
         <div class="modal">
+            <div class="control-accessibility">
+                <button class="btn-modal-accessibility" id="accessibility-modal"
+                    aria-label="acessibilidade ativar audio">
+                    <i class="fa-sharp fa-solid fa-ear-listen"></i>
+                </button>
+            </div>
             <div class="container-logo-title">
                 <img src="assets/img/memory.png" alt="cérebro">
                 <h1 class="title">Jogo da Memória</h1>
@@ -30,24 +39,24 @@
             <span class="timerWinner"></span>
             <div class="container-radios">
                 <div class="container-radio">
-                    <input type="radio" id="rickmorty" name="checkbox-theme" class="radio" checked tabindex="0" >
-                    <label for="rickmorty" class="label-radio" >Rick and Morty</label>
+                    <input type="radio" id="rickmorty" name="checkbox-theme" class="radio" checked tabindex="0">
+                    <label for="rickmorty" class="label-radio">Rick and Morty</label>
                 </div>
                 <br>
-                <div class="container-radio" >
+                <div class="container-radio">
                     <input type="radio" id="pokemon" name="checkbox-theme" class="radio" tabindex="0">
-                    <label for="pokemon" class="label-radio" >Pokémon</label>
+                    <label for="pokemon" class="label-radio">Pokémon</label>
                 </div>
             </div>
             <div class="container-dificult">
                 <h2>Dificuldade</h2>
                 <ul>
                     <li id="normal" class="active" tabindex="0">Normal</li>
-                    <li  id="customize" tabindex="0">Personalizada</li>
+                    <li id="customize" tabindex="0">Personalizada</li>
                 </ul>
             </div>
             <div class="container-customize normal">
-                
+
                 <div class="container-options">
                     <div class="container-option">
                         <label for="number-attempts">Quantidade de tentativas</label>
@@ -63,10 +72,10 @@
                         <input type="checkbox" id="numberTimer" class="number-timer" tabindex="0">
                         <label for="number-timer">Timer<span class="range-timer"> 0.5 minutos</span></label>
                     </div>
-                    
+
                     <input type="range" min="0.50" max="2" step="0.5" value="0.50" id="range-timer" tabindex="0">
                 </div>
-                
+
             </div>
             <div class="container-btn">
                 <button id="play" tabindex="0">Play</button>
@@ -81,6 +90,30 @@
             </div>
         </div>
     </div>
+    <div class="container disabled">
+        <div class="modal align-text bg-color">
+            <div >
+                <span aria-label="Fechar" class="close" id="close">X</span>
+            </div>
+            <h1>Ativar Áudio</h1>
+            <p>Ativar a função de saida de som, para quando o usuário pressionar a carta ele ouvir o nome do
+                personagem</p>
+            <span class="text-check"> Verificar se o navegador tem suporte: <span
+                    class="result-check"></span></span>
+            <p class="alert-desc">Ao ativar o áudio será desativado o evento de alteração do texto alternativo das imagens (alt -
+                descrição do conteúdo da
+                imagem) quando o usuário pressionar a carta, pois pode se misturar com o som do leitor de tela.
+                A alteração do texto alternativo somente funcionará adequadamente se pressionado com o mouse, pois
+                com a tecla tab
+                o leitor de tela lerá somente um vez e para ele ler o texto alterando terá que passar com o leitor de
+                tela novamente
+                sobre a carta virada</p>
+            <button class="btn-active-accessibility" id="active-access">
+                Ativar
+            </button>
+        </div>
+    </div>
 </body>
 <script type="module" src="assets/js/script.js"></script>
+
 </html>

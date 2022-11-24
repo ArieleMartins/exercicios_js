@@ -1,5 +1,10 @@
 const spanWinner = document.querySelector('.winner')
 const spanTimerWinner = document.querySelector('.timerWinner')
+const accessbilityModal = document.getElementById('accessibility-modal')
+const close = document.getElementById('close')
+const modalAcces = document.querySelectorAll('.container')
+const btn = document.getElementById('active-access')
+var accessibility = false
 
 export function visibleModalWinner(main, modal, containerCards, spanTimer){  // se ele ganhou faça
     spanTimerWinner.innerText = spanTimer.innerText
@@ -36,4 +41,64 @@ export function visibilityModalError(){
         }
     }, 500);
 
+}
+
+accessbilityModal.addEventListener('click', () =>{
+    if(modalAcces[1].classList.contains('disabled')){
+        const result = document.querySelector(".result-check")
+        
+
+        if(accessibility){
+            btn.innerText = "Desativar"
+        }else{
+            btn.innerText = 'Ativar'
+        }
+        
+        modalAcces[0].style.visibility = 'hidden'
+        modalAcces[1].classList.remove('disabled')
+
+        if(window.speechSynthesis){
+            result.style.color = 'green'
+            result.innerText = "Possui Suporte"
+        }else{
+            result.style.color = 'red'
+            result.innerText = "Não possui Suporte"
+        }
+    }
+})
+
+close.addEventListener('click', () =>{
+    if(!modalAcces[1].classList.contains('disabled')){
+        modalAcces[0].style.visibility = 'visible'
+        modalAcces[1].classList.add('disabled') 
+    }
+})
+
+btn.addEventListener("click", () =>{
+    if(accessibility){
+        accessibility = false
+        btn.innerText = 'Ativar'
+        audioActive(false)
+    }else{
+        accessibility = true
+        btn.innerText = "Desativar"
+        audioActive(true)
+    }
+})
+
+
+function audioActive(active){
+    var msg = new SpeechSynthesisUtterance()
+
+    if(active){
+        msg.text = "Áudio Ativado"
+    }else{
+        msg.text = "Áudio Desativado"
+    }
+
+    window.speechSynthesis.speak(msg)
+}
+
+export function checkAudioActive(){
+    return accessibility
 }

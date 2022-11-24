@@ -12,8 +12,10 @@
     --font-family: 'Inconsolata', monospace;
     --bg-radio: rgba(0, 0, 0, 0.37);
     --border-color: #e79898;
+    --bg-color-btn: #d68787;
     --bg-color-error: #794545;
     --bg-color-bar:#b88484;
+    --bg-modal-accessibilty: #212125;
 }
 
 html, 
@@ -29,7 +31,10 @@ body{
 
 .container,
 .container-logo-title,
-.container-radio, .container-number-timer, .label-radio{
+.container-radio,
+.container-number-timer,
+.label-radio,
+.modal-accessibility{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,7 +90,6 @@ body{
     width: 100%;
     height: 200px;
     border-radius: 10px;
-   
 }
 
 .back{
@@ -102,6 +106,26 @@ body{
     border-radius: 20px;
     transform: rotateY(180deg);
     position: relative;
+}
+
+.front .imageCard{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    position: relative;
+    z-index: -2;
+}
+
+.name{
+    opacity: 0;
+    position:absolute;
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    font-size: 0.3rem;
+    width: 100%;
+    height: 130px;
+    border-radius: 20px;
 }
 
 .rotate-card{
@@ -225,7 +249,7 @@ input[type="radio"]:checked + label,
 
 .timerWinner,
 .winner,
-.container-dificult{
+.container-dificult, .align-text{
     text-align: center;
     font-size: 1rem;
     text-transform: uppercase;
@@ -386,22 +410,49 @@ input[type="radio"]:checked + label,
     }
 }
 
-.front .imageCard{
-    width: 100%;
-    height: 100%;
-    border-radius: 20px;
-    position: relative;
-    z-index: -2;
+.btn-modal-accessibility, .btn-active-accessibility{
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: var(--border-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    float: right;
 }
 
-.name{
-    opacity: 0;
-    position:absolute;
-    z-index: -1;
-    top: 0px;
-    left: 0px;
-    font-size: 0.3rem;
-    width: 100%;
-    height: 130px;
+.btn-modal-accessibility:hover, .btn-active-accessibility:hover{
+    background-color: var(--bg-color-btn);
+    color: white;
+}
+
+.btn-modal-accessibility{
+    border-radius: 50%;
+}
+
+.btn-active-accessibility{
     border-radius: 20px;
+}
+
+.close{
+    float: right;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.text-check{
+    color: var(--border-color);
+}
+
+.align-text .alert-desc{
+    text-align: justify;
+}
+
+.disabled{
+    visibility: hidden;
+}
+
+.bg-color{
+    background-color: var(--bg-modal-accessibilty);
+    border: 2px solid var(--border-color);
 }

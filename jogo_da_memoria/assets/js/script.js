@@ -152,7 +152,6 @@ window.addEventListener("keydown", (event) =>{
         if(event.target.nextElementSibling != undefined){
             event.target.nextElementSibling.focus()
         }
-        Som()
     }else if(event.key == 'ArrowLeft'){
         if(event.target.previousElementSibling != undefined){
             event.target.previousElementSibling.focus()
@@ -170,10 +169,3 @@ function clickEvent(key, element){
         
     }
 }
-
-function Som(){
-    var text  = new SpeechSynthesisUtterance();
-    text.text = 'Ola, tudo bem'
-    speechSynthesis.speak(text);
-}
-

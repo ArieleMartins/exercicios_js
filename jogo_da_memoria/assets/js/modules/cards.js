@@ -1,6 +1,7 @@
 import { visibleModalFail, visibleModalWinner } from "./modal.js"
 import { themeStyle } from "./theme.js"
 import { returnNamesCharacters } from "./api.js"
+import { checkAudioActive } from "./modal.js"
 
 
 var containerCards
@@ -87,10 +88,10 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
 
         if(winnerGame()){
             clearInterval(timer) // parar o timer
-            setTimeout(visibleModalWinner(main, modal, containerCards, spanTimer), 700) // depois de alguns milisegundo executar a funcao visiblemodalwinner
+            setTimeout(visibleModalWinner(main, modal, containerCards, spanTimer), 1000) // depois de alguns milisegundo executar a funcao visiblemodalwinner
         }else if((attempts >= numberCaptureAttempts) && dificult){
             clearInterval(timer)
-            setTimeout(visibleModalFail( main, modal, containerCards, spanTimer), 700)
+            setTimeout(visibleModalFail( main, modal, containerCards, spanTimer), 1000)
         }
     }
 }
@@ -113,11 +114,17 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
                 oldAltSecond = secondCard.children[0].children[0].alt
             }
         }
-
+        const checkAudio = checkAudioActive()
         objectNames.map((element) =>{
             if(element.image == image){
-                card.children[0].children[0].setAttribute('alt', `${element.name}`)
-                card.children[0].children[1].innerText =  `${element.name}`
+                if(checkAudio){
+                    if(card.classList.contains('rotate-card')){
+                        setTimeout(audioNameCard(element.name), 700)
+                    }
+                }else{
+                    card.children[0].children[0].setAttribute('alt', `${element.name}`)
+                    card.children[0].children[1].innerText =  `${element.name}`
+                }
             }
         })
 
@@ -170,10 +177,12 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
     if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
         firstCard.classList.remove("rotate-card")
         secondCard.classList.remove("rotate-card")
-        firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
-        secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
-        firstCard.children[0].children[1].innerText =  ''
-        secondCard.children[0].children[1].innerText = ''
+        if(!checkAudioActive){
+            firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
+            secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
+            firstCard.children[0].children[1].innerText =  ''
+            secondCard.children[0].children[1].innerText = ''
+        }
         firstCard = ''
         secondCard = ''
     }
@@ -188,3 +197,9 @@ function cardsEquals(first, second){ // se elas forem iguais faça
     }
 }
 
+function audioNameCard(name){
+    const textName = new SpeechSynthesisUtterance()
+    textName.lang = 'en-us'
+    textName.text = name
+    window.speechSynthesis.speak(textName)
+}
