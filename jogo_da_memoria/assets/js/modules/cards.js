@@ -30,6 +30,8 @@ const createCard =  function(urlImage){ // criando as cartas
     const front = createElement('div', 'face front')
     const back = createElement('div', 'face back')
     const img = createElement('img', 'imageCard')
+    const spanName = createElement('span', 'name')
+
     var theme = themeStyle()
     
     if(theme){
@@ -43,6 +45,7 @@ const createCard =  function(urlImage){ // criando as cartas
 
     /* front.style.backgroundImage =`url('${urlImage}')` */
     front.appendChild(img)
+    front.appendChild(spanName)
     card.addEventListener('click', rotateCard)
     card.setAttribute('tabindex', '0')
     card.appendChild(front)
@@ -113,6 +116,7 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         objectNames.map((element) =>{
             if(element.image == image){
                 card.children[0].children[0].setAttribute('alt', `${element.name}`)
+                card.children[0].children[1].innerText =  `${element.name}`
             }
         })
 
@@ -168,6 +172,8 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
         secondCard.classList.remove("rotate-card")
         firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
         secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
+        firstCard.children[0].children[1].innerText =  ''
+        secondCard.children[0].children[1].innerText = ''
         firstCard = ''
         secondCard = ''
     }

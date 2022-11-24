@@ -101,6 +101,7 @@ body{
 .front{
     border-radius: 20px;
     transform: rotateY(180deg);
+    position: relative;
 }
 
 .rotate-card{
@@ -391,4 +392,9 @@ input[type="radio"]:checked + label,
     border-radius: 20px;
     position: relative;
     z-index: -1;
+}
+
+.name{
+    opacity: 0;
+    position:absolute;
 }
