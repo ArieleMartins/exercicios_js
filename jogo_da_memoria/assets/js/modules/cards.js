@@ -160,7 +160,7 @@ function checkCards(first, second){ // verificando se as cartas selecionadas sã
         }else{
             spanAttempts.innerText = ''
         }
-        setTimeout(cardsNotEquals, 1000)
+        setTimeout(cardsNotEquals, 1500)
     }
 
 
