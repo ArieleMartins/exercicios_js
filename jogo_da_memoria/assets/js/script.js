@@ -152,6 +152,7 @@ window.addEventListener("keydown", (event) =>{
         if(event.target.nextElementSibling != undefined){
             event.target.nextElementSibling.focus()
         }
+        Som()
     }else if(event.key == 'ArrowLeft'){
         if(event.target.previousElementSibling != undefined){
             event.target.previousElementSibling.focus()
@@ -166,6 +167,13 @@ window.addEventListener("keydown", (event) =>{
 function clickEvent(key, element){
     if(key == 'Enter'){
         element.click()
+        
     }
+}
+
+function Som(){
+    var text  = new SpeechSynthesisUtterance();
+    text.text = 'Ola, tudo bem'
+    speechSynthesis.speak(text);
 }
 

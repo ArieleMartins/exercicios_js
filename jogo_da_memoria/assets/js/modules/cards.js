@@ -187,3 +187,4 @@ function cardsEquals(first, second){ // se elas forem iguais faça
         secondCard = ''
     }
 }
+
