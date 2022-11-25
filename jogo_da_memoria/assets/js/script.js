@@ -66,7 +66,7 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
         main.style.visibility = 'visible' // deixar o contianer principal visivel
         spanTimer.innerText = '0:00' // zerar o timer
         timerValueMinuts = 0
-    
+
         const checkClassMenu = menuNormal.classList.contains('active')
 
         if(checkClassMenu){
@@ -92,8 +92,8 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
 
 menuNormal.addEventListener('click', () =>{
     visibilityCustomize('normal')
-    menuCustomize.setAttribute('arial-label', 'opção de seleção - enter para selecionar')
-    menuNormal.setAttribute('arial-label', 'pção de seleção - selecionado')
+    menuCustomize.setAttribute('aria-label', 'opção de seleção - Dificuldade Personalizada - enter para selecionar ')
+    menuNormal.setAttribute('aria-label', 'opção de seleção - Dificuldade Normal - selecionado ')
     numberAttemps.value = '10'
     dificult = false
     
@@ -101,8 +101,8 @@ menuNormal.addEventListener('click', () =>{
 
 menuCustomize.addEventListener('click', () =>{
     visibilityCustomize('customize')
-    menuNormal.setAttribute('aria-describedby', 'opção de seleção - enter para selecionar')
-    menuCustomize.setAttribute('aria-describedby', 'pção de seleção - selecionado')
+    menuNormal.setAttribute('aria-label', 'opção de seleção - Dificuldade Normal - enter para selecionar')
+    menuCustomize.setAttribute('aria-label', 'opção de seleção - Dificuldade Personalizada - selecionado')
     numberAttemps.value = '10'
     inputRange.value = '9'
     dificult = true
