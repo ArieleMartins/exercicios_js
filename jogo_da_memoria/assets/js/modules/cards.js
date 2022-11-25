@@ -104,7 +104,7 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         }
         
         checkAudio = checkAudioActive()
-        objectNames.map((element) =>{
+        objectNames.forEach((element) =>{
             if(element.image == image){
                     if(card.classList.contains('rotate-card')){
                         if(checkAudio){
