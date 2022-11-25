@@ -31,7 +31,6 @@ const createCard =  function(urlImage){ // criando as cartas
     const front = createElement('div', 'face front')
     const back = createElement('div', 'face back')
     const img = createElement('img', 'imageCard')
-    const spanName = createElement('span', 'name')
 
     var theme = themeStyle()
     
@@ -46,7 +45,6 @@ const createCard =  function(urlImage){ // criando as cartas
 
     /* front.style.backgroundImage =`url('${urlImage}')` */
     front.appendChild(img)
-    front.appendChild(spanName)
     card.addEventListener('click', rotateCard)
     card.setAttribute('tabindex', '0')
     card.appendChild(front)
@@ -121,14 +119,10 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         checkAudio = checkAudioActive()
         objectNames.map((element) =>{
             if(element.image == image){
-                if(checkAudio){
                     if(card.classList.contains('rotate-card')){
                         setTimeout(audioNameCard(element.name), 700)
+                        card.children[0].children[0].setAttribute('alt', `${element.name}`)
                     }
-                }else{
-                    card.children[0].children[0].setAttribute('alt', `${element.name}`)
-                    card.children[0].children[1].innerText =  `${element.name}`
-                }
             }
         })
 
@@ -181,12 +175,8 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
     if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
         firstCard.classList.remove("rotate-card")
         secondCard.classList.remove("rotate-card")
-        if(!checkAudio){
-            firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
-            secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
-            firstCard.children[0].children[1].innerText =  ''
-            secondCard.children[0].children[1].innerText = ''
-        }
+        firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
+        secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
         firstCard = ''
         secondCard = ''
     }
