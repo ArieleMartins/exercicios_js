@@ -40,7 +40,7 @@
             <div class="container-radios">
                 <div class="container-radio">
                     <input type="radio" id="rickmorty" name="checkbox-theme" class="radio" checked tabindex="0">
-                    <label for="rickmorty" class="label-radio">Rick and Morty</label>
+                    <label for="rickmorty" class="label-radio" lang="en-us">Rick and Morty</label>
                 </div>
                 <br>
                 <div class="container-radio">
@@ -51,8 +51,8 @@
             <div class="container-dificult">
                 <h2>Dificuldade</h2>
                 <ul>
-                    <li id="normal" class="active" tabindex="0">Normal</li>
-                    <li id="customize" tabindex="0">Personalizada</li>
+                    <li id="normal" class="active" tabindex="0" aria-label="opção de seleção - selecionado">Normal</li>
+                    <li id="customize" tabindex="0" aria-label="opção de seleção - enter para selecionar ">Personalizada</li>
                 </ul>
             </div>
             <div class="container-customize normal">
@@ -93,22 +93,22 @@
     <div class="container disabled">
         <div class="modal align-text bg-color">
             <div >
-                <span aria-label="Fechar" class="close" id="close">X</span>
+                <span aria-label="Fechar" class="close" id="close" tabindex="0">X</span>
             </div>
-            <h1>Ativar Áudio</h1>
-            <p>Ativar a função de saida de som, para quando o usuário pressionar a carta ele ouvir o nome do
+            <h1 tabindex="0">Ativar Áudio</h1>
+            <p tabindex="0">Ativar a função de saida de som, para quando o usuário pressionar a carta ele ouvir o nome do
                 personagem</p>
-            <span class="text-check"> Verificar se o navegador tem suporte: <span
-                    class="result-check"></span></span>
-            <p class="alert-desc">Ao ativar o áudio será desativado o evento de alteração do texto alternativo das imagens (alt -
+            <span class="text-check" tabindex="0"> Verificar se o navegador tem suporte: <span
+                    class="result-check" tabindex="0"></span></span>
+            <p class="alert-desc" tabindex="0">Ao ativar o áudio será desativado o evento de alteração do texto alternativo das imagens (alt -
                 descrição do conteúdo da
                 imagem) quando o usuário pressionar a carta, pois pode se misturar com o som do leitor de tela.
                 A alteração do texto alternativo somente funcionará adequadamente se pressionado com o mouse, pois
                 com a tecla tab
-                o leitor de tela lerá somente um vez e para ele ler o texto alterando terá que passar com o leitor de
+                o leitor de tela lerá somente uma vez e para ele ler o texto alterado terá que passar com o leitor de
                 tela novamente
                 sobre a carta virada</p>
-            <button class="btn-active-accessibility" id="active-access">
+            <button class="btn-active-accessibility" id="active-access" tabindex="0">
                 Ativar
             </button>
         </div>

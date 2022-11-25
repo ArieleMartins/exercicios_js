@@ -3,7 +3,7 @@ import { themeStyle } from "./theme.js"
 import { returnNamesCharacters } from "./api.js"
 import { checkAudioActive } from "./modal.js"
 
-
+var checkAudio
 var containerCards
 var firstCard = ''
 var secondCard = ''
@@ -114,7 +114,7 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
                 oldAltSecond = secondCard.children[0].children[0].alt
             }
         }
-        const checkAudio = checkAudioActive()
+        checkAudio = checkAudioActive()
         objectNames.map((element) =>{
             if(element.image == image){
                 if(checkAudio){
@@ -177,7 +177,7 @@ function cardsNotEquals(){ // se as cartas não forem iguais faça
     if(!firstCard.classList.contains('container-cards') && secondCard.classList.contains('container-cards') == false){
         firstCard.classList.remove("rotate-card")
         secondCard.classList.remove("rotate-card")
-        if(!checkAudioActive){
+        if(!checkAudio){
             firstCard.children[0].children[0].setAttribute('alt', `${oldAltFirst}`)
             secondCard.children[0].children[0].setAttribute('alt', `${oldAltSecond}`)
             firstCard.children[0].children[1].innerText =  ''

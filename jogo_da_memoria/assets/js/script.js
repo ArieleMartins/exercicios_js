@@ -92,6 +92,8 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
 
 menuNormal.addEventListener('click', () =>{
     visibilityCustomize('normal')
+    menuCustomize.setAttribute('arial-label', 'opção de seleção - enter para selecionar')
+    menuNormal.setAttribute('arial-label', 'pção de seleção - selecionado')
     numberAttemps.value = '10'
     dificult = false
     
@@ -99,6 +101,8 @@ menuNormal.addEventListener('click', () =>{
 
 menuCustomize.addEventListener('click', () =>{
     visibilityCustomize('customize')
+    menuNormal.setAttribute('arial-label', 'opção de seleção - enter para selecionar')
+    menuCustomize.setAttribute('arial-label', 'pção de seleção - selecionado')
     numberAttemps.value = '10'
     inputRange.value = '9'
     dificult = true
