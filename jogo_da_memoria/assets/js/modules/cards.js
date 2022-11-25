@@ -76,12 +76,14 @@ export function createCardAddImageCard(urls, containerCardsMain, numberCardsMain
 
 const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     
-    var card = target.parentNode // pegando o elemento pai
-    if(!card.classList.contains('card')){
+    var card // pegando o elemento pai
+    if(target.parentNode.classList.contains('container-cards')){
         card = target
     }else{
+        card = target.parentNode
         var image = card.children[0].children[0].src
     }
+    
 
     if(!card.classList.contains('rotate-card') && !card.classList.contains('name')){ // se o elemento possui esta classe não faça
         checkNumberCard(card, image) 

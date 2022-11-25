@@ -170,6 +170,5 @@ window.addEventListener("keydown", (event) =>{
 function clickEvent(key, element){
     if(key == 'Enter'){
         element.click()
-        
     }
 }
