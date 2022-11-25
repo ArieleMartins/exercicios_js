@@ -4,6 +4,7 @@ const accessbilityModal = document.getElementById('accessibility-modal')
 const close = document.getElementById('close')
 const modalAcces = document.querySelectorAll('.container')
 const btn = document.getElementById('active-access')
+const customize = document.querySelector(".container-customize")
 var accessibility = false
 
 export function visibleModalWinner(main, modal, containerCards, spanTimer){  // se ele ganhou faça
@@ -53,6 +54,10 @@ accessbilityModal.addEventListener('click', () =>{
         }else{
             btn.innerText = 'Ativar'
         }
+
+        if(customize.classList.contains('customize')){
+            customize.style.visibility = 'hidden'
+        }
         
         modalAcces[0].style.visibility = 'hidden'
         modalAcces[1].classList.remove('disabled')
@@ -71,6 +76,7 @@ close.addEventListener('click', () =>{
     if(!modalAcces[1].classList.contains('disabled')){
         modalAcces[0].style.visibility = 'visible'
         modalAcces[1].classList.add('disabled') 
+        customize.style.visibility = 'visible'
     }
 })
 
