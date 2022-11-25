@@ -120,7 +120,9 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         objectNames.map((element) =>{
             if(element.image == image){
                     if(card.classList.contains('rotate-card')){
-                        setTimeout(audioNameCard(element.name), 700)
+                        if(checkAudio){
+                            setTimeout(audioNameCard(element.name), 700)
+                        }
                         card.children[0].children[0].setAttribute('alt', `${element.name}`)
                     }
             }
