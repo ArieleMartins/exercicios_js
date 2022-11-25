@@ -45,6 +45,7 @@ body{
     align-items: center;
 }
 
+
 .container-main{
     display: flex;
     flex-direction: column;
@@ -134,6 +135,16 @@ body{
 .rotate-card{
     transform: rotateY(180deg);
 }
+
+.card.rotate-card .front img{
+    opacity: 1;
+}
+
+
+.card .front img{
+    opacity: 0;
+}
+
 
 .card-equals{
     animation: animation 1s ease-in-out forwards;

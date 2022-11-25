@@ -1,12 +1,12 @@
 import { visibleModalFail } from "./modal.js"
-
+import {main, modal, containerCards, spanTimer, dificult} from "../script.js"
 const checkboxTimer = document.getElementById('numberTimer')
 const spanRangeTimer = document.querySelector('.range-timer')
 const rangeTimer = document.getElementById('range-timer')
 
 checkboxTimer.checked = false
 
-export function startTimer(main, modal, containerCards, checkFloatRangeTimer, checkRangeTimer, timerValueMinuts, spanTimer, dificult){ // iniciando o timer
+export function startTimer(timerValueMinuts, checkFloatRangeTimer, checkRangeTimer){ // iniciando o timer
     var checkSecondsRangeTimer
     var timer = setInterval(()=>{
         var valueSpanTimer = Number(spanTimer.innerText.replace(`${timerValueMinuts}:`, ''))

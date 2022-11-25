@@ -2,22 +2,15 @@ import { visibleModalFail, visibleModalWinner } from "./modal.js"
 import { themeStyle } from "./theme.js"
 import { returnNamesCharacters } from "./api.js"
 import { checkAudioActive } from "./modal.js"
+import { containerCards, numberCards, dificult, timer, main, modal, spanTimer } from "../script.js"
 
 var checkAudio
-var containerCards
 var firstCard = ''
 var secondCard = ''
-var numberCards
-var dificult
-var attempts
-var numberCaptureAttempts
-var timer 
-var main
-var modal
-var spanTimer
 var oldAltFirst 
 var oldAltSecond
-
+var attempts
+var numberCaptureAttempts
 var altNumberCard = 1
 
 const createElement = function(tag, className){ // criando o elemento
@@ -54,16 +47,9 @@ const createCard =  function(urlImage){ // criando as cartas
     return card
 }
 
-export function createCardAddImageCard(urls, containerCardsMain, numberCardsMain, dificultMain, attemptsMain, timerMain, contianerMain, modalMain, spanTimerMain, numberCaptureAttemptsMain){ // criando e adicionando a url no element, e adicionando no container cards 
-   
-    containerCards = containerCardsMain
-    numberCards = numberCardsMain
+export function createCardAddImageCard(urls, attemptsMain, numberCaptureAttemptsMain){ // criando e adicionando a url no element, e adicionando no container cards 
+
     attempts = attemptsMain
-    dificult = dificultMain
-    timer = timerMain
-    main = contianerMain
-    modal = modalMain
-    spanTimer = spanTimerMain
     numberCaptureAttempts = numberCaptureAttemptsMain
 
     urls.forEach(urlImage =>{
@@ -73,7 +59,6 @@ export function createCardAddImageCard(urls, containerCardsMain, numberCardsMain
 }
 
 const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
-    
     var card // pegando o elemento pai
     if(target.parentNode.classList.contains('container-cards')){
         card = target
@@ -118,7 +103,9 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
         
         checkAudio = checkAudioActive()
         objectNames.map((element) =>{
+            
             if(element.image == image){
+                console.log(element.image)
                     if(card.classList.contains('rotate-card')){
                         if(checkAudio){
                             setTimeout(audioNameCard(element.name), 700)

@@ -1,7 +1,8 @@
 var urls 
 var namesCharacters = []
 
-export async function acessUrl(url, urlImages, theme){ // metodo para acessar as urls
+export async function acessUrl(url, urlImages, theme){ 
+    namesCharacters = []// metodo para acessar as urls
     try{
         const response = await fetch(url)
         const dataJson = await response.json()

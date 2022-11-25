@@ -4,11 +4,11 @@ import { startTimer } from "./modules/timer.js"
 import { checkTheme, themeStyle } from "./modules/theme.js"
 import { createCardAddImageCard } from "./modules/cards.js"
 
-const containerCards = document.querySelector(".container-cards")
-const modal = document.querySelector('.container')
+export const containerCards = document.querySelector(".container-cards")
+export const modal = document.querySelector('.container')
 const play = document.getElementById("play")
-const spanTimer = document.querySelector('.timer')
-const main = document.querySelector('.container-main')
+export const spanTimer = document.querySelector('.timer')
+export const main = document.querySelector('.container-main')
 const menuNormal = document.getElementById('normal')
 const menuCustomize = document.getElementById('customize')
 const numberAttemps = document.getElementById('number-attempts')
@@ -20,13 +20,13 @@ var urlImages = []
 
 var attempts = 0
 var cards = 9
-var dificult
-var numberCards
+export var dificult
+export var numberCards
 var numberCaptureAttempts = 25
 var timerValueMinuts = 0
-var checkFloatRangeTimer = false
-var checkRangeTimer = false 
-var timer 
+export var checkFloatRangeTimer = false
+export var checkRangeTimer = false 
+export var timer 
 
 function shiffledUrlsCapture(){ // enbaralhando as urls e pegando somente seis delas
     var urlsShiffledSix = []
@@ -51,7 +51,7 @@ function loadGame(){ // iniciando o jogo
 
     const shiffledUrls = duplicateUrls.sort(() => Math.random() - 0.5) // embaralhando novamente
    
-    createCardAddImageCard(shiffledUrls, containerCards, numberCards, dificult, attempts, timer, main, modal, spanTimer, numberCaptureAttempts)
+    createCardAddImageCard(shiffledUrls, attempts, numberCaptureAttempts)
 }
 
 play.addEventListener('click', async function (){ // quando o usuário aperta play
@@ -82,7 +82,7 @@ play.addEventListener('click', async function (){ // quando o usuário aperta pl
         const url = await checkTheme()
         theme = themeStyle()
         await api(url, urlImages, theme)
-        timer = await startTimer(main, modal, containerCards, checkFloatRangeTimer, checkRangeTimer, timerValueMinuts, spanTimer, dificult )
+        timer = await startTimer(timerValueMinuts, checkFloatRangeTimer, checkRangeTimer)
         await loadGame()
         
     }
@@ -113,23 +113,6 @@ inputRange.addEventListener("input", () =>{
     const spanNumberCards = document.querySelector(".cards")
     spanNumberCards.innerText = inputRange.value * 2
 })
-
-function visibilityCustomize(menuDificult){
-    if(menuDificult == 'normal'){
-        menuNormal.classList.add('active')
-        menuCustomize.classList.remove("active")
-        containerCustomize.classList.remove('customize')
-        containerCustomize.classList.add('normal')
-        containerCustomize.style.visibility = 'hidden'
-    }else{
-        menuCustomize.classList.add('active')
-        menuNormal.classList.remove("active")
-        containerCustomize.classList.add('customize')
-        containerCustomize.classList.remove('normal')
-        containerCustomize.style.visibility = 'visible'
-    }
-}
-
 
 window.addEventListener("keyup", (event) =>{
     const checkVisibilityModal = window.getComputedStyle(modal).getPropertyValue('visibility') == 'visible' ? true : false
@@ -172,5 +155,21 @@ window.addEventListener("keydown", (event) =>{
 function clickEvent(key, element){
     if(key == 'Enter'){
         element.click()
+    }
+}
+
+function visibilityCustomize(menuDificult){
+    if(menuDificult == 'normal'){
+        menuNormal.classList.add('active')
+        menuCustomize.classList.remove("active")
+        containerCustomize.classList.remove('customize')
+        containerCustomize.classList.add('normal')
+        containerCustomize.style.visibility = 'hidden'
+    }else{
+        menuCustomize.classList.add('active')
+        menuNormal.classList.remove("active")
+        containerCustomize.classList.add('customize')
+        containerCustomize.classList.remove('normal')
+        containerCustomize.style.visibility = 'visible'
     }
 }
