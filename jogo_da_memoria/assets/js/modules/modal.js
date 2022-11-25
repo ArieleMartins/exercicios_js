@@ -5,6 +5,9 @@ const close = document.getElementById('close')
 const modalAcces = document.querySelectorAll('.container')
 const btn = document.getElementById('active-access')
 const customize = document.querySelector(".container-customize")
+const rangeSpan = document.querySelector(".range-timer")
+const rangeTimer = document.getElementById("range-timer")
+
 var accessibility = false
 
 export function visibleModalWinner(main, modal, containerCards, spanTimer){  // se ele ganhou faça
@@ -57,6 +60,8 @@ accessbilityModal.addEventListener('click', () =>{
 
         if(customize.classList.contains('customize')){
             customize.style.visibility = 'hidden'
+            rangeSpan.style.visibility = 'hidden'
+            rangeTimer.style.visibility = 'hidden'
         }
         
         modalAcces[0].style.visibility = 'hidden'
@@ -74,9 +79,14 @@ accessbilityModal.addEventListener('click', () =>{
 
 close.addEventListener('click', () =>{
     if(!modalAcces[1].classList.contains('disabled')){
+        const checkbox = document.getElementById("numberTimer")
         modalAcces[0].style.visibility = 'visible'
         modalAcces[1].classList.add('disabled') 
         customize.style.visibility = 'visible'
+        if(checkbox.checked){
+            rangeSpan.style.visibility = 'visible'
+            rangeTimer.style.visibility = 'visible'
+        }
     }
 })
 
