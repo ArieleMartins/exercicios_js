@@ -79,6 +79,7 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
     var card // pegando o elemento pai
     if(target.parentNode.classList.contains('container-cards')){
         card = target
+        var image = card.children[0].children[0].src
     }else{
         card = target.parentNode
         var image = card.children[0].children[0].src
@@ -116,6 +117,7 @@ function checkNumberCard(card, image){ // adicionando e verificando se foi selec
                 oldAltSecond = secondCard.children[0].children[0].alt
             }
         }
+        
         checkAudio = checkAudioActive()
         objectNames.map((element) =>{
             if(element.image == image){
