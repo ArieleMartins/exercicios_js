@@ -75,9 +75,11 @@ const rotateCard = ({ target }) => { // pegar os dados da card ao clicar nela
         if(winnerGame()){
             clearInterval(timer) // parar o timer
             setTimeout(visibleModalWinner(main, modal, containerCards, spanTimer), 1000) // depois de alguns milisegundo executar a funcao visiblemodalwinner
+            altNumberCard = 1
         }else if((attempts >= numberCaptureAttempts) && dificult){
             clearInterval(timer)
             setTimeout(visibleModalFail( main, modal, containerCards, spanTimer), 1000)
+            altNumberCard = 1
         }
     }
 }
