@@ -51,8 +51,8 @@
             <div class="container-dificult">
                 <h2>Dificuldade</h2>
                 <ul>
-                    <li id="normal" class="active" tabindex="0" aria-label="opção de seleção - selecionado">Normal</li>
-                    <li id="customize" tabindex="0" aria-label="opção de seleção - enter para selecionar ">Personalizada</li>
+                    <li id="normal" class="active" tabindex="0" aria-describedby="opção de seleção - selecionado">Normal</li>
+                    <li id="customize" tabindex="0" aria-describedby="opção de seleção - enter para selecionar ">Personalizada</li>
                 </ul>
             </div>
             <div class="container-customize normal">
@@ -100,14 +100,10 @@
                 personagem</p>
             <span class="text-check" tabindex="0"> Verificar se o navegador tem suporte: <span
                     class="result-check" tabindex="0"></span></span>
-            <p class="alert-desc" tabindex="0">Ao ativar o áudio será desativado o evento de alteração do texto alternativo das imagens (alt -
-                descrição do conteúdo da
-                imagem) quando o usuário pressionar a carta, pois pode se misturar com o som do leitor de tela.
-                A alteração do texto alternativo somente funcionará adequadamente se pressionado com o mouse, pois
-                com a tecla tab
-                o leitor de tela lerá somente uma vez e para ele ler o texto alterado terá que passar com o leitor de
-                tela novamente
-                sobre a carta virada</p>
+            <p class="alert-desc" tabindex="0">Tem também o evento de alteração do texto alternativo das imagens
+                quando o usuário virar a carta, como o leitor de tela lê somente uma vez, então os sons não irão
+                se mistura. Assim, o usuário saberá se aquela carta foi virada quando passar como o leitor de tela
+                sobre ela novamente</p>
             <button class="btn-active-accessibility" id="active-access" tabindex="0">
                 Ativar
             </button>
