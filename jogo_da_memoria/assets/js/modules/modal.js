@@ -57,7 +57,6 @@ accessbilityModal.addEventListener('click', () =>{
         }else{
             btn.innerText = 'Ativar'
         }
-
         if(customize.classList.contains('customize')){
             customize.style.visibility = 'hidden'
             rangeSpan.style.visibility = 'hidden'
@@ -81,11 +80,17 @@ close.addEventListener('click', () =>{
     if(!modalAcces[1].classList.contains('disabled')){
         const checkbox = document.getElementById("numberTimer")
         modalAcces[0].style.visibility = 'visible'
-        modalAcces[1].classList.add('disabled') 
-        customize.style.visibility = 'visible'
-        if(checkbox.checked){
-            rangeSpan.style.visibility = 'visible'
-            rangeTimer.style.visibility = 'visible'
+        modalAcces[1].classList.add('disabled')
+        if(customize.classList.contains('customize')){
+            customize.style.visibility = 'visible'
+            if(checkbox.checked){
+                rangeSpan.style.visibility = 'visible'
+                rangeTimer.style.visibility = 'visible'
+            }
+        }else{
+            customize.style.visibility = 'hidden'
+            rangeSpan.style.visibility = 'hidden'
+            rangeTimer.style.visibility = 'hidden'
         }
     }
 })

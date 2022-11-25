@@ -318,7 +318,6 @@ input[type="radio"]:checked + label,
 .customize{
     height: 150px;
     animation: animationCustomize 3s ease-in forwards;
-    visibility: visible;
 }
 
 .normal{
@@ -493,5 +492,9 @@ input[type="radio"]:checked + label,
     .modal{
         border-radius: 0;
 
+    }
+    .modal-error{
+        width: 70vw;
+        height: 100px;
     }
 }

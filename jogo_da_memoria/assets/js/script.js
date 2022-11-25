@@ -101,8 +101,8 @@ menuNormal.addEventListener('click', () =>{
 
 menuCustomize.addEventListener('click', () =>{
     visibilityCustomize('customize')
-    menuNormal.setAttribute('arial-label', 'opção de seleção - enter para selecionar')
-    menuCustomize.setAttribute('arial-label', 'pção de seleção - selecionado')
+    menuNormal.setAttribute('aria-describedby', 'opção de seleção - enter para selecionar')
+    menuCustomize.setAttribute('aria-describedby', 'pção de seleção - selecionado')
     numberAttemps.value = '10'
     inputRange.value = '9'
     dificult = true
@@ -120,11 +120,13 @@ function visibilityCustomize(menuDificult){
         menuCustomize.classList.remove("active")
         containerCustomize.classList.remove('customize')
         containerCustomize.classList.add('normal')
+        containerCustomize.style.visibility = 'hidden'
     }else{
         menuCustomize.classList.add('active')
         menuNormal.classList.remove("active")
         containerCustomize.classList.add('customize')
         containerCustomize.classList.remove('normal')
+        containerCustomize.style.visibility = 'visible'
     }
 }
 
