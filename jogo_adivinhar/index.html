@@ -14,6 +14,7 @@
         <div class="container">
             <div class="container-data">
                 <h1>Qual é o número?</h1>
+                <label for="numberPlayer">Número:</label>
                 <input type="number" id="numberPlayer" min="0">
                 <button id="submitNumberPlayer">ENVIAR</button>
                 <span class="error"></span>
@@ -35,15 +36,15 @@
             <div class="container-inputs">
                 <div class="container-numberEnd">
                     <label for="numberEnd" class="numberEnd">Até que número?</label>
-                    <input type="number" id="numberEnd" tabindex="1">
+                    <input type="number" id="numberEnd" tabindex="0">
                 </div>
                 <div class="container-numberAttempts">
                     <label for="numberAttempts" class="numberAttempts">Quantas tentativas?</label>
-                    <input type="number" id="numberAttempts" tabindex="2">
+                    <input type="number" id="numberAttempts" tabindex="0">
                 </div>
             </div>
             <div class="container-btn">
-                <button class="btnPlay" id="btnPlay"tabindex="3">Jogar</button>
+                <button class="btnPlay" id="btnPlay" tabindex="0">Jogar</button>
             </div>
         </div>
     </div>
