@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+}
+
+header {
+    padding-top: 20px;
+    position: relative;
+}
+
+header, .theme, main, .container-img, .container-letter, .container-img figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 100%;
+    max-width: 500px;
+}
+
+.btn-theme {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.theme {
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    border: 3px solid rgb(192, 91, 91);
+    color: rgb(192, 91, 91);
+    background-color: rgb(39, 35, 35);
+    cursor: pointer;
+}
+.theme:hover{
+    border: 3px solid rgb(114, 47, 47);
+    color: rgb(114, 47, 47);
+    background-color: rgb(39, 35, 35);
+}
+
+main{
+    flex-direction: column;
+    margin: auto;
+    position: relative;
+    width: 90%;
+    row-gap: 15px;
+}
+.container-img{
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+}
+.container-img::before{
+    content: '';
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    border-radius: 50%;
+    background: rgb(105,36,36);
+    background: linear-gradient(180deg, rgba(105,36,36,0.7) 50%, rgba(0, 0, 0, 0.137) 50%); 
+    position: absolute;
+    z-index: -1;
+}
+.container-img figure{
+    width: 100%;
+    height: 100%;
+}
+.container-img figure img{
+    width: 100%;
+    max-width: 400px;
+    filter: brightness(0);
+}
+.container-letters{
+    padding: 20px;
+    height: 120px;
+}
+
+.container-letter{
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+}
+.letter{
+    font-size: 3.6rem;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+}
+
+.container-btn button{
+    padding: 15px;
+    width: 140px;
+    background-color: rgb(138, 63, 63);
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    text-transform: uppercase;
+    border-radius: 10px;
+    border: 0;
+    cursor:pointer;
+}
