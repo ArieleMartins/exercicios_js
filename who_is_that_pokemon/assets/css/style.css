@@ -60,7 +60,7 @@ main{
 .container-img{
     width: 100%;
     max-width: 400px;
-    height: 400px;
+    max-height: 400px;
 }
 .container-img::before{
     content: '';
