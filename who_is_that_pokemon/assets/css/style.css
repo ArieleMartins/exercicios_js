@@ -105,6 +105,16 @@ main{
     height: 80px;
     border-radius: 10px;
     background-color: #dddddd;
+    color: var(--bg-color);
+    font-size: 3.6rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active{
+    border: 2px solid var(--bg-color);
 }
 
 .container-input-button{
@@ -162,7 +172,9 @@ main{
     
 }
 
-
+.erro-letter{
+    animation: animation 1s ease-out;
+}
 
 @keyframes animation {
     0%{
