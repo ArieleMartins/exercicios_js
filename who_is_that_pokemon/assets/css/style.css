@@ -6,11 +6,27 @@
     box-sizing: border-box;
 }
 
+:root{
+    --bg-color: #9B4D4D;
+    --font-family: 'Nunito', sans-serif;
+}
+
+::-webkit-scrollbar{
+    background-color: transparent;
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #692d2d;
+}
+.container, .container-input-button button, .container-input-button input{
+    font-family: var(--font-family);
+}
+
 .container {
     width: 100%;
     position: absolute;
     top: 0;
-    font-family: 'Nunito', sans-serif;
     display: flex;
     flex-direction: column;
     row-gap: 40px;
@@ -27,7 +43,6 @@ header {
     position: relative;
 }
 
-
 #btn-list{
     border: 0;
     background-color: transparent;
@@ -39,6 +54,7 @@ header {
 #btn-list:hover img{
     filter: saturate(3);
 }
+
 main{
     width: 80%;
     margin: 0 auto;
@@ -56,21 +72,24 @@ main{
     justify-content: center;
     position: relative;
 }
+
 .pokebola{
     width: 100%;
     max-width: 400px;
 }
+
 .container-img-pokemon{
     position: absolute;
     width: 100%;
     max-width: 350px;
-    
 }
+
 #img-pokemon{
     width: 100%;
     max-width: 350px;
     filter: brightness(0);
 }
+
 .container-letters{
     display: flex;
     column-gap: 10px;
@@ -79,19 +98,20 @@ main{
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .letter{
     width: 100%;
     max-width: 80px;
     height: 80px;
     border-radius: 10px;
-    background-color: #CFCFCF;
+    background-color: #dddddd;
 }
 
 .container-input-button{
     display: flex;
     flex-direction: column;
     row-gap: 10px;
-    color: #9B4D4D;
+    color: var(--bg-color);
     align-items: center;
     justify-content: center;
     text-transform: uppercase;
@@ -102,17 +122,56 @@ main{
     text-transform: uppercase;
     text-align: center;
     height: 39px;
-    background: #D9D9D9;
-    border-radius: 20px;
+    background: #d1d1d1;
+    border-radius: 50%;
+    width: 39px;
     border: 0;
 }
 
 .container-input-button button{
-    width: 203px;
-    height: 80px;
+    padding: 20px;
     border: 0;
     text-transform: uppercase;
     color:white;
-    background: #9B4D4D;
+    background: var(--bg-color);
     border-radius: 20px;
+    cursor: pointer;
+}
+
+.container-input-button button:hover{
+    color:#f0bebe;
+    background: #a75656;
+}
+
+.modal-submit-letters{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-family: var(--font-family);
+    color: white;
+    width: 240px;
+    text-align: center;
+    padding: 20px;
+    background-color: #692d2d;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    text-transform: uppercase;
+    visibility: hidden;
+    
+}
+
+
+
+@keyframes animation {
+    0%{
+        transform: rotate(-10deg) translateX(-20px);
+    }
+    50%{
+        transform: rotate(10deg) translateX(20px);
+    }
+    100%{
+        transform: rotate(-10deg) translateX(-20px);
+    }
 }
