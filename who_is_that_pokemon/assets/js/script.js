@@ -25,9 +25,9 @@ btnSubmit.addEventListener('click', () =>{
 
     if(checkCompletName(pokeName)){
         capturePokemonAnimation()
-        urls.push(url)
+        urls.push({'name': pokeName, "image": img.src, "url": url})
         localStorage.setItem('Pokémons', JSON.stringify(urls))
-        setTimeout(resetGame, 2500)
+        setTimeout(resetGame, 2900)
     }else if(attemps > 5){
         resetGame()
     }
@@ -43,7 +43,7 @@ btnClose.addEventListener('click', () =>{showModal(false)})
 btnSubmitName.addEventListener('click', ()=>{
     if(checkSubmitCompletName(pokeName)){
         capturePokemonAnimation()
-        urls.push(url)
+        urls.push({'name': pokeName, "image": img.src, "url": url})
         localStorage.setItem('Pokémons', JSON.stringify(urls))
         showModal(false)
     }else{
