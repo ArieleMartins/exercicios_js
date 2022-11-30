@@ -6,7 +6,8 @@ export async function acessUrl(){
         const name = await json.name
         return {
             img,
-            name
+            name,
+            url
         } 
     }catch (error){
         console.log("Opa.. deu erro " + error)

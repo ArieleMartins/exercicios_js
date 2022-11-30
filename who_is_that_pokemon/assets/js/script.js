@@ -6,9 +6,14 @@ const containerLetters = document.querySelector('.container-letters')
 const btnSubmit = document.getElementById('submit-caracter')
 const btnClose = document.querySelector('.close')
 const btnSubmitName = document.querySelector('.submit-name')
+const img = document.getElementById('img-pokemon')
+const elementFlash = document.querySelector(".flash")
+
 
 var pokeName
 var attemps = 0
+var urls = []
+var url
 
 startGame()
 
@@ -18,19 +23,28 @@ btnSubmit.addEventListener('click', () =>{
         attemps += 1
     }
 
-    if(checkCompletName(pokeName) || attemps == 6){
-        startGame()
-        clearGame()
+    if(checkCompletName(pokeName)){
+        capturePokemonAnimation()
+        urls.push(url)
+        localStorage.setItem('Pokémons', JSON.stringify(urls))
+        setTimeout(resetGame, 2500)
+    }else if(attemps > 5){
+        resetGame()
     }
+    
+    console.log(urls)
+
 })
 
 containerLetters.addEventListener('click', () => {showModal(true)})
 
 btnClose.addEventListener('click', () =>{showModal(false)})
 
-btnSubmitName.addEventListener('click', ()=>{ 
+btnSubmitName.addEventListener('click', ()=>{
     if(checkSubmitCompletName(pokeName)){
-        console.log('foi')
+        capturePokemonAnimation()
+        urls.push(url)
+        localStorage.setItem('Pokémons', JSON.stringify(urls))
         showModal(false)
     }else{
         startGame()
@@ -41,12 +55,11 @@ btnSubmitName.addEventListener('click', ()=>{
 
 async function startGame(){
     const object = await api()
-    const img = document.getElementById('img-pokemon')
     img.src = object.img
     pokeName = object.name
+    url = object.url
     await createAddElement(pokeName)
     console.log(pokeName)
-    
 }
 
 function createAddElement(name){
@@ -73,6 +86,26 @@ function showModal(show){
 function clearGame(){
     containerLetters.innerHTML = ''
     spanLetterSubmit.textContent = ''
+    spanLetterSubmit.parentElement.parentElement.style.visibility = "hidden"
     attemps = 0
     containerLetters.classList.remove('active-complet-name')
+}
+
+function capturePokemonAnimation(){
+    
+    elementFlash.classList.add('animationFlash')
+    img.classList.add('animationRevealPokemon')
+    setTimeout(removeAnimationCapture, 2480)
+}
+
+function removeAnimationCapture(){
+    const iconNew = document.querySelector(".icon-new")
+    iconNew.style.visibility = 'visible'
+    elementFlash.classList.remove('animationFlash')
+    img.classList.remove('animationRevealPokemon')
+}
+
+function resetGame(){
+    startGame()
+    clearGame()
 }
