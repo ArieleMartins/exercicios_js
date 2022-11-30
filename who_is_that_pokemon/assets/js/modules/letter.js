@@ -1,7 +1,8 @@
 const pokebola = document.querySelector('.pokebola')
 export const spanLetterSubmit = document.querySelector(".submit-letter")
 
-export function checkCaracter(pokeName){
+
+export function checkCaracter(pokeName, attemps){
     const element = document.getElementById('letter')
     const letter = element.value
 
@@ -23,6 +24,7 @@ export function checkCaracter(pokeName){
         }
     }
 
+    return checkError
     
 }
 
@@ -71,6 +73,13 @@ function addListLetterSubmit(letter){
 export function checkCompletName(pokeName){
     const elementsActive = document.querySelectorAll('.active')
     const checkQuantElements = elementsActive.length == pokeName.length
+
+    const checkPorcentCorrect= Math.round((pokeName.length * 40) / 100)
+
+    if(elementsActive.length >= checkPorcentCorrect){
+        const containerLetters = document.querySelector('.container-letters')
+        containerLetters.classList.add("active-complet-name")
+    }
     
     return checkQuantElements
 }

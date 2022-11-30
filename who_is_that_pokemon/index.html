@@ -7,36 +7,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/background.css">
-    
+
     <title>Quem é esse pokemon?</title>
 </head>
 
 <body>
     <div class="background">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="gentle-wave"
-                        d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-                </defs>
-                <g class="parallax">
-                    <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-                    <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-                    <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-                    <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
-                </g>
-            </svg>
-            <div class='container-waves'></div>
-            </div>
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+            </defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+                <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+                <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+                <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+            </g>
+        </svg>
+        <div class='container-waves'></div>
+    </div>
     </div>
     </div>
 
     <div class="container">
         <header>
-            <button id="btn-list" aria-label="lista de pokemons"><img src="assets/img/icon_pasta_pokemon.svg" alt="icone pasta pokemons"></button>
+            <button id="btn-list" aria-label="lista de pokemons"><img src="assets/img/icon_pasta_pokemon.svg"
+                    alt="icone pasta pokemons"></button>
             <h1>Who's that Pokémon?</h1>
         </header>
-       <main>
+        <main>
             <div class="container-img">
                 <img class="pokebola" src="assets/img/icon_pokebola.svg" alt="">
                 <div class="container-img-pokemon">
@@ -44,14 +44,14 @@
                 </div>
             </div>
             <div class="container-letters">
-                
+ 
             </div>
             <div class="container-input-button">
                 <label for="letter">Letra:</label>
                 <input type="text" maxlength="1" id="letter">
                 <button id="submit-caracter">Enviar</button>
             </div>
-       </main>
+        </main>
     </div>
 
 
@@ -62,6 +62,22 @@
         </div>
     </div>
 
+    <div class="container-modal">
+
+        <div class="modal-name-pokemon">
+            <span class="close">x</span>
+            <br>
+            <div>
+                <h2>Sabe qual é o pokémon?</h2>
+                <p>Se você errar passará para o proximo pokémon</p>
+                <p>Para a separação do nome usa-se " - " (menos) </p>
+                <label for="name-pokemon">pokémon</label>
+                <input type="text" id="name-pokemon">
+                <button class="submit-name">Enviar</button>
+            </div>
+        </div>
+
+    </div>
 
 
     <script src="https://unpkg.com/phosphor-icons"></script>
