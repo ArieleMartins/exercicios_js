@@ -1,6 +1,6 @@
 import { acessUrl as api } from './modules/api.js'
 import { checkCaracter, checkCompletName, spanLetterSubmit} from './modules/letter.js'
-import { checkSubmitCompletName, showModalList } from './modules/modal.js'
+import { showModal ,checkSubmitCompletName, showModalList } from './modules/modal.js'
 
 const containerLetters = document.querySelector('.container-letters')
 const btnSubmit = document.getElementById('submit-caracter')
@@ -20,7 +20,7 @@ startGame()
 
 btnSubmit.addEventListener('click', async () =>{ 
     
-    if(checkCaracter(pokeName, attemps)){
+    if(checkCaracter(pokeName)){
         attemps += 1
     }
 
@@ -35,20 +35,20 @@ btnSubmit.addEventListener('click', async () =>{
 
 })
 
-containerLetters.addEventListener('click', () => {showModal(true)})
+containerLetters.addEventListener('click', () => {showModal(true, containerLetters)})
 
-btnClose.addEventListener('click', () =>{showModal(false)})
+btnClose.addEventListener('click', () =>{showModal(false, containerLetters)})
 
 btnSubmitName.addEventListener('click', async ()=>{
     if(checkSubmitCompletName(pokeName)){
         capturePokemonAnimation()
         await addPokemonLocalStorage()
-        showModal(false)
         setTimeout(resetGame, 2900)
     }else{
-        showModal(false)
         resetGame()
     }
+
+    showModal(false)
 })
 
 btnList.addEventListener("click",()=>{
@@ -74,17 +74,7 @@ function createAddElement(name){
     }
 }
 
-function showModal(show){
-    const modal = document.querySelector('.container-modal')
-    if(show){
-        if(containerLetters.classList.contains('active-complet-name')){
-            modal.style.display = 'flex'
-        }
-    }else{
-        modal.style.display = 'none'
-    }
-    
-}
+
 
 
 function clearGame(){

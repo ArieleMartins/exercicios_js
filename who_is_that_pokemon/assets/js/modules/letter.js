@@ -2,7 +2,7 @@ const pokebola = document.querySelector('.pokebola')
 export const spanLetterSubmit = document.querySelector(".submit-letter")
 
 
-export function checkCaracter(pokeName, attemps){
+export function checkCaracter(pokeName){
     const element = document.getElementById('letter')
     const letter = element.value
 
@@ -16,10 +16,10 @@ export function checkCaracter(pokeName, attemps){
             if(checkError){
                 pokebola.classList.add('erro-letter')
                 setTimeout(removeAnimation, 1200)
+            }else{
+                correctLetter(posicions, letter)
             }
         
-            correctLetter(posicions, letter)
-            
             element.value = ''
         }
     }
@@ -35,12 +35,10 @@ function removeAnimation(){
 function correctLetter(posicions, value){
     const containerLetters = document.querySelectorAll('.letter')
 
-    if(posicions.length != 0){
-        posicions.forEach(element => {
-            containerLetters[element].textContent = value
-            containerLetters[element].classList.add("active")
-        });
-    }
+    posicions.forEach(element => {
+        containerLetters[element].textContent = value
+        containerLetters[element].classList.add("active")
+    });
 }
 
 function checkPositionLetters(letter, pokeName){
@@ -57,7 +55,7 @@ function checkPositionLetters(letter, pokeName){
 }
 
 function addListLetterSubmit(letter){
-    if(isNaN(Number(letter))){
+    if(isNaN(letter)){
         if(!spanLetterSubmit.textContent.includes(letter)){
             const elementParend = spanLetterSubmit.parentElement.parentElement
             spanLetterSubmit.textContent += ` ${letter}`

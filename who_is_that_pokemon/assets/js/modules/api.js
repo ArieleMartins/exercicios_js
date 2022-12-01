@@ -4,6 +4,7 @@ var img
 var json
 var name
 var typePokemon
+
 export async function acessUrl(){
     try{
         url = `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 899)}/`
@@ -11,6 +12,7 @@ export async function acessUrl(){
         img = await json.sprites.front_default
         name = await json.name
         typePokemon = await json.types[0].type.name
+        
         await equalsPokemon()
 
         return {

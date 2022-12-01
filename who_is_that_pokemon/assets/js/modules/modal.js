@@ -1,14 +1,28 @@
+const modal = document.querySelector('.container-modal-list')
+const listPokemonElement = document.querySelector('.container-cards ul')
+
+export function showModal(show, containerLetters){
+    const modal = document.querySelector('.container-modal')
+    if(show){
+        if(containerLetters.classList.contains('active-complet-name')){
+            modal.style.display = 'flex'
+        }
+    }else{
+        modal.style.display = 'none'
+    }
+    
+}
+
 export function checkSubmitCompletName(pokeName){
     const namePokemon = document.getElementById('name-pokemon').value
+
     if(namePokemon == pokeName){
         return true
     }
-
+    
     return false
+  
 }
-
-const modal = document.querySelector('.container-modal-list')
-const listPokemonElement = document.querySelector('.container-cards ul')
 
 export function showModalList(){
     listPokemonElement.innerHTML = ''
@@ -39,7 +53,7 @@ function createElementPokemon(pokemon){
 
 function onloadListPokemons(){
     var pokemons = JSON.parse(localStorage.getItem('Pokémons'))
-    pokemons.forEach(pokemon => { 
+    pokemons.forEach(pokemon => {
         createElementPokemon(pokemon)
     });
 }
