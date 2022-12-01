@@ -235,7 +235,7 @@ main{
     }
  }
 
-.container-modal{
+.container-modal, .container-modal-list{
     position: fixed;
     top: 0;
     width: 100%;

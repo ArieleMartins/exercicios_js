@@ -1,6 +1,6 @@
 import { acessUrl as api } from './modules/api.js'
 import { checkCaracter, checkCompletName, spanLetterSubmit} from './modules/letter.js'
-import { checkSubmitCompletName } from './modules/modal.js'
+import { checkSubmitCompletName, showModalList } from './modules/modal.js'
 
 const containerLetters = document.querySelector('.container-letters')
 const btnSubmit = document.getElementById('submit-caracter')
@@ -8,10 +8,13 @@ const btnClose = document.querySelector('.close')
 const btnSubmitName = document.querySelector('.submit-name')
 const img = document.getElementById('img-pokemon')
 const elementFlash = document.querySelector(".flash")
+const btnList = document.getElementById('btn-list')
+const iconNew = document.querySelector(".icon-new")
 
 var pokeName
 var attemps = 0
 var url
+var type
 
 startGame()
 
@@ -48,11 +51,17 @@ btnSubmitName.addEventListener('click', async ()=>{
     }
 })
 
+btnList.addEventListener("click",()=>{
+     showModalList()
+     iconNew.style.visibility = 'hidden' 
+})
+
 async function startGame(){
     const object = await api()
     img.src = object.img
     pokeName = object.name
     url = object.url
+    type = object.typePokemon
     await createAddElement(pokeName)
     console.log(pokeName)
 }
@@ -66,7 +75,7 @@ function createAddElement(name){
 }
 
 function showModal(show){
-    const modal = document.querySelector('.center')
+    const modal = document.querySelector('.container-modal')
     if(show){
         if(containerLetters.classList.contains('active-complet-name')){
             modal.style.display = 'flex'
@@ -93,7 +102,6 @@ function capturePokemonAnimation(){
 }
 
 function removeAnimationCapture(){
-    const iconNew = document.querySelector(".icon-new")
     iconNew.style.visibility = 'visible'
     elementFlash.classList.remove('animationFlash')
     img.classList.remove('animationRevealPokemon')
@@ -104,16 +112,17 @@ function resetGame(){
     clearGame()
 }
 
+
 function addPokemonLocalStorage(){
     var getItemLocalStorage = JSON.parse(localStorage.getItem("Pokémons"))
 
     if(getItemLocalStorage != null && getItemLocalStorage.length > 0){
-       getItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url})
+       getItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url, 'type': type})
        localStorage.setItem('Pokémons', JSON.stringify(getItemLocalStorage))
     }else{
         localStorage.setItem('Pokémons', JSON.stringify([]))
         var getInitialItemLocalStorage = JSON.parse(localStorage.getItem('Pokémons'))
-        getInitialItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url})
+        getInitialItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url, 'type': type})
         localStorage.setItem('Pokémons', JSON.stringify(getInitialItemLocalStorage))
     }
     
