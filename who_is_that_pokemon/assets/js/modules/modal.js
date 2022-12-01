@@ -24,16 +24,21 @@ export function checkSubmitCompletName(pokeName){
   
 }
 
-export function showModalList(){
-    listPokemonElement.innerHTML = ''
-    modal.style.visibility = "visible"
-    modal.lastElementChild.classList.add("modal-visible")
-    onloadListPokemons()
+export function showModalList(value){
+    if(value){
+        listPokemonElement.innerHTML = ''
+        modal.style.visibility = "visible"
+        modal.lastElementChild.classList.add("modal-visible") 
+        onloadListPokemons()
+    }else{
+        modal.style.visibility = 'hidden'
+        modal.lastElementChild.classList.remove("modal-visible")
+    }
+    
 }
 
 modal.addEventListener('click', ()=>{
-    modal.style.visibility = 'hidden'
-    modal.lastElementChild.classList.remove("modal-visible")
+    showModalList(false)
 })
 
 function createElementPokemon(pokemon){

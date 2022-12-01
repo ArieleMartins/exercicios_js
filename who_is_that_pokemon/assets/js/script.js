@@ -52,7 +52,7 @@ btnSubmitName.addEventListener('click', async ()=>{
 })
 
 btnList.addEventListener("click",()=>{
-     showModalList()
+     showModalList(true)
      iconNew.style.visibility = 'hidden' 
 })
 
