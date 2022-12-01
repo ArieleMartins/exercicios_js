@@ -9,30 +9,26 @@ const btnSubmitName = document.querySelector('.submit-name')
 const img = document.getElementById('img-pokemon')
 const elementFlash = document.querySelector(".flash")
 
-
 var pokeName
 var attemps = 0
-var urls = []
 var url
 
 startGame()
 
-btnSubmit.addEventListener('click', () =>{ 
-
+btnSubmit.addEventListener('click', async () =>{ 
+    
     if(checkCaracter(pokeName, attemps)){
         attemps += 1
     }
 
     if(checkCompletName(pokeName)){
         capturePokemonAnimation()
-        urls.push({'name': pokeName, "image": img.src, "url": url})
-        localStorage.setItem('Pokémons', JSON.stringify(urls))
+        await addPokemonLocalStorage()
         setTimeout(resetGame, 2900)
     }else if(attemps > 5){
         resetGame()
     }
     
-    console.log(urls)
 
 })
 
@@ -40,16 +36,15 @@ containerLetters.addEventListener('click', () => {showModal(true)})
 
 btnClose.addEventListener('click', () =>{showModal(false)})
 
-btnSubmitName.addEventListener('click', ()=>{
+btnSubmitName.addEventListener('click', async ()=>{
     if(checkSubmitCompletName(pokeName)){
         capturePokemonAnimation()
-        urls.push({'name': pokeName, "image": img.src, "url": url})
-        localStorage.setItem('Pokémons', JSON.stringify(urls))
+        await addPokemonLocalStorage()
         showModal(false)
+        setTimeout(resetGame, 2900)
     }else{
-        startGame()
-        clearGame()
         showModal(false)
+        resetGame()
     }
 })
 
@@ -71,7 +66,7 @@ function createAddElement(name){
 }
 
 function showModal(show){
-    const modal = document.querySelector('.container-modal')
+    const modal = document.querySelector('.center')
     if(show){
         if(containerLetters.classList.contains('active-complet-name')){
             modal.style.display = 'flex'
@@ -92,7 +87,6 @@ function clearGame(){
 }
 
 function capturePokemonAnimation(){
-    
     elementFlash.classList.add('animationFlash')
     img.classList.add('animationRevealPokemon')
     setTimeout(removeAnimationCapture, 2480)
@@ -108,4 +102,20 @@ function removeAnimationCapture(){
 function resetGame(){
     startGame()
     clearGame()
+}
+
+function addPokemonLocalStorage(){
+    var getItemLocalStorage = JSON.parse(localStorage.getItem("Pokémons"))
+
+    if(getItemLocalStorage != null && getItemLocalStorage.length > 0){
+       getItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url})
+       localStorage.setItem('Pokémons', JSON.stringify(getItemLocalStorage))
+    }else{
+        localStorage.setItem('Pokémons', JSON.stringify([]))
+        var getInitialItemLocalStorage = JSON.parse(localStorage.getItem('Pokémons'))
+        getInitialItemLocalStorage.push({'name': pokeName, "image": img.src, "url": url})
+        localStorage.setItem('Pokémons', JSON.stringify(getInitialItemLocalStorage))
+    }
+    
+   
 }

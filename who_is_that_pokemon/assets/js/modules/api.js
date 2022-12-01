@@ -1,9 +1,18 @@
+
+var url
+var img
+var json
+var name
+
 export async function acessUrl(){
     try{
-        var url = `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 899)}/`
-        const json = await fetch(url).then(response => response.json())
-        const img = await json.sprites.front_default
-        const name = await json.name
+        url = `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 899)}/`
+        json = await fetch(url).then(response => response.json())
+        img = await json.sprites.front_default
+        name = await json.name
+
+        await equalsPokemon()
+
         return {
             img,
             name,
@@ -14,3 +23,30 @@ export async function acessUrl(){
     }
 }
 
+function checkEqualPokemon(json){
+    var getPokemons = JSON.parse(localStorage.getItem('Pokémons'))
+    if(getPokemons != null){
+        var equals = getPokemons.map(object =>{
+            if(object.name == json.name){
+                return true
+            }
+            return false
+        })
+    
+       if(equals.includes(true)){
+            return true
+       }
+
+       return false
+    }
+    
+}
+
+async function equalsPokemon(){
+    while(await checkEqualPokemon(json)){
+        url = `https://pokeapi.co/api/v2/pokemon/${Math.floor(Math.random() * 899)}/`
+        json = await fetch(url).then(response => response.json())
+        img = await json.sprites.front_default
+        name = await json.name
+    }
+}
