@@ -26,12 +26,14 @@ export function checkSubmitCompletName(pokeName){
 
 export function showModalList(){
     listPokemonElement.innerHTML = ''
-    modal.style.display = "flex"
+    modal.style.visibility = "visible"
+    modal.lastElementChild.classList.add("modal-visible")
     onloadListPokemons()
 }
 
 modal.addEventListener('click', ()=>{
-    modal.style.display = 'none'
+    modal.style.visibility = 'hidden'
+    modal.lastElementChild.classList.remove("modal-visible")
 })
 
 function createElementPokemon(pokemon){
