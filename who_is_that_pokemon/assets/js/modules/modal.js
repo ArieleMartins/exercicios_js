@@ -45,15 +45,17 @@ function createElementPokemon(pokemon){
     const element = document.createElement('li')
     const elementImg = document.createElement('img')
     const elementSpan = document.createElement('span')
-
-    element.className = `card ${pokemon.type}`
+    const elementDiv = document.createElement("div")
+    elementDiv.className = `card`
     
     elementImg.setAttribute('src', `${pokemon.image}`)
     elementImg.setAttribute('alt', `${pokemon.name}`)
+
     elementSpan.textContent = pokemon.name
 
-    element.appendChild(elementImg)
-    element.appendChild(elementSpan)
+    element.appendChild(elementDiv)
+    elementDiv.appendChild(elementImg)
+    elementDiv.appendChild(elementSpan)
     listPokemonElement.appendChild(element)
 }
 
