@@ -60,7 +60,10 @@ function createElementPokemon(pokemon){
 
 function onloadListPokemons(){
     var pokemons = JSON.parse(localStorage.getItem('Pokémons'))
-    pokemons.forEach(pokemon => {
-        createElementPokemon(pokemon)
-    });
+    if(pokemons != null){
+        pokemons.forEach(pokemon => {
+            createElementPokemon(pokemon)
+        });
+    }
+   
 }
