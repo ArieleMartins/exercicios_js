@@ -1,4 +1,4 @@
-import { acessUrl as api } from './modules/api.js'
+import { acessUrlPokemonRandom as api } from './modules/api.js'
 import { checkCaracter, checkCompletName, spanLetterSubmit} from './modules/letter.js'
 import { showModal ,checkSubmitCompletName, showModalList } from './modules/modal.js'
 

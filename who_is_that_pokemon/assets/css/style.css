@@ -94,17 +94,28 @@ main{
 .animationRevealPokemon{
     animation: animationReveal 2.2s linear forwards;
 }
-
 .container-img-pokemon{
     position: absolute;
+}
+
+.container-img-pokemon, .container-img-pokemon-capture{
     width: 100%;
     max-width: 350px;
 }
+.container-img-pokemon-capture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-#img-pokemon{
+#img-pokemon, #img-pokemon-capture{
     width: 100%;
     max-width: 350px;
-    filter: brightness(0);  
+     
+}
+
+#img-pokemon{
+    filter: brightness(0); 
 }
 
 .container-letters{
@@ -244,6 +255,7 @@ main{
 }
 .container-modal-list{
     visibility: hidden;
+    display: flex;
 }
 .center{
     display: none;

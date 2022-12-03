@@ -1,6 +1,9 @@
+import { acessUrl as api } from "./api.js"
+
 const listPokemonElement = document.querySelector('.container-cards ul')
 const closeList = document.querySelector(".close-list")
 const inputSearchPokemon = document.getElementById('searchPokemon')
+const modal = document.querySelector('.container-modal-list')
 
 closeList.addEventListener("click",() =>{ showModalList(false) })
 
@@ -30,15 +33,17 @@ export function checkSubmitCompletName(pokeName){
 }
 
 export function showModalList(value){
-    const modal = document.querySelector('.container-modal-list')
+    
     if(value){
         listPokemonElement.innerHTML = ''
         modal.style.visibility = "visible"
-        modal.lastElementChild.classList.add("modal-visible") 
+        modal.children[0].classList.add("modal-visible") 
+       
         onloadListPokemons()
     }else{
         modal.style.visibility = 'hidden'
-        modal.lastElementChild.classList.remove("modal-visible")
+        modal.children[0].classList.remove("modal-visible")
+        modal.children[1].lastElementChild.style.width = '0px'
     }
     
 }
@@ -58,7 +63,8 @@ function createElementPokemon(pokemon, index){
 
     element.appendChild(elementDiv)
     element.setAttribute("data-index", index)
-    element.addEventListener("click", ()=>{showModalPokemon(elementDiv, pokemon.type, elementSpan)})
+    element.setAttribute("data-url", pokemon.url)
+    element.addEventListener("click", ()=>{showModalPokemon(elementDiv, pokemon.type, elementSpan, pokemon.image)})
     elementDiv.appendChild(elementImg)
     elementDiv.appendChild(elementSpan)
     listPokemonElement.appendChild(element)
@@ -78,11 +84,35 @@ function onloadListPokemons(){
    
 }
 
-function showModalPokemon(element, type, span){
+async function showModalPokemon(element, type, span, image){
     const indexElement = element.parentElement.attributes[0]
+    const modalDetailsPokemon = modal.children[1].lastElementChild
+    const img = document.getElementById('img-pokemon-capture')
+
+    img.src = image
+
     element.classList.add(type)
     span.style.color = 'white'
+    modalDetailsPokemon.style.width = '75vw'
+
+    if(modalDetailsPokemon.classList.length > 1){
+        var classStyle = modalDetailsPokemon.classList[1]
+        modalDetailsPokemon.classList.remove(classStyle)
+    }
+
+    modalDetailsPokemon.classList.add(type)
+    
+
+
+    var searchUrl = element.parentElement.attributes[1]
+    var url = searchUrl.nodeValue
+
+   var detailsPokemon = await api(url, false)
+
+    console.log(detailsPokemon) 
+
     checkElementsCardClass(indexElement)
+    
     
 }
 
