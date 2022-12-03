@@ -37,11 +37,8 @@ export function showModalList(value){
     
 }
 
-modal.addEventListener('click', ()=>{
-    showModalList(false)
-})
 
-function createElementPokemon(pokemon){
+function createElementPokemon(pokemon, index){
     const element = document.createElement('li')
     const elementImg = document.createElement('img')
     const elementSpan = document.createElement('span')
@@ -54,18 +51,48 @@ function createElementPokemon(pokemon){
     elementSpan.textContent = pokemon.name
 
     element.appendChild(elementDiv)
+    element.setAttribute("data-index", index)
+    element.addEventListener("click", ()=>{showModalPokemon(elementDiv, pokemon.type, elementSpan)})
     elementDiv.appendChild(elementImg)
     elementDiv.appendChild(elementSpan)
     listPokemonElement.appendChild(element)
+    
 }
 
 
 function onloadListPokemons(){
+    var index = 0
     var pokemons = JSON.parse(localStorage.getItem('Pokémons'))
     if(pokemons != null){
         pokemons.forEach(pokemon => {
-            createElementPokemon(pokemon)
+            createElementPokemon(pokemon, index)
+            index += 1
         });
     }
    
+}
+
+function showModalPokemon(element, type, span){
+    const indexElement = element.parentElement.attributes[0]
+    element.classList.add(type)
+    span.style.color = 'white'
+    checkElementsCardClass(indexElement)
+    
+}
+
+function checkElementsCardClass(index){
+    const elements = document.querySelectorAll(".card")
+    elements.forEach((element) =>{
+        if(element.parentElement.attributes[0] != index){
+            if(element.classList.length > 1){
+                element.classList.forEach((classStyle) =>{
+                    if(classStyle != 'card'){
+                        element.classList.remove(classStyle)
+                        element.lastChild.style.color = 'black'
+                    }
+                })
+            }
+        }
+        
+    })
 }
