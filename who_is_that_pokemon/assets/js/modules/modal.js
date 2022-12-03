@@ -1,5 +1,10 @@
-const modal = document.querySelector('.container-modal-list')
 const listPokemonElement = document.querySelector('.container-cards ul')
+const closeList = document.querySelector(".close-list")
+const inputSearchPokemon = document.getElementById('searchPokemon')
+
+closeList.addEventListener("click",() =>{ showModalList(false) })
+
+inputSearchPokemon.addEventListener('input', ()=>{searchPokemon(inputSearchPokemon.value)})
 
 export function showModal(show, containerLetters){
     const modal = document.querySelector('.container-modal')
@@ -25,6 +30,7 @@ export function checkSubmitCompletName(pokeName){
 }
 
 export function showModalList(value){
+    const modal = document.querySelector('.container-modal-list')
     if(value){
         listPokemonElement.innerHTML = ''
         modal.style.visibility = "visible"
@@ -94,5 +100,16 @@ function checkElementsCardClass(index){
             }
         }
         
+    })
+}
+
+function searchPokemon(value){
+    var listCard = document.querySelectorAll('.card')
+    listCard.forEach((card) =>{
+        if(card.lastChild.textContent.includes(value)){
+            card.parentElement.style.display = 'flex'
+        }else{
+            card.parentElement.style.display = 'none'
+        }
     })
 }
