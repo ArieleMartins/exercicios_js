@@ -108,14 +108,15 @@ main{
     align-items: center;
 }
 
-#img-pokemon, #img-pokemon-capture{
+#img-pokemon{
     width: 100%;
     max-width: 350px;
-     
+    filter: brightness(0); 
 }
 
-#img-pokemon{
-    filter: brightness(0); 
+#img-pokemon-capture{
+    width: 100%;
+    max-width: 330px;
 }
 
 .container-letters{

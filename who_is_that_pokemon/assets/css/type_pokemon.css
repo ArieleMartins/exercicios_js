@@ -7,7 +7,7 @@
 .dragon{
     background-color: #16adbb;
 }
-.eletric{
+.electric{
     background-color: #eed535;
 }
 .fairy{
@@ -170,10 +170,11 @@
     width: 98%;
     position: relative;
     z-index: 1;
-    height: 500px;
+    height: 47%;
     background-color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    opacity: 0;
 }
 .modal-details-pokemon .container-img-pokemon-capture ul{
     list-style: none;
@@ -184,7 +185,53 @@
     padding: 10px;
     border-radius: 20px;
     border: 1px solid #ffffff;
-    width: 100px;
+    width: 120px;
     color: white;
     text-align: center;
+    text-transform: uppercase;
+}
+
+.menu{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+.menu .list-menu{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    text-align: center;
+    width: 95%;
+    border-bottom: 2px solid #dddddd;
+    color:#b4b4b4;
+    text-transform: uppercase;
+}
+.list-menu li{
+    padding: 13px 0px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.active-menu{
+    color: var(--bg-color);
+    width: 140px;
+    padding: 10px 0px;
+    border-bottom: 3px solid var(--bg-color);
+}
+
+.details{
+    padding: 0px 40px;
+    height: 100%;
+}
+.details  .sobre{
+    list-style: none;
+    display: flex;
+    height: 80%;
+    justify-content: center;
+    flex-direction: column;
+    row-gap: 20px;
+    text-transform: uppercase;
+    color: #7B7B7B;
 }

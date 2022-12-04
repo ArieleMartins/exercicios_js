@@ -11,8 +11,10 @@ export async function acessUrl(url, random){
         img = await json.sprites.front_default
         name = await json.name
         typePokemon = await json.types[0].type.name
-        await equalsPokemon()
+        
         if(random){
+            await equalsPokemon()
+
             return {
                 img,
                 name,
