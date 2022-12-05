@@ -5,7 +5,8 @@ export const spanLetterSubmit = document.querySelector(".submit-letter")
 export function checkCaracter(pokeName){
     const element = document.getElementById('letter')
     const letter = element.value
-
+    const test = document.querySelector(".test")
+    test.textContent = element.value
     if(letter != ''){
         if(addListLetterSubmit(letter)){
 
