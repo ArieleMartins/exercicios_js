@@ -1,5 +1,5 @@
 .bug{
-    background-color: #7cb900;
+    background-color: #74ad00;
 }
 .dark{
     background-color: #636388;
@@ -8,16 +8,16 @@
     background-color: #16adbb;
 }
 .electric{
-    background-color: #eed535;
+    background-color: #dac437;
 }
 .fairy{
     background-color: #fdb9e9;
 }
 .fighting{
-    background-color: #d56723;
+    background-color: #c46225;
 }
 .fire{
-    background-color: #fd7d24;
+    background-color: #e47220;
 }
 .flying{
     background-color: #85b3c8;
@@ -225,13 +225,57 @@
     padding: 0px 40px;
     height: 100%;
 }
-.details  .sobre{
+.details  .about{
     list-style: none;
     display: flex;
     height: 80%;
     justify-content: center;
     flex-direction: column;
-    row-gap: 20px;
+    row-gap: 12px;
     text-transform: uppercase;
     color: #7B7B7B;
+}
+
+.details .about span, .details .stats span{
+    color: black;
+}
+
+.details .about li, .details .stats li{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.details .stats{
+    display: flex;
+    justify-content: center;
+    row-gap: 5px;
+    height: 80%;
+    flex-direction: column;
+    text-transform: uppercase;
+    color: #7B7B7B;
+}
+
+.details .stats li .container-bar{
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid #c9c9c9;
+    height: 13px;
+}
+
+.details .stats li .container-bar .bar{
+    height: 100%;
+    border-radius: 20px;
+}
+@media(max-width: 1366px){
+    .modal-details-pokemon{
+        height: 580px;
+    }
+    
+    .container-details{
+        height: 50%;
+    }
+    #img-pokemon-capture{
+        max-width: 230px;
+    }
 }

@@ -55,7 +55,7 @@ function checkPositionLetters(letter, pokeName){
 }
 
 function addListLetterSubmit(letter){
-    if(isNaN(letter)){
+    if(letter){
         if(!spanLetterSubmit.textContent.includes(letter)){
             const elementParend = spanLetterSubmit.parentElement.parentElement
             spanLetterSubmit.textContent += ` ${letter}`

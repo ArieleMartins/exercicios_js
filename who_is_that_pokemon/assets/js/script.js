@@ -43,7 +43,7 @@ btnSubmitName.addEventListener('click', async ()=>{
     if(checkSubmitCompletName(pokeName)){
         capturePokemonAnimation()
         await addPokemonLocalStorage()
-        setTimeout(resetGame, 2900)
+        setTimeout(resetGame, 2700)
     }else{
         resetGame()
     }
