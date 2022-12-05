@@ -34,7 +34,7 @@ export function showModal(show, containerLetters){
 export function checkSubmitCompletName(pokeName){
     const namePokemon = document.getElementById('name-pokemon').value
 
-    if(namePokemon == pokeName){
+    if(namePokemon.toUpperCase() == pokeName.toUpperCase()){
         return true
     }
     
