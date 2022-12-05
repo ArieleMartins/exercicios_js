@@ -5,8 +5,6 @@ export const spanLetterSubmit = document.querySelector(".submit-letter")
 export function checkCaracter(pokeName){
     const element = document.getElementById('letter')
     const letter = element.value
-    const test = document.querySelector(".test")
-    test.textContent = element.value
     if(letter != ''){
         if(addListLetterSubmit(letter)){
 
@@ -35,9 +33,10 @@ function removeAnimation(){
 
 function correctLetter(posicions, value){
     const containerLetters = document.querySelectorAll('.letter')
-
+    const test = document.querySelector(".test")
+    test.textContent = posicions.length
     posicions.forEach(element => {
-        containerLetters[element].textContent = value
+        containerLetters[element].innerText = value
         containerLetters[element].classList.add("active")
     });
 }
