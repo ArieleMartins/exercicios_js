@@ -63,7 +63,6 @@ async function startGame(){
     url = object.url
     type = object.typePokemon
     await createAddElement(pokeName)
-    console.log(pokeName)
 }
 
 function createAddElement(name){
