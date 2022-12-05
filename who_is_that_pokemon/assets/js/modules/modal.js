@@ -143,7 +143,7 @@ function checkElementsCardClass(index){
 function searchPokemon(value){
     var listCard = document.querySelectorAll('.card')
     listCard.forEach((card) =>{
-        if(card.lastChild.textContent.includes(value)){
+        if(card.lastChild.textContent.includes(value.toLowerCase())){
             card.parentElement.style.display = 'flex'
         }else{
             card.parentElement.style.display = 'none'
