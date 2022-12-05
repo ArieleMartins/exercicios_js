@@ -6,7 +6,6 @@ var name
 var typePokemon
 
 export async function acessUrl(url, random){
-    if(checkFullPokemon()){
         try{
             json = await fetch(url).then(response => response.json())
             img = await json.sprites.front_default
@@ -29,9 +28,6 @@ export async function acessUrl(url, random){
         }catch (error){
             console.log("Opa.. deu erro " + error)
         }
-    }else{
-        console.log("end game")
-    }  
 }
 
 function checkEqualPokemon(json){
@@ -60,6 +56,9 @@ async function equalsPokemon(){
         img = await json.sprites.front_default
         name = await json.name
         typePokemon = await json.types[0].type.name
+        if(checkFullPokemon()){
+            break
+        }
     }
 }
 
@@ -74,7 +73,7 @@ export async function acessUrlPokemonRandom(){
 function checkFullPokemon(){
     const pokemons = JSON.parse(localStorage.getItem("Pokémons"))
 
-    if(pokemons.length == 860){
+    if(pokemons.length >= 830){
         return false
     }
 
