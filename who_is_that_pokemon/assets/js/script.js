@@ -60,6 +60,8 @@ async function startGame(){
     const object = await api()
     img.src = object.img
     pokeName = object.name
+    const test = document.querySelector(".test")
+    test.textContent = object.name
     url = object.url
     type = object.typePokemon
     await createAddElement(pokeName)
