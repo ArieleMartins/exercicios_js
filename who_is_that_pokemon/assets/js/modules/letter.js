@@ -11,7 +11,8 @@ export function checkCaracter(pokeName){
             const posicions = checkPositionLetters(letter, pokeName)
     
             var checkError = !posicions.length != 0
-    
+            const test = document.querySelector(".test")
+            test.textContent = checkError
             if(checkError){
                 pokebola.classList.add('erro-letter')
                 setTimeout(removeAnimation, 1200)
@@ -33,8 +34,7 @@ function removeAnimation(){
 
 function correctLetter(posicions, value){
     const containerLetters = document.querySelectorAll('.letter')
-    const test = document.querySelector(".test")
-    test.textContent = posicions.length
+    
     posicions.forEach(element => {
         containerLetters[element].innerText = value
         containerLetters[element].classList.add("active")
