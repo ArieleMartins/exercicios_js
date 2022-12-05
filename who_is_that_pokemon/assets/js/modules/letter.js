@@ -45,7 +45,7 @@ function checkPositionLetters(letter, pokeName){
     var posicion = -1
     for(var caracter of pokeName){
         const test = document.querySelector(".test")
-            test.textContent += caracter
+            test.textContent += letter
         posicion += 1
         if(caracter == letter){
             test.textContent += '  ' + posicion
