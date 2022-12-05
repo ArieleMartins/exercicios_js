@@ -8,7 +8,7 @@ export function checkCaracter(pokeName){
     if(letter != ''){
         if(addListLetterSubmit(letter)){
 
-            const posicions = checkPositionLetters(letter, pokeName)
+            var posicions = checkPositionLetters(letter, pokeName)
     
             var checkError = !posicions.length != 0
             
@@ -48,6 +48,7 @@ function checkPositionLetters(letter, pokeName){
             test.textContent += caracter
         posicion += 1
         if(caracter == letter){
+            test.textContent += '  ' + posicion
             posicions.push(posicion)
         }
     }
