@@ -100,13 +100,12 @@ async function showModalPokemon(element, type, span, image){
     const modalDetailsPokemon = modal.children[1].lastElementChild
     const img = document.getElementById('img-pokemon-capture')
     const menuActive = document.querySelector(".active-menu")
-
+    checkDisplayWidth(modalDetailsPokemon)
     listType.innerHTML = ""
     img.src = image
 
     element.classList.add(type)
     span.style.color = 'white'
-    modalDetailsPokemon.style.width = '40vw'
     modalDetailsPokemon.children[1].style.opacity = '1' 
 
     if(modalDetailsPokemon.classList.length > 1){
@@ -163,7 +162,7 @@ async function searchDetailsPokemon(element, listType){
     species = detailsPokemon.species.name
     abilitys = detailsPokemon.abilities
     stats = detailsPokemon.stats
-
+    console.log(detailsPokemon)
     var types = detailsPokemon.types
     
     types.forEach((type) =>{
@@ -224,4 +223,28 @@ function showDetailsStatus(){
                             <li><div>Defesa Especial: <span>${stats[4].base_stat}</span></div><div class="container-bar"><div class="bar ${typeClass}" style="width: ${stats[4].base_stat / 3}%"></div></div></li>
                             <li><div>Speed: <span>${stats[5].base_stat}</span></div><div class="container-bar"><div class="bar ${typeClass}" style="width: ${stats[5].base_stat / 3}%"></div></div>
                         </ul>`
+}
+
+function checkDisplayWidth(modalDetailsPokemon){
+    const closeDetails = document.querySelector('.close-details')
+    if(window.innerWidth <= 800){
+        modal.children[0].style.display = 'none'
+        modalDetailsPokemon.style.width = '100vw'
+        modalDetailsPokemon.style.display = 'flex'
+        closeDetails.style.opacity = '1'
+        closeDetails.style.zIndex = '1'
+        closeDetails.addEventListener('click', () => {closeModalDetails(modalDetailsPokemon, modal.children[0], closeDetails)})
+    }else{
+        modal.children[0].style.display = 'flex'
+        modalDetailsPokemon.style.display = 'flex'
+        modalDetailsPokemon.style.width = '40vw'
+    }
+}
+
+function closeModalDetails(modalDetailsPokemon, modalList, closeDetails){
+    modalDetailsPokemon.style.width = '0'
+    modalDetailsPokemon.style.display = 'none'
+    modalList.style.display = 'flex'
+    closeDetails.style.opacity = '0'
+    closeDetails.style.zIndex = '-1'
 }

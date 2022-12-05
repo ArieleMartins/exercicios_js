@@ -125,6 +125,7 @@
     color: #5a5a5a;
     border-top: 1px solid #cacaca;
     border-bottom: 1px solid #cacaca;
+    align-items: center;
 }
 .container-cards ul li div{
     width: 290px;
@@ -143,8 +144,18 @@
 }
 .close-list{
     float: right;
-    cursor: pointer;
     color: #5f5f5f;
+}
+.close-list, .close-details{   
+    cursor: pointer;
+}
+.close-details{
+    font-family: var(--font-family);
+    opacity: 0;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    color:white;
 }
 .container-close{
     padding: 0px 20px;
@@ -248,12 +259,13 @@
 
 .details .stats{
     display: flex;
-    justify-content: center;
     row-gap: 5px;
     height: 80%;
     flex-direction: column;
     text-transform: uppercase;
     color: #7B7B7B;
+    overflow-y: scroll;
+    padding: 10px;
 }
 
 .details .stats li .container-bar{
@@ -277,5 +289,28 @@
     }
     #img-pokemon-capture{
         max-width: 230px;
+    }
+}
+
+@media(max-width: 800px){
+    .container-cards{
+        width: 100%;
+    }
+    .modal-details-pokemon{
+        height: 100%;
+        border-radius: 0;
+        display: none;
+    }
+    .container-details{
+        height: 100%;
+    }
+    .container-cards ul li div{
+        width: 100%;
+        border-radius: 0;
+        justify-content: center;
+    }
+    .details .stats{
+        padding: 3px;
+        justify-content: center;
     }
 }
