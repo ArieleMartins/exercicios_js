@@ -17,6 +17,13 @@ const conteudo = [
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/jogo_da_memoria'
     },
     {
+        img:'https://user-images.githubusercontent.com/83427685/205759355-3573f217-6f99-4a68-9d1a-36cb5887a6c4.png',
+        alt: 'Quem é esse pokémon?',
+        desc: {name: 'Quem é esse pokemon?', desc: 'Projeto utilizando API, o usuário deve identificar o pokémon pela sua silhueta, se acertar o usuário terá ele armazenado e poderá ver mais detalhes sobre o pokémon'},
+        href: 'https://github.com/ArieleMartins/exercicios_js/tree/master/who_is_that_pokemon',
+        github: 'arielemartins.github.io/exercicios_js/who_is_that_pokemon/'
+    },
+    {
         img: 'https://user-images.githubusercontent.com/83427685/202807366-e4281a64-66fd-4dbd-be74-f3a998d12204.png',
         alt: 'Projeto WebConversor - Projeto onde possui diversos conversores',
         desc: {name: 'WebConversor', desc: 'Projeto feito durante a imersão dev Alura. Site com diversos conversore, como: Conversor de Moeda (Utilizando API para pegar os valores em tempo real), Temperatura e Ano-luz.'},
@@ -72,6 +79,7 @@ const conteudo = [
         href: 'https://arielemartins.github.io/exercicios_js/Contador/',
         github: 'https://github.com/ArieleMartins/exercicios_js/tree/master/Contador'
     },
+    
     
 ]
 
