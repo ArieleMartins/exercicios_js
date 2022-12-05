@@ -12,7 +12,7 @@ export function checkCaracter(pokeName){
     
             var checkError = !posicions.length != 0
             const test = document.querySelector(".test")
-            test.textContent = checkError
+            test.textContent = posicions[0]
             if(checkError){
                 pokebola.classList.add('erro-letter')
                 setTimeout(removeAnimation, 1200)
